@@ -1,6 +1,6 @@
 {
   "name": "react-discord-presence",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your discord presence in react.",
   "main": "dist/index.js",
@@ -14,6 +14,17 @@
     "test": "yarn jest --coverage && yarn test:lint"
   },
   "dependencies": {
+    "color": "4.2.3",
+    "react-twemoji": "0.5.0",
+    "schema-lanyard-discord-presence": "0.6.0",
+  },
+  "peerDependencies": {
+    "react": ">=15.0.1",
+    "react-dom": ">=15.0.1"
+  },
+  "devDependencies": {
+    "react": ">=15.0.1",
+    "react-dom": ">=15.0.1",
     "@testing-library/react": "13.4.0",
     "@types/circular-dependency-plugin": "5.0.2",
     "@types/color": "3.0.3",
@@ -24,7 +35,6 @@
     "@typescript-eslint/eslint-plugin": "5.49.0",
     "@typescript-eslint/parser": "5.49.0",
     "circular-dependency-plugin": "5.2.2",
-    "color": "4.2.3",
     "eslint": "7.17.0",
     "eslint-plugin-bdd": "2.1.1",
     "eslint-plugin-jest": "26.0.0",
@@ -38,8 +48,6 @@
     "jest-environment-jsdom": "29.3.1",
     "path-browserify": "1.0.1",
     "prettier": "1.19.1",
-    "react-twemoji": "0.5.0",
-    "schema-lanyard-discord-presence": "0.5.0",
     "source-map-loader": "2.0.1",
     "ts-jest": "29.0.5",
     "ts-loader": "9.1.1",
@@ -47,13 +55,5 @@
     "typescript": "4.6.4",
     "webpack": "5.36.2",
     "webpack-cli": "4.6.0"
-  },
-  "peerDependencies": {
-    "react": ">=15.0.1",
-    "react-dom": ">=15.0.1"
-  },
-  "devDependencies": {
-    "react": ">=15.0.1",
-    "react-dom": ">=15.0.1"
   }
 }
