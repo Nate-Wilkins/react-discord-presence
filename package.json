@@ -2,6 +2,7 @@
   "name": "react-discord-presence",
   "version": "0.1.0",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
+  "description": "Display your discord presence in react.",
   "main": "dist/index.js",
   "types": "src/index.tsx",
   "repository": "git@github.com:nate-wilkins/react-discord-presence.git",

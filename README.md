@@ -8,9 +8,11 @@ yarn add react-discord-presence
 
 ## Usage
 
-In a `react` component you just need to include the component:
+In a `react` with CSS modules you just need to include the component:
 
 ```typescript
+import classes from 'react-discord-presence/DiscordPresenceDefault.module.css';
+// ...
 <DiscordPresence
   classes={Object.assign(classes, classesCustom)}
   theme={{
