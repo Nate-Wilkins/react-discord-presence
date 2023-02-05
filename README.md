@@ -11,6 +11,8 @@
 yarn add react-discord-presence
 ```
 
+![Screenshot React Discord Presence](./screenshot.png)
+
 ## Usage
 
 In a `react` with CSS modules you just need to include the component:
@@ -25,8 +27,8 @@ import classes from 'react-discord-presence/DiscordPresenceDefault.module.css';
     accent: 'rgba(0, 26, 48, 1)',
   }}
   data={{
-    // Trigger Lazy Load.
-    ...JSON.parse(JSON.stringify(data)),
+    // API Data can come from anywhere but this component was built for the Lanyard API response.
+    ...apiData,
     status: 'online',
     background: {
       src: background,
@@ -58,3 +60,11 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 />
 ```
 
+## External Resources
+
+- [Lanyard API](https://github.com/Phineas/lanyard)
+- [Schema Lanyard Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence)
+
+## Roadmap
+
+- Reduce the manual setup for the user by using more of the Lanyard API or Discord API.
