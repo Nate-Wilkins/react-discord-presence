@@ -1,5 +1,10 @@
 # react-discord-presence
 
+[![Version](http://img.shields.io/npm/v/react-discord-presence.svg?style=flat-square)](https://www.npmjs.org/package/react-discord-presence)
+[![Build](https://img.shields.io/travis/Nate-Wilkins/react-discord-presence/main?style=flat-square)](https://app.travis-ci.com/github/Nate-Wilkins/react-discord-presence)
+[![Open Issues](https://img.shields.io/github/issues-raw/Nate-Wilkins/react-discord-presence?style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/issues)
+[![License](https://img.shields.io/github/license/Nate-Wilkins/react-discord-presence?color=%2308F&style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/blob/main/LICENSE)
+
 > Display your discord presence in react.
 
 ```
