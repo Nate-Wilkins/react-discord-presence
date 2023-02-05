@@ -4031,10 +4031,10 @@ scheduler@^0.23.0:
   dependencies:
     loose-envify "^1.1.0"
 
-schema-lanyard-discord-presence@0.5.0:
-  version "0.5.0"
-  resolved "http://rancher.stark.local:4873/schema-lanyard-discord-presence/-/schema-lanyard-discord-presence-0.5.0.tgz#4d010bac01301172e255da23c5f4ff43722b1987"
-  integrity sha512-6QViLFZNcSbn6K8bJT9wM/KwYM6q41cIrdT2i7mR1hcj99abfJcuBod7k2eYvq4uEu9Kmd6jtpOnoUlFfNQrMA==
+schema-lanyard-discord-presence@0.6.0:
+  version "0.6.0"
+  resolved "http://rancher.stark.local:4873/schema-lanyard-discord-presence/-/schema-lanyard-discord-presence-0.6.0.tgz#074559c7e9d43649aea49b02a08fbf851d581024"
+  integrity sha512-P2M9D7LJ0nVsW4YwB61RjqFCXwldKlzKMee8oEBfkZ4rgZvnizQ6UZiCTpls6CXlmYUdYRR5XGHqiVYGawS9EQ==
   dependencies:
     color "4.2.3"
     react-twemoji "0.5.0"
