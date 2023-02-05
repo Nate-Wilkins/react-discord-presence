@@ -5,3 +5,4 @@ build/
 yarn-debug.log*
 yarn-error.log*
 .netlify/
+coverage/

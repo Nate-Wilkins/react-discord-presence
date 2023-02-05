@@ -29,7 +29,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-weight: 400;
 }
 
 .content {
@@ -149,6 +148,7 @@
 }
 
 .about h3 {
+  display: block;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.9em;
@@ -157,11 +157,13 @@
 }
 
 .about p {
+  display: block;
   white-space: pre-line;
   margin-bottom: 0.8em;
 }
 
 .memberSince h3 {
+  display: block;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.9em;
@@ -170,6 +172,7 @@
 }
 
 .memberSince p {
+  display: block;
   white-space: pre-line;
   margin-bottom: 0.8em;
 }

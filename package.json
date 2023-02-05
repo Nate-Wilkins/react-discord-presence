@@ -1,6 +1,6 @@
 {
   "name": "react-discord-presence",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your discord presence in react.",
   "main": "dist/index.js",
@@ -10,8 +10,10 @@
     "build:ttf": "cp -r ./src/font/ ./dist/",
     "build:ts": "ts-node ./node_modules/webpack/bin/webpack",
     "build": "rm -rf ./dist && yarn run build:ts && yarn run build:ttf && yarn run build:css",
-    "test:lint": "yarn eslint --ext .jsx,.js,.ts,.tsx ./",
-    "test": "yarn jest --coverage && yarn test:lint"
+    "test:lint": "yarn run eslint --ext .jsx,.js,.ts,.tsx ./",
+    "test": "yarn run jest --coverage && yarn run test:lint",
+    "storybook": "start-storybook -p $STORYBOOK_PORT",
+    "storybook:build": "yarn run build-storybook -o ./storybook"
   },
   "dependencies": {
     "color": "4.2.3",
@@ -23,8 +25,15 @@
     "react-dom": ">=15.0.1"
   },
   "devDependencies": {
-    "react": ">=15.0.1",
-    "react-dom": ">=15.0.1",
+    "@storybook/addon-actions": "6.5.16",
+    "@storybook/addon-console": "1.2.3",
+    "@storybook/addon-docs": "6.5.16",
+    "@storybook/addon-essentials": "6.5.16",
+    "@storybook/addon-links": "6.5.16",
+    "@storybook/addon-postcss": "2.0.0",
+    "@storybook/addon-storysource": "6.5.16",
+    "@storybook/react": "6.5.16",
+    "storybook-css-modules": "1.0.8",
     "@testing-library/react": "13.4.0",
     "@types/circular-dependency-plugin": "5.0.2",
     "@types/color": "3.0.3",
@@ -48,6 +57,8 @@
     "jest-environment-jsdom": "29.3.1",
     "path-browserify": "1.0.1",
     "prettier": "1.19.1",
+    "react": ">=15.0.1",
+    "react-dom": ">=15.0.1",
     "source-map-loader": "2.0.1",
     "ts-jest": "29.0.5",
     "ts-loader": "9.1.1",

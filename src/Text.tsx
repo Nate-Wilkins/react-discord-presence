@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 import Twemoji from 'react-twemoji';
 
 /*
@@ -6,7 +6,9 @@ import Twemoji from 'react-twemoji';
  */
 export const Text: FunctionComponent<{
   classes: Record<string, string>;
-  children: ReactNode;
+  children: string;
 }> = ({ classes, children }) => (
-  <Twemoji options={{ className: classes.emoji }}>{children}</Twemoji>
+  <Twemoji options={{ className: classes.emoji }} tag="span">
+    {children}
+  </Twemoji>
 );

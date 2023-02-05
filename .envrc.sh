@@ -15,3 +15,7 @@ function start() {
 function publish() {
   yarn publish $@
 }
+
+function storybook() {
+  STORYBOOK_PORT=5656 yarn run storybook
+}

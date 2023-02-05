@@ -198,8 +198,9 @@ export const DiscordPresence: FunctionComponent<{
                   </span>
                 ) : null}
                 <Text classes={classes}>
-                  {activityStatus.details ? `${activityStatus.details} ` : ''}
-                  {activityStatus.state ? `${activityStatus.state}` : ''}
+                  {`${
+                    activityStatus.details ? `${activityStatus.details} ` : ''
+                  }${activityStatus.state ? `${activityStatus.state}` : ''}`}
                 </Text>
               </p>
             </div>
@@ -264,10 +265,10 @@ export const DiscordPresence: FunctionComponent<{
                     </h3>
 
                     <p>
-                      <Text classes={classes}>{activity.details}</Text>
+                      <Text classes={classes}>{activity.details || ''}</Text>
                     </p>
                     <p>
-                      <Text classes={classes}>{activity.state}</Text>
+                      <Text classes={classes}>{activity.state || ''}</Text>
                     </p>
                     {activity.timestamps &&
                     typeof activity.timestamps.start === 'number' ? (
