@@ -2,12 +2,49 @@ import { Meta, Description, Canvas, Story } from '@storybook/addon-docs';
 import { createLanyardApiData } from '../test/create_lanyard_api_data';
 import { DiscordPresence } from './DiscordPresence';
 import StyleDiscordPresenceDefault from './style/DiscordPresenceDefault.module.css';
+import StyleDiscordPresenceCode from './style/DiscordPresenceCode.module.css';
 import DiscordPresenceBanner from '../test/banner.jpeg';
 import discord_badge_hypesquad_bravery from '../src/image/discord_badge_hypesquad_bravery.webp';
 import discord_badge_subscriber_since from '../src/image/discord_badge_subscriber_since.webp';
 import discord_badge_boosting_1month from '../src/image/discord_badge_boosting_1month.webp';
 
 <Meta title="Discord/Presence" component={DiscordPresence} argTypes={{ }} />
+
+export const theme = {
+  primary: 'rgba(38, 114, 195, 1)',
+  accent: 'rgba(0, 26, 48, 1)'
+};
+
+export const data = {
+  ...createLanyardApiData(),
+  status: 'online',
+  background: {
+    src: DiscordPresenceBanner,
+    width: 1450,
+    height: 350,
+  },
+  badges: [
+    {
+      src: discord_badge_hypesquad_bravery,
+      width: 21,
+      height: 21,
+    },
+    {
+      src: discord_badge_subscriber_since,
+      width: 256,
+      height: 256,
+    },
+    {
+      src: discord_badge_boosting_1month,
+      width: 18,
+      height: 17,
+    },
+  ],
+  aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
+NY 🌆 CA 🌁
+PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
+  memberSince: 'June 21, 2016',
+};
 
 # DiscordPresence
 
@@ -18,38 +55,23 @@ Display Discord presence.
     <div style={{ fontSize: '14px' }}>
       <DiscordPresence
         classes={StyleDiscordPresenceDefault}
-        theme={{ primary: 'rgba(38, 114, 195, 1)', accent: 'rgba(0, 26, 48, 1)' }}
-        data={{
-          ...createLanyardApiData(),
-          status: 'online',
-          background: {
-            src: DiscordPresenceBanner,
-            width: 1450,
-            height: 350,
-          },
-          badges: [
-            {
-              src: discord_badge_hypesquad_bravery,
-              width: 21,
-              height: 21,
-            },
-            {
-              src: discord_badge_subscriber_since,
-              width: 256,
-              height: 256,
-            },
-            {
-              src: discord_badge_boosting_1month,
-              width: 18,
-              height: 17,
-            },
-          ],
-          aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
-  NY 🌆 CA 🌁
-  PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
-          memberSince: 'June 21, 2016',
-        }} />
+        theme={theme}
+        data={data} />
     </div>
   </Story>
 </Canvas>
 
+## Customization
+
+Display Discord presence with custom styling.
+
+- `DiscordPresenceCode.module.css`
+
+<Story name="DiscordPresenceCode">
+  <div style={{ fontSize: '14px' }}>
+    <DiscordPresence
+      classes={Object.assign({}, StyleDiscordPresenceDefault, StyleDiscordPresenceCode)}
+      theme={theme}
+      data={data} />
+  </div>
+</Story>

@@ -11,17 +11,22 @@
 yarn add react-discord-presence
 ```
 
-![Screenshot React Discord Presence](./screenshot.png)
+## Example
+
+[![Screenshot React Discord Presence](./screenshot.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
+
+Check it out on [StackBlitz](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx).
 
 ## Usage
 
-In a `react` with CSS modules you just need to include the component:
+In `react` with CSS modules:
 
 ```typescript
-import classes from 'react-discord-presence/DiscordPresenceDefault.module.css';
+import { DiscordPresence } from 'react-discord-presence';
+import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
 // ...
 <DiscordPresence
-  classes={Object.assign(classes, classesCustom)}
+  classes={discordPresenceClasses}
   theme={{
     primary: 'rgba(38, 114, 195, 1)',
     accent: 'rgba(0, 26, 48, 1)',
@@ -60,6 +65,87 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 />
 ```
 
+## Customization
+
+- `DiscordPresenceCode.module.css`
+
+```typescript
+import { DiscordPresence } from 'react-discord-presence';
+import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
+import discordPresenceCodeClasses from 'react-discord-presence/dist/style/DiscordPresenceCode.module.css';
+// ...
+<DiscordPresence
+  classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
+  theme={theme}
+  data={data}
+/>
+```
+
+- Custom
+
+__`./DiscordPresenceCustom.module.css`__
+
+```css
+.hr {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  border: none;
+  height: 1px;
+  background-repeat: no-repeat;
+  background-size: 100% 0.05em;
+  background-position: center;
+  background-image: linear-gradient(
+    90deg,
+    rgba(0,0,0,0)                                                            0%,
+    hsl(0, 0%, 90%)                                                         10%,
+    hsl(0, 0%, 90%)                                                         48%,
+    rgba(0,0,0,0)                                                           48%,
+    rgba(0,0,0,0)                                                           50%,
+    rgba(0,0,0,0)                                                           52%,
+    hsl(0, 0%, 90%)                                                         52%,
+    hsl(0, 0%, 90%)                                                         90%,
+    rgba(0,0,0,0)                                                           100%);
+  color: hsl(0, 0%, 20%);
+  text-align: center;
+
+  height: 0.75em;
+}
+
+.hr:after {
+  content:" ";
+  display: inline-block;
+  position: relative;
+  top: -0.375em;
+  padding: 0.75em;
+  /* react-icons: Code */
+  background-image: url('data:image/svg+xml;,<svg stroke="rgb(195, 195, 195)" fill="rgb(195, 195, 195)" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.75em auto;
+}
+```
+
+__`./index.tsx`__
+
+```typescript
+import { DiscordPresence } from 'react-discord-presence';
+import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
+import customClasses from './DiscordPresenceCustom.module.css';
+// ...
+<DiscordPresence
+  classes={Object.assign({}, discordPresenceClasses, customClasses}}
+  theme={theme}
+  data={data}
+/>
+```
+
+## Development
+
+Written in typescript. Workflows are defined in `.envrc.sh`.
+
 ## External Resources
 
 - [Lanyard API](https://github.com/Phineas/lanyard)
@@ -68,3 +154,4 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 ## Roadmap
 
 - Reduce the manual setup for the user by using more of the Lanyard API or Discord API.
+- Support for overflow in activities? Should this be a custom scrollbar?
