@@ -187,8 +187,8 @@ export const DiscordPresence: FunctionComponent<{
             <div>
               <p style={{ display: 'inline-flex' }}>
                 {activityStatus.emoji &&
-                activityStatus.emoji.id !== null &&
-                activityStatus.emoji.animated !== null ? (
+                activityStatus.emoji.id &&
+                typeof activityStatus.emoji.animated === 'boolean' ? (
                   <span style={{ marginRight: '0.5em' }}>
                     <DiscordImageEmoji
                       classes={classes}
@@ -269,10 +269,15 @@ export const DiscordPresence: FunctionComponent<{
                     <p>
                       <Text classes={classes}>{activity.state}</Text>
                     </p>
-                    {activity.timestamps && activity.timestamps.start ? (
+                    {activity.timestamps &&
+                    typeof activity.timestamps.start === 'number' ? (
                       <DiscordPresenceActivityDuration
                         start={activity.timestamps.start}
-                        end={activity.timestamps.end}
+                        end={
+                          typeof activity.timestamps.end === 'number'
+                            ? activity.timestamps.end
+                            : null
+                        }
                       />
                     ) : null}
                   </div>

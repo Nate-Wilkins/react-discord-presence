@@ -6,22 +6,22 @@ import { getElapsedTimeFormat } from './get_elapsed_time_format';
  */
 export const DiscordPresenceActivityDuration: FunctionComponent<{
   start: number;
-  end: number | null;
+  end?: number | null;
 }> = ({ start, end }) => {
-  const [now, setNow] = useState(end ? new Date(end) : new Date());
+  const [now, setNow] = useState(end ? end : Date.now());
 
   // Setup timer for activity duration that hasn't ended.
   useEffect(() => {
     if (end !== null) return;
 
     const interval = setInterval(() => {
-      setNow(new Date());
+      setNow(Date.now());
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [end]);
+  }, [start, end]);
 
-  return <p>{getElapsedTimeFormat(now, new Date(start))}</p>;
+  return <p>{getElapsedTimeFormat(new Date(now), new Date(start))}</p>;
 };
