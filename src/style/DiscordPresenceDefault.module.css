@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Inter';
-  src: local('Inter'), url(./font/inter/Inter-VariableFont_slntwght.ttf) format('truetype');
+  src: local('Inter'), url(../font/inter/Inter-VariableFont_slntwght.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Lato';
-  src: local('Lato'), url(./font/lato/Lato-Regular.ttf) format('truetype');
+  src: local('Lato'), url(../font/lato/Lato-Regular.ttf) format('truetype');
 }
 
 .root {
