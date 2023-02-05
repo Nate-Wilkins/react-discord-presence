@@ -50,6 +50,7 @@
   height: 9.375em;
   width: 100%;
   mask-image: radial-gradient(circle 3.125em at calc(0.75em + 3.125em) 100%, transparent 3.125em, white 0);
+  -webkit-mask-image: radial-gradient(circle 3.125em at calc(0.75em + 3.125em) 100%, transparent 3.125em, white 0);
 }
 
 .badges {
