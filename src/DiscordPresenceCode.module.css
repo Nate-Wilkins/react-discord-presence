@@ -1,0 +1,41 @@
+.hr {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  border: none;
+  height: 1px;
+  background-repeat: no-repeat;
+  background-size: 100% 0.05em;
+  background-position: center;
+  background-image: linear-gradient(
+    90deg,
+    rgba(0,0,0,0)                                                            0%,
+    hsl(0, 0%, 90%)                                                         10%,
+    hsl(0, 0%, 90%)                                                         48%,
+    rgba(0,0,0,0)                                                           48%,
+    rgba(0,0,0,0)                                                           50%,
+    rgba(0,0,0,0)                                                           52%,
+    hsl(0, 0%, 90%)                                                         52%,
+    hsl(0, 0%, 90%)                                                         90%,
+    rgba(0,0,0,0)                                                           100%);
+  color: hsl(0, 0%, 20%);
+  text-align: center;
+
+  height: 0.75em;
+}
+
+.hr:after {
+  content:" ";
+  display: inline-block;
+  position: relative;
+  top: -0.375em;
+  padding: 0.75em;
+  /* react-icons: Code */
+  background-image: url('data:image/svg+xml;,<svg stroke="rgb(195, 195, 195)" fill="rgb(195, 195, 195)" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.75em auto;
+}
+

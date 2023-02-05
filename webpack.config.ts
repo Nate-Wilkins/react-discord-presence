@@ -1,0 +1,109 @@
+import { DefinePlugin, NoEmitOnErrorsPlugin } from 'webpack';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
+import path from 'path';
+
+// NODE_ENV: 'development' | 'production'
+const NODE_ENV =
+  process.env.NODE_ENV !== 'production' ? 'development' : 'production';
+
+export default {
+  target: 'web',
+
+  entry: './src/index.tsx',
+
+  output: {
+    pathinfo: true,
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'index.js',
+    libraryTarget: 'commonjs',
+  },
+
+  plugins: [
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true,
+    }),
+    new DefinePlugin({
+      NODE_ENV: JSON.stringify(NODE_ENV),
+    }),
+    new NoEmitOnErrorsPlugin(),
+  ],
+
+  cache:
+    NODE_ENV === 'development'
+      ? {
+          type: 'filesystem',
+          allowCollectingMemory: true,
+        }
+      : undefined,
+
+  optimization: {
+    minimize: true,
+    concatenateModules: true,
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    moduleIds: 'named',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.(js|ts|tsx)$/,
+        include: [path.join(__dirname, 'src'), path.join(__dirname, 'test')],
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: path.join(__dirname, 'tsconfig.json'),
+              // Include type definition files.
+              transpileOnly: false,
+            },
+          },
+        ],
+      },
+      {
+        enforce: 'pre',
+        test: /\.(js|ts|tsx)$/,
+        loader: 'source-map-loader',
+      },
+    ],
+  },
+
+  mode: NODE_ENV,
+  devtool: NODE_ENV === 'development' ? 'inline-source-map' : 'source-map',
+
+  node: {
+    __filename: true,
+    __dirname: false,
+  },
+
+  resolve: {
+    modules: [path.resolve(__dirname, 'node_modules'), 'node_modules'],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
+    alias: {
+      react: path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+    },
+  },
+
+  // Don't bundle `react` or `react-dom`.
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React',
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'ReactDOM',
+      root: 'ReactDOM',
+    },
+  },
+};
