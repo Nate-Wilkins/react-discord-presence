@@ -16,7 +16,7 @@
   "dependencies": {
     "color": "4.2.3",
     "react-twemoji": "0.5.0",
-    "schema-lanyard-discord-presence": "0.6.0",
+    "schema-lanyard-discord-presence": "0.6.0"
   },
   "peerDependencies": {
     "react": ">=15.0.1",
