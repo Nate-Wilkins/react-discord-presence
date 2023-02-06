@@ -79,11 +79,11 @@ export const DiscordPresence: FunctionComponent<{
         }}
       >
         <div className={classes.background}>
-          {/* Background */}
+          {/* Banner */}
           <img
-            src={data.background.src}
-            width={data.background.width}
-            height={data.background.height}
+            src={`https://dcdn.dstn.to/banners/${data.discord_user.id}`}
+            width={300}
+            height={105}
             className={classes.backgroundImage}
           />
 
