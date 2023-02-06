@@ -150,6 +150,7 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 
 - [Lanyard API](https://github.com/Phineas/lanyard)
 - [Schema Lanyard Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence)
+- [Discord CDN Alternative](https://gist.github.com/dustinrouillard/04be36180ed80db144a4857408478854)
 
 ## Roadmap
 
