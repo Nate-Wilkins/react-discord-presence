@@ -154,4 +154,5 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 ## Roadmap
 
 - Reduce the manual setup for the user by using more of the Lanyard API or Discord API.
+- Add support for failing image downloads/errors.
 - Support for overflow in activities? Should this be a custom scrollbar?

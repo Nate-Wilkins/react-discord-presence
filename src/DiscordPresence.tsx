@@ -90,7 +90,7 @@ export const DiscordPresence: FunctionComponent<{
           {/* Avatar */}
           <div className={classes.avatar}>
             <a
-              href="https://discord.com/users/194976024457510912"
+              href={`https://discord.com/users/${data.discord_user.id}`}
               target="_blank"
               rel="noreferrer"
             >
@@ -257,7 +257,13 @@ export const DiscordPresence: FunctionComponent<{
                         />
                       ) : null}
                     </div>
-                  ) : null}
+                  ) : (
+                    <div className={classes.activityIcon}>
+                      <img
+                        src={`https://dcdn.dstn.to/app-icons/${activity.application_id}`}
+                      />
+                    </div>
+                  )}
 
                   <div className={classes.activityDetails}>
                     <h3>
