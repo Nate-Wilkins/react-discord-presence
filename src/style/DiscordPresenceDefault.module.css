@@ -9,9 +9,14 @@
 }
 
 .root {
+  --discord-presence-font-family-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --discord-presence-font-family-secondary: Lato, "Open Sans", Roboto, sans-serif;
+  --discord-presence-border-radius: 0.35em;
+  --discord-presence-banner-height: 9.375em;
+
   all: initial;
   box-sizing: border-box;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--discord-presence-font-family-primary);
   font-weight: 400;
   font-size: inherit;
   margin: 0;
@@ -20,13 +25,14 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 0.35em;
+  border-radius: var(--discord-presence-border-radius);
   padding: 0.25em;
   overflow-wrap: break-word;
   word-break: break-word;
 }
 .root * {
   all: unset;
+  font-family: var(--discord-presence-font-family-primary);
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -35,20 +41,20 @@
 .content {
   height: 100%;
   position: relative;
-  border-radius: 0.35em;
+  border-radius: var(--discord-presence-border-radius);
 }
 
 .background {
   position: relative;
   display: block;
-  height: 9.375em;
+  height: var(--discord-presence-banner-height);
   margin-bottom: 4.0em;
 }
 
 .backgroundImage {
-  border-top-left-radius: 0.40em;
-  border-top-right-radius: 0.40em;
-  height: 9.375em;
+  border-top-left-radius: var(--discord-presence-border-radius);
+  border-top-right-radius: var(--discord-presence-border-radius);
+  height: var(--discord-presence-banner-height);
   width: 100%;
   mask-image: radial-gradient(circle 3.125em at calc(0.75em + 3.125em) 100%, transparent 3.125em, white 0);
   -webkit-mask-image: radial-gradient(circle 3.125em at calc(0.75em + 3.125em) 100%, transparent 3.125em, white 0);
@@ -60,19 +66,88 @@
   right: 0;
   position: absolute;
   align-items: center;
-  padding: 5;
   /*   = (backgroundImage.height + (badges.height + badges.paddingVertical) / 2) */
-  top: calc(9.375em + (0.95em + 0.45em * 2) / 2);
-  height: 0.95em;
+  top: calc(var(--discord-presence-banner-height) - (4em / 2) + (1.45em * 2));
+  height: 1.45em;
   padding: 0.45em 0.25em;
   margin-right: calc(0.75em + 0.4em);
   border-radius: 0.55em;
 }
 
 .badge {
-  height: 100%;
-  width: 0.90em;
+  position: relative;
+  display: block;
+  width: 1.25em;
+  height: 1.45em;
   margin: 0 0.25em;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.popover {
+  position: absolute;
+  top: -3em;
+  width: fit-content;
+  white-space: pre;
+  background-color: #202225;
+  padding: 0.4em;
+  border-radius: var(--discord-presence-border-radius);
+}
+
+.badgeStaff {
+  background-image: url(../../deps/discord-badges/assets/discordstaff.svg);
+}
+.badgePartner {
+  background-image: url(../../deps/discord-badges/assets/discordpartner.svg);
+}
+.badgeHypesquad {
+  background-image: url(../../deps/discord-badges/assets/hypesquadevents.svg);
+}
+.badgeBugHunterLevel1 {
+  background-image: url(../../deps/discord-badges/assets/discordbughunter1.svg);
+}
+.badgeHypeSquadOnlineHouse1 {
+  background-image: url(../../deps/discord-badges/assets/hypesquadbravery.svg);
+}
+.badgeHypeSquadOnlineHouse2 {
+  background-image: url(../../deps/discord-badges/assets/hypesquadbrilliance.svg);
+}
+.badgeHypeSquadOnlineHouse3 {
+  background-image: url(../../deps/discord-badges/assets/hypesquadbalance.svg);
+}
+.badgePremiumEarlySupporter {
+  background-image: url(../../deps/discord-badges/assets/discordearlysupporter.svg);
+}
+.badgeTeamPseudoUser {
+  /* TODO: Not Supported 'TeamPseudoUser'. */
+}
+.badgeBugHunterLevel2 {
+  background-image: url(../../deps/discord-badges/assets/discordbughunter2.svg);
+}
+.badgeVerifiedBot {
+  /* TODO: Not Supported 'VerifiedBot'. */
+}
+.badgeVerifiedDeveloper {
+  background-image: url(../../deps/discord-badges/assets/activedeveloper.svg);
+}
+.badgeCertifiedModerator {
+  /* TODO: Not Supported 'CertifiedModerator'. */
+}
+.badgeBotHTTPInteractions {
+  /* TODO: Not Supported 'BotHTTPInteractions'. */
+}
+.badgeSpammer {
+  /* TODO: Not Supported 'Spammer'. */
+}
+.badgeActiveDeveloper {
+  background-image: url(../../deps/discord-badges/assets/activedeveloper.svg);
+}
+.badgeQuarantined {
+  /* TODO: Not Supported 'Quarantined'. */
+}
+.badgePremiumMemberSince {
+  background-image: url(../../deps/discord-badges/assets/premium_member_since.webp);
 }
 
 .badge img {
@@ -95,6 +170,7 @@
   height: 100%;
   border-radius: 50%;
   display: inline-block;
+  cursor: pointer;
 }
 .avatar img {
   display: block;
@@ -128,14 +204,13 @@
   width: 1.00em;
   height: 1.00em;
   border-radius: 50%;
-
 }
 
 .namePlate {
   display: flex;
   flex-direction: column;
   justify-items: normal;
-  border-radius: 0.35em;
+  border-radius: var(--discord-presence-border-radius);
   margin-bottom: calc(0.75em + 0.4em);
   margin-left: calc(0.75em + 0.4em);
   margin-right: calc(0.75em + 0.4em);
@@ -153,7 +228,7 @@
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.9em;
-  font-family: Lato, "Open Sans", Roboto, sans-serif;
+  font-family: var(--discord-presence-font-family-secondary);
   margin-bottom: 0.4em;
 }
 
@@ -168,7 +243,7 @@
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.9em;
-  font-family: Lato, "Open Sans", Roboto, sans-serif;
+  font-family: var(--discord-presence-font-family-secondary);
   margin-bottom: 0.4em;
 }
 
@@ -188,7 +263,7 @@
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.9em;
-  font-family: Lato, "Open Sans", Roboto, sans-serif;
+  font-family: var(--discord-presence-font-family-secondary);
   margin-bottom: 0.4em;
 }
 
@@ -204,7 +279,7 @@
   display: block;
   font-weight: 600;
   font-size: 0.9em;
-  font-family: Lato, "Open Sans", Roboto, sans-serif;
+  font-family: var(--discord-presence-font-family-secondary);
   margin-bottom: 0.4em;
 }
 
@@ -221,7 +296,14 @@
   margin-right: 0.4em;
 }
 
-.activityIconBadge {
+.activityIconImage {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.activityIconBadgeImage {
   position: absolute;
   right: 0;
   bottom: 0;

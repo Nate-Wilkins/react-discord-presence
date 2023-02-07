@@ -1,0 +1,6 @@
+[submodule "deps/discord-badges"]
+	path = deps/discord-badges
+	url = git@github.com:Debuggingss/discord-badges.git
+[submodule "discord-badges"]
+	path = deps/discord-badges
+	url = git@github.com:mezotv/discord-badges.git

@@ -1,0 +1,246 @@
+import { Meta, Description, Canvas, Story } from '@storybook/addon-docs';
+import { DiscordPresenceBadge } from './DiscordPresenceBadge';
+import StyleDiscordPresenceDefault from './style/DiscordPresenceDefault.module.css';
+import { DiscordBadgeEnum } from './types';
+
+<Meta title="Discord/Presence/DiscordPresenceBadge" component={DiscordPresenceBadge} argTypes={{ }} />
+
+export const Box = ({ children }) => <div style={{ display: 'inline-block', border: '1px dotted black', padding: '1em' }}>{children}</div>;
+
+# DiscordPresenceBadge
+
+Display Discord presence badge.
+
+<Canvas>
+  <Story name="PremiumMemberSince">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={"PremiumMemberSince"}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Staff">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.Staff}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Partner">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.Partner}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Hypesquad">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.Hypesquad}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="BugHunterLevel1">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.BugHunterLevel1}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="HypeSquadOnlineHouse1">
+      <div style={{ fontSize: '14px' }}>
+        <Box>
+          <DiscordPresenceBadge
+            classes={StyleDiscordPresenceDefault}
+            badge={DiscordBadgeEnum.HypeSquadOnlineHouse1}
+          />
+        </Box>
+      </div>
+    </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="HypeSquadOnlineHouse2">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.HypeSquadOnlineHouse2}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="HypeSquadOnlineHouse3">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.HypeSquadOnlineHouse3}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="PremiumEarlySupporter">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.PremiumEarlySupporter}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="TeamPseudoUser">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.TeamPseudoUser}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="BugHunterLevel2">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.BugHunterLevel2}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="VerifiedBot">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.VerifiedBot}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="VerifiedDeveloper">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.VerifiedDeveloper}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="CertifiedModerator">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.CertifiedModerator}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="BotHTTPInteractions">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.BotHTTPInteractions}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Spammer">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.Spammer}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="ActiveDeveloper">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.ActiveDeveloper}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Quarantined">
+    <div style={{ fontSize: '14px' }}>
+      <Box>
+        <DiscordPresenceBadge
+          classes={StyleDiscordPresenceDefault}
+          badge={DiscordBadgeEnum.Quarantined}
+        />
+      </Box>
+    </div>
+  </Story>
+</Canvas>

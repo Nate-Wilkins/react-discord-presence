@@ -4,8 +4,11 @@ import Color from 'color';
 import { createLinearGradientVertical } from './create_linear_gradient_vertical';
 import { DiscordImageEmoji } from './DiscordImageEmoji';
 import { DiscordPresenceActivityDuration } from './DiscordPresenceActivityDuration';
+import { DiscordPresenceBadge } from './DiscordPresenceBadge';
 import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
+import { getDiscordBadges } from './get_discord_badges';
 import { Text } from './Text';
+import { DiscordBadgeEnum } from './types';
 
 /*
  * Discord presence.
@@ -14,17 +17,15 @@ import { Text } from './Text';
  */
 export const DiscordPresence: FunctionComponent<{
   data: IDiscordPresence & {
-    background: { src: string; width: number; height: number };
-    badges: { src: string; width: number; height: number }[];
+    theme: {
+      primary: string;
+      accent: string;
+    };
     aboutMe?: string;
     memberSince?: string;
   };
   classes: Record<string, string>;
-  theme: {
-    primary: string;
-    accent: string;
-  };
-}> = ({ data, classes, theme }) => {
+}> = ({ data, classes }) => {
   // Pull out activity status.
   const activityStatus = data.activities.find(
     activity => activity.id === 'custom',
@@ -35,9 +36,14 @@ export const DiscordPresence: FunctionComponent<{
     activity => activity.id !== 'custom',
   );
 
+  // Badges.
+  const badges: DiscordBadgeEnum[] = getDiscordBadges(
+    data.discord_user.public_flags,
+  );
+
   // Setup theming colors.
-  const rootColorPrimary = Color(theme.primary);
-  const rootColorAccent = Color(theme.accent);
+  const rootColorPrimary = Color(data.theme.primary);
+  const rootColorAccent = Color(data.theme.accent);
   // TODO: Light theme testing.
   const contentPrimaryColor = !rootColorPrimary.isDark()
     ? rootColorPrimary.lighten(0.6)
@@ -62,9 +68,9 @@ export const DiscordPresence: FunctionComponent<{
         // TODO: Have "sizes". 25em etc
         width: '30em',
         background: createLinearGradientVertical(
-          theme.primary,
+          data.theme.primary,
           0.65,
-          theme.accent,
+          data.theme.accent,
         ),
       }}
     >
@@ -94,7 +100,7 @@ export const DiscordPresence: FunctionComponent<{
               target="_blank"
               rel="noreferrer"
             >
-              {/* TODO: Avatar decoration? What is this? */}
+              {/* TODO: Add in avatar decoration? What is this? */}
               <img
                 alt="Discord Avatar"
                 src={`https://cdn.discordapp.com/avatars/${
@@ -119,24 +125,33 @@ export const DiscordPresence: FunctionComponent<{
           </div>
 
           {/* Badges */}
-          {data.badges.length > 0 ? (
-            <div
-              className={classes.badges}
-              style={{
-                backgroundColor: namePlatePrimaryColor.hsl().string(),
-              }}
-            >
-              {data.badges.map(badge => (
-                <div key={badge.src} className={classes.badge}>
-                  <img
-                    src={badge.src}
-                    width={badge.width}
-                    height={badge.height}
-                  />
-                </div>
+          <div
+            className={classes.badges}
+            style={{
+              backgroundColor: namePlatePrimaryColor.hsl().string(),
+            }}
+          >
+            <>
+              {badges.map(badge => (
+                <DiscordPresenceBadge
+                  key={badge}
+                  classes={classes}
+                  badge={badge}
+                  stylePopover={{
+                    color: namePlateNameIdColor,
+                  }}
+                />
               ))}
-            </div>
-          ) : null}
+              {/* Member Since */}
+              <DiscordPresenceBadge
+                classes={classes}
+                badge={'PremiumMemberSince'}
+                stylePopover={{
+                  color: namePlateNameIdColor,
+                }}
+              />
+            </>
+          </div>
         </div>
 
         {/* Name + ID */}
@@ -248,19 +263,25 @@ export const DiscordPresence: FunctionComponent<{
                   {activity.assets ? (
                     <div className={classes.activityIcon}>
                       <img
+                        className={classes.activityIconImage}
                         src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png`}
                       />
                       {activity.assets.small_image ? (
                         <img
-                          className={classes.activityIconBadge}
+                          className={classes.activityIconBadgeImage}
                           src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.png`}
                         />
                       ) : null}
                     </div>
                   ) : (
                     <div className={classes.activityIcon}>
+                      {/* NOTE: Images from the CDN are not very big and scaling them up looks bad. Padding is to reduce scaling. */}
                       <img
+                        className={classes.activityIconImage}
+                        style={{ padding: '1.5em' }}
                         src={`https://dcdn.dstn.to/app-icons/${activity.application_id}`}
+                        width={40}
+                        height={40}
                       />
                     </div>
                   )}

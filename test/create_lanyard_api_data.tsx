@@ -50,6 +50,16 @@ export const createLanyardApiData = (): IDiscordPresence =>
         },
         application_id: '793271441293967371',
       },
+      {
+        type: 0,
+        timestamps: {
+          start: 1675651894032,
+        },
+        name: 'Overwatch 2',
+        id: 'b5929b2fee89662a',
+        created_at: 1675651894051,
+        application_id: '356875221078245376',
+      },
     ],
     active_on_discord_web: false,
     active_on_discord_mobile: false,

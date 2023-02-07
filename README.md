@@ -158,3 +158,4 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 - Support for failing image downloads/errors.
 - Support for Spotify.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
+- Add tails to hover popovers.
