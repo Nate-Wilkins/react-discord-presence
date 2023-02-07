@@ -1,4 +1,4 @@
-import { Meta, Description, Canvas, Story } from '@storybook/addon-docs';
+import { Meta, Description, Story } from '@storybook/addon-docs';
 import { createLanyardApiData } from '../test/create_lanyard_api_data';
 import { DiscordPresence } from './DiscordPresence';
 import StyleDiscordPresenceDefault from './style/DiscordPresenceDefault.module.css';
@@ -24,16 +24,14 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 
 Display Discord presence.
 
-<Canvas>
-  <Story name="DiscordPresence">
-    <div style={{ fontSize: '14px' }}>
-      <DiscordPresence
-        classes={StyleDiscordPresenceDefault}
-        data={data}
-      />
-    </div>
-  </Story>
-</Canvas>
+<Story name="DiscordPresence">
+  <div style={{ fontSize: '14px' }}>
+    <DiscordPresence
+      classes={StyleDiscordPresenceDefault}
+      data={data}
+    />
+  </div>
+</Story>
 
 ## Customization
 

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { DiscordPresence as IDiscordPresence } from 'schema-lanyard-discord-presence';
 import Color from 'color';
 import { createLinearGradientVertical } from './create_linear_gradient_vertical';
@@ -26,6 +26,8 @@ export const DiscordPresence: FunctionComponent<{
   };
   classes: Record<string, string>;
 }> = ({ data, classes }) => {
+  const [isHoveringAvatar, setIsHoveringAvatar] = useState<boolean>(false);
+
   // Pull out activity status.
   const activityStatus = data.activities.find(
     activity => activity.id === 'custom',
@@ -60,12 +62,20 @@ export const DiscordPresence: FunctionComponent<{
   const namePlateNameColor = 'rgba(255, 255, 255, 1)';
   const namePlateNameIdColor = 'rgba(185, 185, 185, 1)';
 
+  // Event Handlers.
+  const onAvatarMouseOver = () => {
+    setIsHoveringAvatar(true);
+  };
+  const onAvatarMouseOut = () => {
+    setIsHoveringAvatar(false);
+  };
+
   return (
     <div
       id={data.discord_user.id}
       className={classes.root}
       style={{
-        // TODO: Have "sizes". 25em etc
+        // TODO: Have Discord presence "sizes". 25em etc
         width: '30em',
         background: createLinearGradientVertical(
           data.theme.primary,
@@ -100,19 +110,29 @@ export const DiscordPresence: FunctionComponent<{
               target="_blank"
               rel="noreferrer"
             >
-              {/* TODO: Add in avatar decoration? What is this? */}
-              <img
-                alt="Discord Avatar"
-                src={`https://cdn.discordapp.com/avatars/${
-                  data.discord_user.id
-                }/${data.discord_user.avatar}${
-                  !data.discord_user.avatar.startsWith('a_') ? '.png' : '.gif'
-                }`}
-                style={{ aspectRatio: 'auto 24 /24' }}
-                width="24"
-                height="24"
-                draggable="false"
-              />
+              <div className={classes.avatarViewProfileContainer}>
+                {/* TODO: Add in avatar decoration? What is this? */}
+                <img
+                  onMouseOver={onAvatarMouseOver}
+                  onMouseOut={onAvatarMouseOut}
+                  alt="Discord Avatar"
+                  src={`https://cdn.discordapp.com/avatars/${
+                    data.discord_user.id
+                  }/${data.discord_user.avatar}${
+                    !data.discord_user.avatar.startsWith('a_') ? '.png' : '.gif'
+                  }`}
+                  style={{ aspectRatio: 'auto 24 /24' }}
+                  width="24"
+                  height="24"
+                  draggable="false"
+                />
+                <div
+                  className={classes.avatarViewProfile}
+                  style={{ opacity: !isHoveringAvatar ? 0 : 1 }}
+                >
+                  View Profile
+                </div>
+              </div>
 
               <DiscordPresenceUserStatus
                 classes={classes}

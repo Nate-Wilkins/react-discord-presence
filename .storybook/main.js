@@ -11,6 +11,7 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-storysource',
     '@storybook/addon-postcss',
+    'storycap',
   ],
   webpackFinal: async config => {
     return config;
