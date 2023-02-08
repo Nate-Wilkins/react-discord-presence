@@ -1,0 +1,71 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
+import StyleDiscordPresenceDefault from './style/DiscordPresenceDefault.module.css';
+
+<Meta title="Discord/Presence/DiscordPresenceUserStatus" component={DiscordPresenceUserStatus} argTypes={{ }} />
+
+export const Box = ({ children }) => <div style={{ position: 'absolute', display: 'block', border: '1px dotted black', padding: '5em' }}>{children}</div>;
+
+# DiscordPresenceUserStatus
+
+Display Discord presence user status.
+
+<Story name="Offline">
+  <div style={{ fontSize: '14px' }}>
+    <Box>
+      <DiscordPresenceUserStatus
+        classes={StyleDiscordPresenceDefault}
+        data={{
+          active_on_discord_desktop: false,
+          active_on_discord_mobile: false,
+          active_on_discord_web: false,
+        }}
+      />
+    </Box>
+  </div>
+</Story>
+
+<Story name="Online (Desktop)">
+  <div style={{ fontSize: '14px' }}>
+    <Box>
+      <DiscordPresenceUserStatus
+        classes={StyleDiscordPresenceDefault}
+        data={{
+          active_on_discord_desktop: true,
+          active_on_discord_mobile: false,
+          active_on_discord_web: false,
+        }}
+      />
+    </Box>
+  </div>
+</Story>
+
+<Story name="Online (Mobile)">
+  <div style={{ fontSize: '14px' }}>
+    <Box>
+      <DiscordPresenceUserStatus
+        classes={StyleDiscordPresenceDefault}
+        data={{
+          active_on_discord_desktop: false,
+          active_on_discord_mobile: true,
+          active_on_discord_web: false,
+        }}
+      />
+    </Box>
+  </div>
+</Story>
+
+<Story name="Online (Web)">
+  <div style={{ fontSize: '14px' }}>
+    <Box>
+      <DiscordPresenceUserStatus
+        classes={StyleDiscordPresenceDefault}
+        data={{
+          active_on_discord_desktop: false,
+          active_on_discord_mobile: false,
+          active_on_discord_web: true,
+        }}
+      />
+    </Box>
+  </div>
+</Story>

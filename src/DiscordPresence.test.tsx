@@ -5,24 +5,17 @@ import { DiscordPresence } from './DiscordPresence';
 
 const defaultClasses = {};
 
-const defaultTheme = {
-  primary: 'rgba(38, 114, 195, 1)',
-  accent: 'rgba(0, 26, 48, 1)',
-};
-
 test('when using discord presence component', async () => {
   // Given discord presence component.
   // And discord presence data.
   const data = {
     ...createLanyardApiData(),
-
+    theme: {
+      primary: 'rgba(38, 114, 195, 1)',
+      accent: 'rgba(0, 26, 48, 1)',
+    },
     // TODO: The lanyard API has some of this data.
     status: 'online',
-    background: {
-      src: './banner.gif',
-      width: 1450,
-      height: 350,
-    },
     badges: [
       {
         src: './badge_0.webp',
@@ -44,15 +37,12 @@ test('when using discord presence component', async () => {
 NY 🌆 CA 🌁
 PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
     memberSince: 'June 21, 2016',
+    premiumMemberSince: 'April 10, 2022',
   };
 
   // When using the component.
   const queries = render(
-    <DiscordPresence
-      classes={defaultClasses}
-      data={data}
-      theme={defaultTheme}
-    />,
+    <DiscordPresence classes={defaultClasses} data={data} />,
   );
 
   // Then the discord presence is rendered.

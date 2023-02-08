@@ -25,7 +25,11 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
   // Desktop || Web.
   if (active_on_discord_desktop || active_on_discord_web) {
     return (
-      <div className={classes.statusBorder} style={style}>
+      <div
+        data-status={`online-${active_on_discord_desktop ? 'desktop' : 'web'}`}
+        className={classes.statusBorder}
+        style={style}
+      >
         <div
           className={classes.status}
           style={{ backgroundColor: '#3ba55c' }}
@@ -36,20 +40,29 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
 
   // Mobile.
   if (active_on_discord_mobile) {
-    // TODO: This should look like a mobile icon.
     return (
-      <div className={classes.statusBorder} style={style}>
-        <div
-          className={classes.status}
-          style={{ backgroundColor: '#3ba55c' }}
-        />
+      <div
+        data-status={`online-mobile`}
+        className={classes.statusBorder}
+        style={style}
+      >
+        {/* Material UI - Icon - PhoneAndroid */}
+        <svg
+          className={`${classes.status} ${classes.statusMobile}`}
+          style={{ stroke: '#3ba55c', fill: '#3ba55c' }}
+          focusable="false"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+        >
+          <path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-2 20h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z"></path>
+        </svg>
       </div>
     );
   }
 
   // Offline.
   return (
-    <div className={classes.statusBorder} style={style}>
+    <div data-status="offline" className={classes.statusBorder} style={style}>
       <div
         className={classes.status}
         style={{ backgroundColor: 'rgb(116 127 141)' }}

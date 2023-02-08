@@ -225,7 +225,7 @@
   right: calc(0.40em / 2);
   bottom: calc(0.40em / 2);
   display: block;
-  background-color: green;
+  background-color: lightblue;
   width: 1.75em;
   height: 1.75em;
   border-radius: 50%;
@@ -238,10 +238,14 @@
   top: calc(50% - 1.00em / 2);
   left: calc(50% - 1.00em / 2);
   display: block;
-  background-color: green;
+  background-color: lightblue;
   width: 1.00em;
   height: 1.00em;
   border-radius: 50%;
+}
+
+.statusMobile {
+  font-size: 1em;
 }
 
 .namePlate {

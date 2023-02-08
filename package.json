@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "color": "4.2.3",
+    "date-fns": "2.29.3",
     "react-twemoji": "0.5.0",
     "schema-lanyard-discord-presence": "0.6.0"
   },
@@ -56,12 +57,12 @@
     "jest-environment-jsdom": "29.3.1",
     "path-browserify": "1.0.1",
     "prettier": "1.19.1",
+    "puppeteer": "19.6.3",
     "react": ">=15.0.1",
     "react-dom": ">=15.0.1",
     "source-map-loader": "2.0.1",
     "storybook-css-modules": "1.0.8",
     "storycap": "4.0.0",
-    "puppeteer": "19.6.3",
     "ts-jest": "29.0.5",
     "ts-loader": "9.1.1",
     "ts-node": "10.9.1",

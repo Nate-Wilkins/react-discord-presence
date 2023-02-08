@@ -1,7 +1,6 @@
 # react-discord-presence
 
 [![Version](http://img.shields.io/npm/v/react-discord-presence.svg?style=flat-square)](https://www.npmjs.org/package/react-discord-presence)
-[![Build](https://img.shields.io/travis/Nate-Wilkins/react-discord-presence/main?style=flat-square)](https://app.travis-ci.com/github/Nate-Wilkins/react-discord-presence)
 [![Open Issues](https://img.shields.io/github/issues-raw/Nate-Wilkins/react-discord-presence?style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/issues)
 [![License](https://img.shields.io/github/license/Nate-Wilkins/react-discord-presence?color=%2308F&style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/blob/main/LICENSE)
 
@@ -27,19 +26,14 @@ import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPre
 // ...
 <DiscordPresence
   classes={discordPresenceClasses}
-  theme={{
-    primary: 'rgba(38, 114, 195, 1)',
-    accent: 'rgba(0, 26, 48, 1)',
-  }}
   data={{
     // API Data can come from anywhere but this component was built for the Lanyard API response.
     ...apiData,
-    status: 'online',
-    background: {
-      src: background,
-      width: 1450,
-      height: 350,
+    theme: {
+      primary: 'rgba(38, 114, 195, 1)',
+      accent: 'rgba(0, 26, 48, 1)',
     },
+    status: 'online',
     badges: [
       {
         src: discord_badge_hypesquad_bravery,
@@ -76,7 +70,6 @@ import discordPresenceCodeClasses from 'react-discord-presence/dist/style/Discor
 // ...
 <DiscordPresence
   classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
-  theme={theme}
   data={data}
 />
 ```
@@ -137,7 +130,6 @@ import customClasses from './DiscordPresenceCustom.module.css';
 // ...
 <DiscordPresence
   classes={Object.assign({}, discordPresenceClasses, customClasses}}
-  theme={theme}
   data={data}
 />
 ```

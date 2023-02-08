@@ -2,7 +2,7 @@
 const { cleanup, configure } = require('@testing-library/react');
 
 configure({
-  asyncUtilTimeout: 1000,
+  asyncUtilTimeout: 500,
   // https://github.com/testing-library/dom-testing-library/issues/552
   defaultHidden: true,
 });

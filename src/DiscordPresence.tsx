@@ -23,9 +23,11 @@ export const DiscordPresence: FunctionComponent<{
     };
     aboutMe?: string;
     memberSince?: string;
+    premiumMemberSince?: string;
   };
   classes: Record<string, string>;
-}> = ({ data, classes }) => {
+  activityDurationFormat?: (d1: Date, d2: Date) => string;
+}> = ({ data, classes, activityDurationFormat }) => {
   const [isHoveringAvatar, setIsHoveringAvatar] = useState<boolean>(false);
 
   // Pull out activity status.
@@ -162,14 +164,18 @@ export const DiscordPresence: FunctionComponent<{
                   }}
                 />
               ))}
-              {/* Member Since */}
-              <DiscordPresenceBadge
-                classes={classes}
-                badge={'PremiumMemberSince'}
-                stylePopover={{
-                  color: namePlateNameIdColor,
-                }}
-              />
+              {!data.premiumMemberSince ? null : (
+                <>
+                  {/* Member Since */}
+                  <DiscordPresenceBadge
+                    classes={classes}
+                    badge={'PremiumMemberSince'}
+                    stylePopover={{
+                      color: namePlateNameIdColor,
+                    }}
+                  />
+                </>
+              )}
             </>
           </div>
         </div>
@@ -326,6 +332,7 @@ export const DiscordPresence: FunctionComponent<{
                             ? activity.timestamps.end
                             : null
                         }
+                        format={activityDurationFormat}
                       />
                     ) : null}
                   </div>

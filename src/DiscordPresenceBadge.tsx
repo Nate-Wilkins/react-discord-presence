@@ -39,7 +39,10 @@ const BadgeLookup: {
     className: 'badgeBugHunterLevel2',
     hoverText: '',
   },
-  [DiscordBadgeEnum.VerifiedBot]: { className: 'badgeVerifiedBot' },
+  [DiscordBadgeEnum.VerifiedBot]: {
+    className: 'badgeVerifiedBot',
+    hoverText: '',
+  },
   [DiscordBadgeEnum.VerifiedDeveloper]: {
     className: 'badgeVerifiedDeveloper',
     hoverText: '',
