@@ -1,10 +1,15 @@
 {
   "name": "react-discord-presence",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your Discord presence in react.",
   "main": "dist/index.js",
-  "repository": "git@github.com:nate-wilkins/react-discord-presence.git",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/nate-wilkins/react-discord-presence"
+  },
+  "homepage": "http://github.com/nate-wilkins/react-discord-presence",
+  "bugs": "http://github.com/nate-wilkins/react-discord-presence/issues",
   "scripts": {
     "build:css": "mkdir -p ./dist/src/display/ && cp -r ./src/display/style/ ./dist/src/display/",
     "build:ttf": "mkdir -p ./dist/src/display/ && cp -r ./src/display/font/ ./dist/src/display/",
