@@ -145,40 +145,40 @@
 }
 
 .badgeStaff {
-  background-image: url(../../../deps/discord-badges/assets/discordstaff.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordstaff.svg);
 }
 .badgePartner {
-  background-image: url(../../../deps/discord-badges/assets/discordpartner.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordpartner.svg);
 }
 .badgeHypesquad {
-  background-image: url(../../../deps/discord-badges/assets/hypesquadevents.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadevents.svg);
 }
 .badgeBugHunterLevel1 {
-  background-image: url(../../../deps/discord-badges/assets/discordbughunter1.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordbughunter1.svg);
 }
 .badgeHypeSquadOnlineHouse1 {
-  background-image: url(../../../deps/discord-badges/assets/hypesquadbravery.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadbravery.svg);
 }
 .badgeHypeSquadOnlineHouse2 {
-  background-image: url(../../../deps/discord-badges/assets/hypesquadbrilliance.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadbrilliance.svg);
 }
 .badgeHypeSquadOnlineHouse3 {
-  background-image: url(../../../deps/discord-badges/assets/hypesquadbalance.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadbalance.svg);
 }
 .badgePremiumEarlySupporter {
-  background-image: url(../../../deps/discord-badges/assets/discordearlysupporter.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordearlysupporter.svg);
 }
 .badgeTeamPseudoUser {
   /* TODO: Not Supported 'TeamPseudoUser'. */
 }
 .badgeBugHunterLevel2 {
-  background-image: url(../../../deps/discord-badges/assets/discordbughunter2.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordbughunter2.svg);
 }
 .badgeVerifiedBot {
   /* TODO: Not Supported 'VerifiedBot'. */
 }
 .badgeVerifiedDeveloper {
-  background-image: url(../../../deps/discord-badges/assets/activedeveloper.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/activedeveloper.svg);
 }
 .badgeCertifiedModerator {
   /* TODO: Not Supported 'CertifiedModerator'. */
@@ -190,13 +190,13 @@
   /* TODO: Not Supported 'Spammer'. */
 }
 .badgeActiveDeveloper {
-  background-image: url(../../../deps/discord-badges/assets/activedeveloper.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/activedeveloper.svg);
 }
 .badgeQuarantined {
   /* TODO: Not Supported 'Quarantined'. */
 }
 .badgePremiumMemberSince {
-  background-image: url(../../../deps/discord-badges/assets/premium_member_since.webp);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/premium_member_since.webp);
 }
 
 .badge img {

@@ -2,7 +2,19 @@
 
 ## Styling
 
-- `DiscordPresenceCode.module.css`
+- `DiscordPresenceDefault.module.css`: Default styling.
+
+```typescript
+import { DiscordPresence } from 'react-discord-presence';
+import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+// ...
+<DiscordPresence
+  classes={discordPresenceClasses}
+  args={{ developerId: "<your-developer-id>" }}
+/>
+```
+
+- `DiscordPresenceCode.module.css`:
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
@@ -14,6 +26,21 @@ import discordPresenceCodeClasses from 'react-discord-presence/dist/src/display/
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
+
+- `DiscordPresenceDefaultLocalBadges.module.css`: Modifies the badges to point at distributed assets. Useful for additional
+  processing. This might require additional webpack setup.
+
+```typescript
+import { DiscordPresence } from 'react-discord-presence';
+import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import discordPresenceLocalBadgesClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefaultLocalBadges.module.css';
+// ...
+<DiscordPresence
+  classes={Object.assign({}, discordPresenceClasses, discordPresenceLocalBadgesClasses}}
+  args={{ developerId: "<your-developer-id>" }}
+/>
+```
+
 
 - Custom
 
