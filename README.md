@@ -34,7 +34,7 @@ In `react` with CSS modules:
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
+import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
 // ...
 <DiscordPresence
   classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
@@ -65,6 +65,7 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 - Support for Spotify.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Add tails to hover popovers.
+- Flatten CSS and image assets in distributable.
 
 ### Accessor
 

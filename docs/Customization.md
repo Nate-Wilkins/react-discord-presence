@@ -6,8 +6,8 @@
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
-import discordPresenceCodeClasses from 'react-discord-presence/dist/style/DiscordPresenceCode.module.css';
+import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import discordPresenceCodeClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceCode.module.css';
 // ...
 <DiscordPresence
   classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
@@ -66,7 +66,7 @@ __`./index.tsx`__
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
+import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
 import customClasses from './DiscordPresenceCustom.module.css';
 // ...
 <DiscordPresence
