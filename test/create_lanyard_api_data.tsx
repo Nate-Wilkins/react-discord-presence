@@ -3,7 +3,14 @@ import {
   SchemaDiscordPresence,
 } from 'schema-lanyard-discord-presence';
 
-export const createLanyardApiData = (): IDiscordPresence =>
+/*
+ * Creates test data for the Lanyard API.
+ */
+export const createLanyardApiData = ({
+  developerId,
+}: {
+  developerId: string;
+}): IDiscordPresence =>
   SchemaDiscordPresence.validateSync({
     spotify: null,
     listening_to_spotify: false,
@@ -11,7 +18,7 @@ export const createLanyardApiData = (): IDiscordPresence =>
     discord_user: {
       username: 'nate-wilkins',
       public_flags: 64,
-      id: '194976024457510912',
+      id: developerId,
       display_name: null,
       discriminator: '5455',
       bot: false,

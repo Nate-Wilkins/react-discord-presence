@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { cleanup, configure } = require('@testing-library/react');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const fetchMock = require('fetch-mock');
 
 configure({
   asyncUtilTimeout: 500,
@@ -9,4 +11,5 @@ configure({
 
 afterEach(() => {
   cleanup();
+  fetchMock.reset();
 });

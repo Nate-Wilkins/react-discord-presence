@@ -1,0 +1,51 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { createLanyardApiData } from '../../../test/create_lanyard_api_data';
+import ImageBanner from '../../../test/banner.jpeg';
+import ImageAvatar from '../../../test/avatar.gif';
+import StyleDiscordPresenceDefault from '../style/DiscordPresenceDefault.module.css';
+import StyleDiscordPresenceCode from '../style/DiscordPresenceCode.module.css';
+import { DiscordPresence } from './DiscordPresence';
+
+<Meta title="Display/DiscordPresence" component={DiscordPresence} argTypes={{ }} />
+
+export const data = {
+  ...createLanyardApiData({ developerId: '732' }),
+  theme: {
+    primary: 'rgba(38, 114, 195, 1)',
+    accent: 'rgba(0, 26, 48, 1)'
+  },
+  aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
+NY 🌆 CA 🌁
+PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
+  memberSince: 'June 21, 2016',
+  premiumMemberSince: 'April 10, 2022',
+};
+
+# DiscordPresence
+
+Display Discord presence.
+
+<Story name="DiscordPresence">
+  <div style={{ fontSize: '14px' }}>
+    <DiscordPresence
+      classes={StyleDiscordPresenceDefault}
+      data={data}
+      formatBannerImageSrc={() => ImageBanner}
+      formatAvatarImageSrc={() => ImageAvatar}
+    />
+  </div>
+</Story>
+
+## Customization
+
+Display Discord presence with custom styling.
+
+- `DiscordPresenceCode.module.css`
+
+<Story name="DiscordPresenceCode">
+  <div style={{ fontSize: '14px' }}>
+    <DiscordPresence
+      classes={Object.assign({}, StyleDiscordPresenceDefault, StyleDiscordPresenceCode)}
+      data={data} />
+  </div>
+</Story>

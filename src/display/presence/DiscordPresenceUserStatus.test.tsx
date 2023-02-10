@@ -4,8 +4,8 @@ import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
 
 const defaultClasses = {};
 
-test('when using the discord presence user status component with the user offline', async () => {
-  // Given the discord presence user status component.
+test('when using the Discord presence user status component with the user offline', async () => {
+  // Given the Discord presence user status component.
   // And the user is offline.
   const data = {
     active_on_discord_desktop: false,
@@ -18,13 +18,13 @@ test('when using the discord presence user status component with the user offlin
     <DiscordPresenceUserStatus classes={defaultClasses} data={data} />,
   );
 
-  // Then the discord presence user status is rendered.
+  // Then the Discord presence user status is rendered.
   const $status = queries.baseElement.querySelector('[data-status]');
   expect($status?.getAttribute('data-status')).toEqual('offline');
 });
 
-test('when using the discord presence user status component with the user online for desktop', async () => {
-  // Given the discord presence user status component.
+test('when using the Discord presence user status component with the user online for desktop', async () => {
+  // Given the Discord presence user status component.
   // And the user is online for desktop.
   const data = {
     active_on_discord_desktop: true,
@@ -37,13 +37,13 @@ test('when using the discord presence user status component with the user online
     <DiscordPresenceUserStatus classes={defaultClasses} data={data} />,
   );
 
-  // Then the discord presence user status is rendered.
+  // Then the Discord presence user status is rendered.
   const $status = queries.baseElement.querySelector('[data-status]');
   expect($status?.getAttribute('data-status')).toEqual('online-desktop');
 });
 
-test('when using the discord presence user status component with the user online for web', async () => {
-  // Given the discord presence user status component.
+test('when using the Discord presence user status component with the user online for web', async () => {
+  // Given the Discord presence user status component.
   // And the user is online for web.
   const data = {
     active_on_discord_desktop: false,
@@ -56,13 +56,13 @@ test('when using the discord presence user status component with the user online
     <DiscordPresenceUserStatus classes={defaultClasses} data={data} />,
   );
 
-  // Then the discord presence user status is rendered.
+  // Then the Discord presence user status is rendered.
   const $status = queries.baseElement.querySelector('[data-status]');
   expect($status?.getAttribute('data-status')).toEqual('online-web');
 });
 
-test('when using the discord presence user status component with the user online for mobile', async () => {
-  // Given the discord presence user status component.
+test('when using the Discord presence user status component with the user online for mobile', async () => {
+  // Given the Discord presence user status component.
   // And the user is online for mobile.
   const data = {
     active_on_discord_desktop: false,
@@ -75,7 +75,7 @@ test('when using the discord presence user status component with the user online
     <DiscordPresenceUserStatus classes={defaultClasses} data={data} />,
   );
 
-  // Then the discord presence user status is rendered.
+  // Then the Discord presence user status is rendered.
   const $status = queries.baseElement.querySelector('[data-status]');
   expect($status?.getAttribute('data-status')).toEqual('online-web');
 });

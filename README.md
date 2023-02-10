@@ -4,7 +4,7 @@
 [![Open Issues](https://img.shields.io/github/issues-raw/Nate-Wilkins/react-discord-presence?style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/issues)
 [![License](https://img.shields.io/github/license/Nate-Wilkins/react-discord-presence?color=%2308F&style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/blob/main/LICENSE)
 
-> Display your discord presence in react.
+> Display your Discord presence in react.
 
 ```
 yarn add react-discord-presence
@@ -24,42 +24,62 @@ In `react` with CSS modules:
 import { DiscordPresence } from 'react-discord-presence';
 import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
 // ...
+// API Data can come from anywhere but this component was built for the Lanyard API response.
 <DiscordPresence
   classes={discordPresenceClasses}
-  data={{
-    // API Data can come from anywhere but this component was built for the Lanyard API response.
-    ...apiData,
-    theme: {
-      primary: 'rgba(38, 114, 195, 1)',
-      accent: 'rgba(0, 26, 48, 1)',
-    },
-    status: 'online',
-    badges: [
-      {
-        src: discord_badge_hypesquad_bravery,
-        width: 21,
-        height: 21,
-      },
-      {
-        src: discord_badge_subscriber_since,
-        width: 256,
-        height: 256,
-      },
-      {
-        src: discord_badge_boosting_1month,
-        width: 18,
-        height: 17,
-      },
-    ],
-    aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
-NY 🌆 CA 🌁
-PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
-    memberSince: 'June 21, 2016',
-  }}
+  data={apiData}
 />
 ```
 
 ## Customization
+
+### Data Access
+
+The main entry point is great for embedded, self contained, components but if you want more fine
+grained controls then you can use the composing components.
+
+ `AccessorGetDiscordPresence`
+
+```typescript
+import { AccessorGetDiscordPresence } from 'react-accessor-discord-presence';
+// ...
+<AccessorGetDiscordPresence>
+  {({ data }) => (
+    <code style={{ whiteSpace: 'pre' }}>
+      {JSON.stringify(data, null, "  ")}
+    </code>
+  )}
+</AccessorGetDiscordPresence>
+```
+
+- `DisplayDiscordPresence`
+
+```typescript
+<AccessorGetDiscordPresence
+  cache={() => cache}
+  args={{ developerId: '194976024457510912' }}
+>
+  {({ data }) =>
+    !data || !data.discord_user ? (
+      <ErrorDiscordPresence />
+    ) : (
+      <DisplayDiscordPresence
+        classes={classes}
+        data={{
+          ...data,
+          theme: {
+            primary: 'rgba(38, 114, 195, 1)',
+            accent: 'rgba(0, 26, 48, 1)',
+          },
+          memberSince: 'June 21, 2016',
+        }}
+      />
+    )
+  }
+</AccessorGetDiscordPresence>
+```
+
+### Styling
 
 - `DiscordPresenceCode.module.css`
 
@@ -130,24 +150,32 @@ import customClasses from './DiscordPresenceCustom.module.css';
 // ...
 <DiscordPresence
   classes={Object.assign({}, discordPresenceClasses, customClasses}}
-  data={data}
+  data={apiData}
 />
 ```
-
 ## Development
 
 Written in typescript. Workflows are defined in `.envrc.sh`.
 
 ## External Resources
 
-- [Lanyard API](https://github.com/Phineas/lanyard)
-- [Schema Lanyard Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence)
+- [Schema Lanyard API Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence):
+- [Lanyard API](https://github.com/Phineas/lanyard): REST and WS API that provides Discord presence data.
 - [Discord CDN Alternative](https://gist.github.com/dustinrouillard/04be36180ed80db144a4857408478854)
 
 ## Roadmap
 
+### Display
+
+- Add backround color (statusBorder) to secondary image of activity.
+- Support for light theme.
 - Support for screencapture of storybook components.
 - Support for failing image downloads/errors.
 - Support for Spotify.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Add tails to hover popovers.
+
+### Accessor
+
+- Support for realtime presence data with the web socket API.
+- Support for automated queries on an interval.

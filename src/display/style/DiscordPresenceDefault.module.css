@@ -9,6 +9,8 @@
 }
 
 .root {
+  --discord-presence-width: 30em;
+  --discord-presence-state-height: 45em;
   --discord-presence-font-family-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --discord-presence-font-family-secondary: Lato, "Open Sans", Roboto, sans-serif;
   --discord-presence-border-radius: 0.35em;
@@ -19,6 +21,7 @@
   font-family: var(--discord-presence-font-family-primary);
   font-weight: 400;
   font-size: inherit;
+  width: var(--discord-presence-width);
   margin: 0;
   padding: 0;
   color: white;
@@ -31,7 +34,7 @@
   word-break: break-word;
 }
 .root * {
-  all: unset;
+  /* TODO: Need more research in how 'all: unset' works bc I think it could help 'normalize' here. */
   font-family: var(--discord-presence-font-family-primary);
   box-sizing: border-box;
   margin: 0;
@@ -42,6 +45,52 @@
   height: 100%;
   position: relative;
   border-radius: var(--discord-presence-border-radius);
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: var(--discord-presence-state-height);
+}
+.error svg {
+  font-size: 10em;
+}
+.error h3 {
+  font-weight: 600;
+  margin-bottom: 0.4em;
+}
+.error p {
+  max-height: 20em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 2em;
+  overflow-y: auto;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: var(--discord-presence-state-height);
+  animation: discordPresenceLoadingSpinner 3.2s linear infinite;
+  background-image: url(../image/DiscordMarkWhite.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  scale: .3;
+}
+@keyframes discordPresenceLoadingSpinner {
+  0% {
+    scale: 0.3;
+  }
+  50% {
+    scale: 0.4;
+  }
+  100% {
+    scale: 0.3;
+  }
 }
 
 .background {
@@ -96,40 +145,40 @@
 }
 
 .badgeStaff {
-  background-image: url(../../deps/discord-badges/assets/discordstaff.svg);
+  background-image: url(../../../deps/discord-badges/assets/discordstaff.svg);
 }
 .badgePartner {
-  background-image: url(../../deps/discord-badges/assets/discordpartner.svg);
+  background-image: url(../../../deps/discord-badges/assets/discordpartner.svg);
 }
 .badgeHypesquad {
-  background-image: url(../../deps/discord-badges/assets/hypesquadevents.svg);
+  background-image: url(../../../deps/discord-badges/assets/hypesquadevents.svg);
 }
 .badgeBugHunterLevel1 {
-  background-image: url(../../deps/discord-badges/assets/discordbughunter1.svg);
+  background-image: url(../../../deps/discord-badges/assets/discordbughunter1.svg);
 }
 .badgeHypeSquadOnlineHouse1 {
-  background-image: url(../../deps/discord-badges/assets/hypesquadbravery.svg);
+  background-image: url(../../../deps/discord-badges/assets/hypesquadbravery.svg);
 }
 .badgeHypeSquadOnlineHouse2 {
-  background-image: url(../../deps/discord-badges/assets/hypesquadbrilliance.svg);
+  background-image: url(../../../deps/discord-badges/assets/hypesquadbrilliance.svg);
 }
 .badgeHypeSquadOnlineHouse3 {
-  background-image: url(../../deps/discord-badges/assets/hypesquadbalance.svg);
+  background-image: url(../../../deps/discord-badges/assets/hypesquadbalance.svg);
 }
 .badgePremiumEarlySupporter {
-  background-image: url(../../deps/discord-badges/assets/discordearlysupporter.svg);
+  background-image: url(../../../deps/discord-badges/assets/discordearlysupporter.svg);
 }
 .badgeTeamPseudoUser {
   /* TODO: Not Supported 'TeamPseudoUser'. */
 }
 .badgeBugHunterLevel2 {
-  background-image: url(../../deps/discord-badges/assets/discordbughunter2.svg);
+  background-image: url(../../../deps/discord-badges/assets/discordbughunter2.svg);
 }
 .badgeVerifiedBot {
   /* TODO: Not Supported 'VerifiedBot'. */
 }
 .badgeVerifiedDeveloper {
-  background-image: url(../../deps/discord-badges/assets/activedeveloper.svg);
+  background-image: url(../../../deps/discord-badges/assets/activedeveloper.svg);
 }
 .badgeCertifiedModerator {
   /* TODO: Not Supported 'CertifiedModerator'. */
@@ -141,13 +190,13 @@
   /* TODO: Not Supported 'Spammer'. */
 }
 .badgeActiveDeveloper {
-  background-image: url(../../deps/discord-badges/assets/activedeveloper.svg);
+  background-image: url(../../../deps/discord-badges/assets/activedeveloper.svg);
 }
 .badgeQuarantined {
   /* TODO: Not Supported 'Quarantined'. */
 }
 .badgePremiumMemberSince {
-  background-image: url(../../deps/discord-badges/assets/premium_member_since.webp);
+  background-image: url(../../../deps/discord-badges/assets/premium_member_since.webp);
 }
 
 .badge img {
@@ -166,6 +215,7 @@
   border-radius: 50%;
 }
 .avatar a {
+  all: unset;
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -224,7 +274,9 @@
   /* = (avatar.padding / 2) */
   right: calc(0.40em / 2);
   bottom: calc(0.40em / 2);
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: lightblue;
   width: 1.75em;
   height: 1.75em;
@@ -233,10 +285,6 @@
 }
 
 .status {
-  position: absolute;
-  /* = (statusBorder.height / 2) */
-  top: calc(50% - 1.00em / 2);
-  left: calc(50% - 1.00em / 2);
   display: block;
   background-color: lightblue;
   width: 1.00em;
@@ -349,8 +397,11 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 3em;
-  height: 3em;
+  width: 2.7em;
+  height: 2.7em;
+  border-radius: 50%;
+  pointer-events: none;
+  padding: 0.25em;
 }
 
 .emoji {
@@ -365,7 +416,7 @@
   margin-top: 0.4em;
   margin-bottom: 0.4em;
   border: none;
-  height: 1px;
+  height: 0.75em;
   background-repeat: no-repeat;
   background-size: 100% 0.05em;
   background-position: center;
@@ -377,6 +428,4 @@
     rgba(0,0,0,0)                                                           100%);
   color: hsl(0, 0%, 20%);
   text-align: center;
-
-  height: 0.75em;
 }

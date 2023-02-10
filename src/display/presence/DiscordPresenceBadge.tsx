@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent, useState } from 'react';
-import { DiscordBadgeEnum } from './types';
+import { DiscordBadgeEnum } from '../types';
 
 // Classes style interface.
 const BadgeLookup: {

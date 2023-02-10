@@ -1,48 +1,45 @@
 import { Meta, Description, Story } from '@storybook/addon-docs';
-import { createLanyardApiData } from '../test/create_lanyard_api_data';
-import { DiscordPresence } from './DiscordPresence';
-import StyleDiscordPresenceDefault from './style/DiscordPresenceDefault.module.css';
-import StyleDiscordPresenceCode from './style/DiscordPresenceCode.module.css';
+import ImageAvatar from '../test/avatar.gif';
+import ImageBanner from '../test/banner.jpeg';
+import { MockDiscordPresence } from './MockDiscordPresence';
+import StyleDiscordPresenceDefault from './display/style/DiscordPresenceDefault.module.css';
 
-<Meta title="Discord/Presence" component={DiscordPresence} argTypes={{ }} />
+<Meta title="DiscordPresence" component={MockDiscordPresence}
+  argTypes={{
+    state: {
+      // NOTE: When updating 'DiscordPresence' storybook controls for 'state' from 'error'
+      //       it won't update in a development build because 'ErrorBoundary' won't swallow the error.
+      defaultValue: 'actual',
+      options: ['actual', 'happy', 'error', 'load'],
+      control: { type: 'radio' }
+    },
+    developerId: {
+      defaultValue: "194976024457510912",
+      control: { type: 'text' },
+    }
+  }}
+/>
 
-export const data = {
-  ...createLanyardApiData(),
-  theme: {
-    primary: 'rgba(38, 114, 195, 1)',
-    accent: 'rgba(0, 26, 48, 1)'
-  },
-  status: 'online',
-  aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
-NY 🌆 CA 🌁
-PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
-  memberSince: 'June 21, 2016',
-  premiumMemberSince: 'April 10, 2022',
-};
+export const Template = (args) => (
+  <div style={{ fontSize: '14px' }}>
+    <MockDiscordPresence
+      args={{ developerId: args.developerId }}
+      classes={StyleDiscordPresenceDefault}
+      formatBannerImageSrc={() => ImageBanner}
+      formatAvatarImageSrc={() => ImageAvatar}
+      {...args }
+    />
+  </div>
+);
 
 # DiscordPresence
 
-Display Discord presence.
+Self contained Discord presence which handles:
+- Loading Discord data along with displaying a loading indicator.
+- Errors that occur during loading along with displaying an error indicator.
+- Caching Discord presence data.
+- Displaying Discord presence data.
 
 <Story name="DiscordPresence">
-  <div style={{ fontSize: '14px' }}>
-    <DiscordPresence
-      classes={StyleDiscordPresenceDefault}
-      data={data}
-    />
-  </div>
-</Story>
-
-## Customization
-
-Display Discord presence with custom styling.
-
-- `DiscordPresenceCode.module.css`
-
-<Story name="DiscordPresenceCode">
-  <div style={{ fontSize: '14px' }}>
-    <DiscordPresence
-      classes={Object.assign({}, StyleDiscordPresenceDefault, StyleDiscordPresenceCode)}
-      data={data} />
-  </div>
+  {Template.bind({})}
 </Story>

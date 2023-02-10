@@ -5,7 +5,7 @@
   margin-top: 0.4em;
   margin-bottom: 0.4em;
   border: none;
-  height: 1px;
+  height: 0.75em;
   background-repeat: no-repeat;
   background-size: 100% 0.05em;
   background-position: center;
@@ -22,8 +22,6 @@
     rgba(0,0,0,0)                                                           100%);
   color: hsl(0, 0%, 20%);
   text-align: center;
-
-  height: 0.75em;
 }
 
 .hr:after {

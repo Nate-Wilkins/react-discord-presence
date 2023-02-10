@@ -1,4 +1,4 @@
-import { DiscordBadgeEnum } from './types';
+import { DiscordBadgeEnum } from '../types';
 
 /*
  * Get the corresponding badge types from the encoded badges flags.

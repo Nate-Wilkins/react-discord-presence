@@ -30,6 +30,8 @@ export const getElapsedTimeFormat = (
       seconds,
     ).padStart(2, '0')}`;
   } else {
-    return formatDistance(date1, date2);
+    const formattedDistance = formatDistance(date1, date2);
+    if (formattedDistance.length <= 1) return formattedDistance;
+    return formattedDistance[0].toUpperCase() + formattedDistance.substring(1);
   }
 };
