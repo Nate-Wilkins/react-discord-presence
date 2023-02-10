@@ -57,6 +57,7 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 ### Display
 
 - <iframe src="data:text/html;charset=utf-8;base64,PGh0bWw+DQogIDxwPkhlbGxvIHdvcmxkPzwvcD4NCjwvaHRtbD4=" />
+  https://dopiaza.org/tools/datauri/index.php
 - Support code splitting.
 - Support for light theme.
 - Support for screencapture of storybook components.
