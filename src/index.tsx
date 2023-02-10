@@ -1,7 +1,8 @@
 export * from './DiscordPresence';
+export * from './Boundary';
 export {
-  DiscordPresence,
+  LoadingDiscordPresence,
   ErrorDiscordPresence,
   DiscordPresence as DisplayDiscordPresence,
 } from './display';
-export { AccessorGetDiscordPresence } from './accessor';
+export { AccessorGetDiscordPresence, createCache } from './accessor';
