@@ -1,9 +1,10 @@
 {
   "name": "react-discord-presence",
-  "version": "6.0.2",
+  "version": "7.0.0",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your Discord presence in react.",
   "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "http://github.com/nate-wilkins/react-discord-presence"
@@ -11,11 +12,12 @@
   "homepage": "http://github.com/nate-wilkins/react-discord-presence",
   "bugs": "http://github.com/nate-wilkins/react-discord-presence/issues",
   "scripts": {
+    "build:deps": "mkdir -p ./dist/deps/discord-badges/ && cp -r ./deps/discord-badges/assets/ ./dist/deps/discord-badges/",
     "build:css": "mkdir -p ./dist/src/display/ && cp -r ./src/display/style/ ./dist/src/display/",
     "build:ttf": "mkdir -p ./dist/src/display/ && cp -r ./src/display/font/ ./dist/src/display/",
-    "build:image": "mkdir -p ./dist/deps/discord-badges/ && cp -r ./deps/discord-badges/assets/ ./dist/deps/discord-badges/",
+    "build:image": "mkdir -p ./dist/src/display/image/ && cp ./src/display/image/DiscordMarkWhite.svg ./dist/src/display/image/ && cp ./src/display/image/DiscordMarkBlack.svg ./dist/src/display/image/",
     "build:ts": "ts-node ./node_modules/webpack/bin/webpack",
-    "build": "rm -rf ./dist && yarn run build:ts && yarn run build:ttf && yarn run build:image && yarn run build:css",
+    "build": "rm -rf ./dist && yarn run build:ts && yarn run build:deps && yarn run build:ttf && yarn run build:image && yarn run build:css",
     "test:lint": "yarn run eslint --ext .jsx,.js,.ts,.tsx ./",
     "test": "yarn run jest --coverage && yarn run test:lint",
     "storybook": "start-storybook -p $STORYBOOK_PORT",

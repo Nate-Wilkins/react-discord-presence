@@ -67,6 +67,7 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Add tails to hover popovers.
 - Flatten CSS and image assets in distributable.
+- Possibly use webpack to move CSS and image assets to distributable.
 
 ### Accessor
 

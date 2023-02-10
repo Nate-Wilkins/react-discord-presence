@@ -56,9 +56,9 @@ export default {
           {
             loader: 'ts-loader',
             options: {
-              configFile: path.join(__dirname, 'tsconfig.json'),
               // Include type definition files.
               transpileOnly: false,
+              allowTsInNodeModules: true,
             },
           },
         ],
