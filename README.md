@@ -48,9 +48,10 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 
 ## External Resources
 
-- [Schema Lanyard API Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence):
+- [Schema Lanyard API Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence)
 - [Lanyard API](https://github.com/Phineas/lanyard): REST and WS API that provides Discord presence data.
-- [Discord CDN Alternative](https://gist.github.com/dustinrouillard/04be36180ed80db144a4857408478854)
+- [Discord CDN Alternative](https://gist.github.com/dustinrouillard/04be36180ed80db144a4857408478854): REST API the
+  provides Discord presence data.
 
 ## Roadmap
 
