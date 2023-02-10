@@ -1,13 +1,13 @@
 {
   "name": "react-discord-presence",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your Discord presence in react.",
   "main": "dist/index.js",
   "repository": "git@github.com:nate-wilkins/react-discord-presence.git",
   "scripts": {
-    "build:css": "cp -r ./src/style/ ./dist/",
-    "build:ttf": "cp -r ./src/font/ ./dist/",
+    "build:css": "cp -r ./src/display/style/ ./dist/",
+    "build:ttf": "cp -r ./src/display/font/ ./dist/",
     "build:ts": "ts-node ./node_modules/webpack/bin/webpack",
     "build": "rm -rf ./dist && yarn run build:ts && yarn run build:ttf && yarn run build:css",
     "test:lint": "yarn run eslint --ext .jsx,.js,.ts,.tsx ./",

@@ -24,10 +24,9 @@ In `react` with CSS modules:
 import { DiscordPresence } from 'react-discord-presence';
 import discordPresenceClasses from 'react-discord-presence/dist/style/DiscordPresenceDefault.module.css';
 // ...
-// API Data can come from anywhere but this component was built for the Lanyard API response.
 <DiscordPresence
-  classes={discordPresenceClasses}
-  data={apiData}
+  classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
+  args={{ developerId: "<your-developer-id>" }}
 />
 ```
 
@@ -55,9 +54,15 @@ import { AccessorGetDiscordPresence } from 'react-accessor-discord-presence';
 - `DisplayDiscordPresence`
 
 ```typescript
+import {
+  AccessorGetDiscordPresence,
+  ErrorDiscordPresence,
+  DisplayDiscordPresence
+} from 'react-accessor-discord-presence';
+// ...
 <AccessorGetDiscordPresence
   cache={() => cache}
-  args={{ developerId: '194976024457510912' }}
+  args={{ developerId: "<your-developer-id>" }}
 >
   {({ data }) =>
     !data || !data.discord_user ? (
@@ -90,7 +95,7 @@ import discordPresenceCodeClasses from 'react-discord-presence/dist/style/Discor
 // ...
 <DiscordPresence
   classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
-  data={data}
+  args={{ developerId: "<your-developer-id>" }}
 />
 ```
 
@@ -150,7 +155,7 @@ import customClasses from './DiscordPresenceCustom.module.css';
 // ...
 <DiscordPresence
   classes={Object.assign({}, discordPresenceClasses, customClasses}}
-  data={apiData}
+  args={{ developerId: "<your-developer-id>" }}
 />
 ```
 ## Development
@@ -167,7 +172,8 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
-- Add backround color (statusBorder) to secondary image of activity.
+- <iframe src="data:text/html;charset=utf-8;base64,PGh0bWw+DQogIDxwPkhlbGxvIHdvcmxkPzwvcD4NCjwvaHRtbD4=" />
+- Support code splitting.
 - Support for light theme.
 - Support for screencapture of storybook components.
 - Support for failing image downloads/errors.
@@ -179,3 +185,4 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 
 - Support for realtime presence data with the web socket API.
 - Support for automated queries on an interval.
+- Support for custom `maxDelay` on call site.

@@ -24,8 +24,8 @@ export const DiscordPresence: FunctionComponent<{
   style?: CSSProperties;
   theme?: { primary: string; accent: string };
   args: { developerId: string };
-  data: Partial<IDiscordPresence> & {
-    theme: {
+  data?: Partial<IDiscordPresence> & {
+    theme?: {
       primary: string;
       accent: string;
     };
@@ -98,7 +98,9 @@ export const DiscordPresence: FunctionComponent<{
                 ...dataAccessor,
                 ...data,
                 // TODO: When data accessor supports getting user's theme this should also be checked before using default theme.
-                ...(!data.theme ? defaultTheme : {}),
+                ...(data && data.theme
+                  ? { theme: data.theme }
+                  : { theme: defaultTheme }),
               }}
               formatActivityDuration={formatActivityDuration}
               formatAvatarImageSrc={formatAvatarImageSrc}

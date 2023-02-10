@@ -1,2 +1,7 @@
 export * from './DiscordPresence';
-export { DiscordPresence } from './display';
+export {
+  DiscordPresence,
+  ErrorDiscordPresence,
+  DiscordPresence as DisplayDiscordPresence,
+} from './display';
+export { AccessorGetDiscordPresence } from './accessor';
