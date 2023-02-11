@@ -1,11 +1,12 @@
-import { addDecorator } from '@storybook/react';
 import { withConsole } from '@storybook/addon-console';
 import { withScreenshot } from 'storycap';
 
 import '@storybook/addon-console';
 
-addDecorator((storyFn, context) => withConsole()(storyFn)(context));
-addDecorator(withScreenshot);
+export const decorators = [
+  (storyFn, context) => withConsole()(storyFn)(context),
+  withScreenshot,
+];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

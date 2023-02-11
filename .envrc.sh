@@ -53,7 +53,7 @@ function storybook() {
 # Run storybook screenshot capturer for storybook components.
 #
 function storybook_screenshot() {
-  STORYBOOK_PORT=5656 yarn run storycap http://localhost:5656/ --puppeteerLaunchConfig '{ "headless": false,  "args": ["--sandbox"] }' --disableCssAnimation
+  STORYBOOK_PORT=5656 yarn run storycap http://localhost:5656 -i "**"
 }
 
 #

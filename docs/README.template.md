@@ -12,7 +12,7 @@ yarn add react-discord-presence
 
 ## Example
 
-[![Screenshot React Discord Presence](./screenshot.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
+[![Screenshot React Discord Presence](./__screenshots__/Display/DiscordPresence/DiscordPresence_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
 
 Check it out on [StackBlitz](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx).
 
