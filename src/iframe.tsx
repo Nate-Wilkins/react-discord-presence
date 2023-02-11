@@ -10,11 +10,10 @@ const main = () => {
   }
 
   // Parse Input.
-  const parameters = new URLSearchParams(window.location.search);
-  const developerId = parameters.get('developerId');
+  const developerId = root.dataset.developerId;
   if (typeof developerId !== 'string') {
     throw new Error(
-      `Provided parameter 'developerId' is invalid.\nExpected a string.`,
+      `Provided dataset 'developerId' is invalid.\nExpected a string.`,
     );
   }
 

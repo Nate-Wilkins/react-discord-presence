@@ -14,6 +14,14 @@ function build() {
 }
 
 #
+# Run documentation generation.
+#
+function docs() {
+  yarn install
+  yarn run docs
+}
+
+#
 # Run source code linting.
 #
 function lint() {
@@ -63,6 +71,7 @@ function help() {
   echo 'Usage                                                                                   '
   echo '   clean                  Run cleanup on temporary files.                               '
   echo '   build                  Run build pipeline to create distributable.                   '
+  echo '   docs                   Run documentation generation.                                 '
   echo '   lint                   Run source code linting.                                      '
   echo '   test                   Run tests.                                                    '
   echo '   publish                Run publish pipeline for the distributable.                   '
