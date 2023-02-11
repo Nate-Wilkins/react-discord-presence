@@ -76,10 +76,15 @@
   justify-content: center;
   height: var(--discord-presence-state-height);
   animation: discordPresenceLoadingSpinner 3.2s linear infinite;
-  background-image: url(../image/DiscordMarkWhite.svg);
   background-repeat: no-repeat;
   background-position: center;
   scale: .3;
+}
+.loadingWhite {
+  background-image: url(../image/DiscordMarkWhite.svg);
+}
+.loadingBlack {
+  background-image: url(../image/DiscordMarkBlack.svg);
 }
 @keyframes discordPresenceLoadingSpinner {
   0% {

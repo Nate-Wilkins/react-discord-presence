@@ -41,7 +41,14 @@ export const LoadingDiscordPresence: FunctionComponent<{
         ),
       }}
     >
-      <div className={classes.loading} data-testid="progress" />
+      <div
+        className={`${classes.loading} ${
+          rootColorPrimary.isDark()
+            ? classes.loadingWhite
+            : classes.loadingBlack
+        }`}
+        data-testid="progress"
+      />
     </DiscordPresenceBox>
   );
 };

@@ -180,7 +180,7 @@ export const DiscordPresence: FunctionComponent<{
             ))}
             {!data.premiumMemberSince ? null : (
               <>
-                {/* Member Since */}
+                {/* TODO: Member Since */}
                 <DiscordPresenceBadge
                   classes={classes}
                   badge={'PremiumMemberSince'}
@@ -296,7 +296,7 @@ export const DiscordPresence: FunctionComponent<{
         {/* Activities */}
         {activities.length > 0 ? (
           <div className={classes.activities}>
-            <h3>Current Activiy</h3>
+            <h3>Current Activity</h3>
 
             {activities.map(activity => (
               <div key={activity.id} className={classes.activity}>

@@ -5,10 +5,11 @@ import { AccessorGetDiscordPresence, createCache } from './accessor';
 import { Boundary } from './Boundary';
 import {
   DiscordPresence as DisplayDiscordPresence,
+  DiscordPresenceClassesDefault,
+  DiscordPresenceData,
   ErrorDiscordPresence,
   LoadingDiscordPresence,
-} from './display/presence';
-import { DiscordPresenceData } from './display/presence/types';
+} from './display';
 
 /*
  * Render self contained Discord presence.
@@ -20,7 +21,7 @@ import { DiscordPresenceData } from './display/presence/types';
  * - Displaying Discord presence data.
  */
 export const DiscordPresence: FunctionComponent<{
-  classes: Record<string, string>;
+  classes?: Record<string, string>;
   style?: CSSProperties;
   theme?: { primary: string; accent: string };
   args: { developerId: string };
@@ -41,7 +42,7 @@ export const DiscordPresence: FunctionComponent<{
     discordUser: DiscordPresenceData['discord_user'],
   ) => string;
 }> = ({
-  classes,
+  classes: inputClasses,
   style,
   theme,
   args,
@@ -60,7 +61,8 @@ export const DiscordPresence: FunctionComponent<{
     ...createCache(),
   };
 
-  // Localized theme.
+  // Localized styles.
+  const classes = inputClasses ? inputClasses : DiscordPresenceClassesDefault;
   const defaultTheme = theme
     ? theme
     : {
@@ -88,7 +90,7 @@ export const DiscordPresence: FunctionComponent<{
             <ErrorDiscordPresence
               classes={classes}
               theme={defaultTheme}
-              error="Unkown Error."
+              error="Unknown Error."
             />
           ) : (
             <DisplayDiscordPresence

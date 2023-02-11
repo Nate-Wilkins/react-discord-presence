@@ -9,13 +9,16 @@ const NODE_ENV =
 export default {
   target: 'web',
 
-  entry: './src/index.tsx',
+  entry: {
+    index: './src/index.tsx',
+    iframe: './src/iframe.tsx',
+  },
 
   output: {
     pathinfo: true,
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'index.js',
+    filename: '[name].js',
     libraryTarget: 'commonjs',
   },
 
@@ -59,6 +62,33 @@ export default {
               // Include type definition files.
               transpileOnly: false,
               allowTsInNodeModules: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(css)$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+              sourceMap: NODE_ENV !== 'production',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpg|jpe?g|png|gif|mp3|svg|gltf|fbx|txt|pdf|md|xml|webp|ttf)$/i,
+        use: [
+          {
+            loader: require.resolve('file-loader'),
+            options: {
+              emitFile: true,
+              name() {
+                return '[path][name].[ext]';
+              },
             },
           },
         ],

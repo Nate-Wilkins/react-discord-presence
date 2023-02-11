@@ -20,8 +20,6 @@ Check it out on [StackBlitz](https://stackblitz.com/edit/react-ts-nfdx3w?file=Ap
 
 There are three forms of Discord presence. (iframe, react, and custom)
 
-For fine grained control see [docs/Customization.md](./docs/Customization.md).
-
 ### iframe
 
 ```
@@ -30,25 +28,24 @@ TODO:
 
 ### React
 
-In `react` with CSS modules:
-
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
 // ...
-<DiscordPresence
-  classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
-  args={{ developerId: "<your-developer-id>" }}
-/>
+<DiscordPresence args={{ developerId: "<your-developer-id>" }} />
 ```
+
+### Custom
+
+For fine grained control see [`docs/Customization.md`](./docs/Customization.md).
 
 ## Development
 
-Written in typescript. Workflows are defined in `.envrc.sh`.
+Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ## External Resources
 
-- [Schema Lanyard API Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence)
+- [Schema Lanyard API Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence): Schema for the
+  Lanyard API.
 - [Lanyard API](https://github.com/Phineas/lanyard): REST and WS API that provides Discord presence data.
 - [Discord CDN Alternative](https://gist.github.com/dustinrouillard/04be36180ed80db144a4857408478854): REST API the
   provides Discord presence data.
@@ -57,6 +54,7 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
+- Fix `premiumMemberSince` and `memberSince`.
 - <iframe src="data:text/html;charset=utf-8;base64,PGh0bWw+DQogIDxwPkhlbGxvIHdvcmxkPzwvcD4NCjwvaHRtbD4=" />
   https://dopiaza.org/tools/datauri/index.php
 - Support code splitting.
@@ -68,6 +66,7 @@ Written in typescript. Workflows are defined in `.envrc.sh`.
 - Add tails to hover popovers.
 - Flatten CSS and image assets in distributable.
 - Possibly use webpack to move CSS and image assets to distributable.
+- Talk with `@salvage_dev` about using `discord-presence` package name.
 
 ### Accessor
 

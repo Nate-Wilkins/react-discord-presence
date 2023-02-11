@@ -183,13 +183,17 @@ The default `iframe` in the [`README.md`](../README.md) is the data-uri equivela
 
 ```
 <html>
-  <meta http-equiv="Content-Security-Policy" content="default-src https: script-src 'sha256-tM7OyCTTeRmKCxduIW+XWZ1NckTmAvDsLy6+FD+x4gw=' 'sha256-+qakGMbDGfAh+Zft5wxODwNDD2PBxXld5steoT+HIAQ='" />
-  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" />
+  <meta http-equiv="Content-Security-Policy" content="default-src https: script-src 'sha256-{{peerDependencies['react'].unpkg['sha256']}}' 'sha256-{{peerDependencies['react-dom'].unpkg['sha256']}}'" />
+  <script type="text/javascript" src="{{peerDependencies['react'].unpkg.cdn}}" />
+  <script type="text/javascript" src="{{peerDependencies['react-dom'].unpkg.cdn}}" />
+  <script type="text/javascript">
+  </script>
 
   <body>
-
+    <div id="root" />
   </body>
 </html>
 ```
 
 So if you want an iframe you can modify the above and convert it into a data-uri.
+
