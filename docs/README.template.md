@@ -22,8 +22,12 @@ Check it out on [StackBlitz](https://stackblitz.com/edit/react-ts-nfdx3w?file=Ap
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
+import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
 // ...
-<DiscordPresence args={{ developerId: "<your-developer-id>" }} />
+<DiscordPresence
+  classes={discordPresenceClasses}
+  args={{ developerId: "<your-developer-id>" }}
+/>
 ```
 
 ### Custom

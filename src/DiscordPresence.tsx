@@ -21,7 +21,7 @@ import {
  * - Displaying Discord presence data.
  */
 export const DiscordPresence: FunctionComponent<{
-  classes?: Record<string, string>;
+  classes: Record<string, string>;
   style?: CSSProperties;
   theme?: { primary: string; accent: string };
   args: { developerId: string };
@@ -62,6 +62,8 @@ export const DiscordPresence: FunctionComponent<{
   };
 
   // Localized styles.
+  // TODO: DiscordPresenceClassesDefault doesn't work here.
+  //       Not sure how to get webpack or any build to embed styles like this.
   const classes = inputClasses ? inputClasses : DiscordPresenceClassesDefault;
   const defaultTheme = theme
     ? theme
