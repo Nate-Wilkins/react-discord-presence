@@ -19,7 +19,9 @@ const main = () => {
 
   // React Render.
   const reactRoot = createRoot(root);
-  reactRoot.render(<DiscordPresence args={{ developerId }} />);
+  // TODO: DiscordPresenceClassesDefault doesn't work here.
+  //       Not sure how to get webpack or any build to embed styles like this.
+  reactRoot.render(<DiscordPresence classes={{}} args={{ developerId }} />);
 };
 
 document.addEventListener('DOMContentLoaded', main);
