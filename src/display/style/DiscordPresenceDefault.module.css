@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Inter';
-  src: local('Inter'), url(../font/inter/Inter-VariableFont_slntwght.ttf) format('truetype');
+  src: local('Inter'), url(https://github.com/Nate-Wilkins/react-discord-presence/blob/main/src/display/font/inter/Inter-VariableFont_slntwght.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Lato';
-  src: local('Lato'), url(../font/lato/Lato-Regular.ttf) format('truetype');
+  src: local('Lato'), url(https://github.com/Nate-Wilkins/react-discord-presence/blob/main/src/display/font/lato/Lato-Regular.ttf) format('truetype');
 }
 
 .root {
@@ -81,10 +81,10 @@
   scale: .3;
 }
 .loadingWhite {
-  background-image: url(../image/DiscordMarkWhite.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/react-discord-presence/main/src/display/image/DiscordMarkWhite.svg);
 }
 .loadingBlack {
-  background-image: url(../image/DiscordMarkBlack.svg);
+  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/react-discord-presence/main/src/display/image/DiscordMarkBlack.svg);
 }
 @keyframes discordPresenceLoadingSpinner {
   0% {

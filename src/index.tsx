@@ -6,6 +6,6 @@ export {
   DiscordPresence as DisplayDiscordPresence,
   DiscordPresenceClassesDefault,
   DiscordPresenceClassesCode,
-  DiscordPresenceClassesDefaultLocalBadges,
+  DiscordPresenceClassesDefaultLocal,
 } from './display';
 export { AccessorGetDiscordPresence, createCache } from './accessor';

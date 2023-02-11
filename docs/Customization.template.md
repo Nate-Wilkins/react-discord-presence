@@ -27,16 +27,16 @@ import discordPresenceCodeClasses from 'react-discord-presence/dist/src/display/
 />
 ```
 
-- `DiscordPresenceDefaultLocalBadges.module.css`: Modifies the badges to point at distributed assets. Useful for additional
+- `DiscordPresenceDefaultLocal.module.css`: Modifies the badges to point at distributed assets. Useful for additional
   processing. This might require additional webpack setup.
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
 import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
-import discordPresenceLocalBadgesClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefaultLocalBadges.module.css';
+import discordPresenceLocalClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefaultLocal.module.css';
 // ...
 <DiscordPresence
-  classes={Object.assign({}, discordPresenceClasses, discordPresenceLocalBadgesClasses}}
+  classes={Object.assign({}, discordPresenceClasses, discordPresenceLocalClasses}}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```

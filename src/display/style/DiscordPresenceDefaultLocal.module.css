@@ -1,3 +1,22 @@
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter'), url(../font/inter/Inter-VariableFont_slntwght.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'), url(../font/lato/Lato-Regular.ttf) format('truetype');
+}
+
+
+.loadingWhite {
+  background-image: url(../image/DiscordMarkWhite.svg);
+}
+.loadingBlack {
+  background-image: url(../image/DiscordMarkBlack.svg);
+}
+
+
 .badgeStaff {
   background-image: url(../../../deps/discord-badges/assets/discordstaff.svg);
 }
