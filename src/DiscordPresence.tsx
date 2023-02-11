@@ -74,10 +74,10 @@ export const DiscordPresence: FunctionComponent<{
 
   return (
     <Boundary
-      whenLoading={
+      onLoading={
         <LoadingDiscordPresence classes={classes} theme={defaultTheme} />
       }
-      whenErroring={({ error }) => (
+      onError={({ error }) => (
         <ErrorDiscordPresence
           classes={classes}
           theme={defaultTheme}

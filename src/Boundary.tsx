@@ -13,9 +13,9 @@ import { default as useErrorBoundary } from 'use-error-boundary';
  */
 export const Boundary: FunctionComponent<{
   children: ReactNode;
-  whenLoading: ReactNode;
-  whenErroring: FunctionComponent<{ error: Error | string }>;
-}> = ({ children, whenLoading, whenErroring }) => {
+  onLoading: ReactNode;
+  onError: FunctionComponent<{ error: Error | string }>;
+}> = ({ children, onLoading, onError }) => {
   const { ErrorBoundary, error } = useErrorBoundary({
     // TODO: Disable error logging for errors that are handled.
     //       https://github.com/facebook/react/issues/15069
@@ -24,11 +24,11 @@ export const Boundary: FunctionComponent<{
     },
   });
   if (error) {
-    return whenErroring({ error });
+    return onError({ error });
   }
 
   return (
-    <Suspense fallback={whenLoading}>
+    <Suspense fallback={onLoading}>
       <ErrorBoundary>{children}</ErrorBoundary>
     </Suspense>
   );

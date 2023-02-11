@@ -60,7 +60,7 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 
   // When using the component.
   const queries = render(
-    <Boundary whenLoading={null} whenErroring={mockErrorHandler}>
+    <Boundary onLoading={null} onError={mockErrorHandler}>
       <AccessorGetDiscordPresence
         cache={() => cacheStore}
         args={{ developerId }}
@@ -125,8 +125,8 @@ test('when using the accessor get discord presence with invalid CDN API data', a
   const mockRender = jest.fn();
   const queries = render(
     <Boundary
-      whenLoading={null}
-      whenErroring={({ error }) => (
+      onLoading={null}
+      onError={({ error }) => (
         <div data-testid="error">
           {typeof error === 'string' ? error : error.message}
         </div>
@@ -193,8 +193,8 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
   const mockRender = jest.fn();
   const queries = render(
     <Boundary
-      whenLoading={null}
-      whenErroring={({ error }) => (
+      onLoading={null}
+      onError={({ error }) => (
         <div data-testid="error">
           {typeof error === 'string' ? error : error.message}
         </div>
