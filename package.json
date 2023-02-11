@@ -1,6 +1,6 @@
 {
   "name": "react-discord-presence",
-  "version": "10.3.0",
+  "version": "10.4.0",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your Discord presence in react.",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
   "homepage": "http://github.com/nate-wilkins/react-discord-presence",
   "bugs": "http://github.com/nate-wilkins/react-discord-presence/issues",
   "scripts": {
-    "docs": "ts-node ./scripts/generate_docs.ts && cp ./docs/README.md ./README.md",
+    "docs": "ts-node ./scripts/generate_docs.ts && cp ./docs/README.md ./README.md && rm ./docs/README.md",
     "build:ts": "ts-node ./node_modules/webpack/bin/webpack",
     "clean": "git clean -X -q -f",
     "build": "yarn run clean && yarn run build:ts && yarn run docs",
