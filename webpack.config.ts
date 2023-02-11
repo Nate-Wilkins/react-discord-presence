@@ -66,21 +66,22 @@ export default {
           },
         ],
       },
+      // TODO: Can this embed styles?
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     { loader: 'style-loader' },
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         esModule: false,
+      //         sourceMap: NODE_ENV !== 'production',
+      //       },
+      //     },
+      //   ],
+      // },
       {
-        test: /\.(css)$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              esModule: false,
-              sourceMap: NODE_ENV !== 'production',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(jpg|jpe?g|png|gif|mp3|svg|gltf|fbx|txt|pdf|md|xml|webp|ttf)$/i,
+        test: /\.(css|jpg|jpe?g|png|gif|mp3|svg|gltf|fbx|txt|pdf|md|xml|webp|ttf)$/i,
         use: [
           {
             loader: require.resolve('file-loader'),
