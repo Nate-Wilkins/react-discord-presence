@@ -25,7 +25,7 @@ yarn add react-discord-presence
 
 Check it out on [StackBlitz](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx).
 
-[![Screenshot React Discord Presence](./__screenshots__/Display/DiscordPresence/CustomCode_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
+[![Screenshot React Discord Presence](./__screenshots__/Display/DiscordPresence/Default_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
 
 __Loading State__
 
