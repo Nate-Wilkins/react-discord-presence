@@ -24,6 +24,8 @@ const getColorDarkenStep = (color: Color, totalSteps: number, step: number) => {
  * Get theme colors.
  *
  * This is a best estimate of how the theming function is that Discord uses.
+ *
+ * TODO: Honestly, blending modes would make this easier and more maintainable.
  */
 export const getTheme = (theme: { primary: string; accent: string }) => {
   const totalSteps = 40; // How many content boxes there are overlayed in the DOM.
@@ -150,25 +152,9 @@ export const getTheme = (theme: { primary: string; accent: string }) => {
     : 'rgba(185, 185, 185, 1)';
 
   // Spotify Progress Bar Colors.
-  const spotifyProgressBarBackgroundColorStepLight = 26;
-  const spotifyProgressBarBackgroundColorStepDark = 26;
   const spotifyProgressBarTotalBackgroundColor = !rootPrimaryBackgroundColor.isDark()
-    ? rootPrimaryBackgroundColor.lightness(
-        rootPrimaryBackgroundColor.lightness() +
-          getColorLightnessStep(
-            rootPrimaryBackgroundColor,
-            totalSteps,
-            spotifyProgressBarBackgroundColorStepLight,
-          ),
-      )
-    : rootPrimaryBackgroundColor.lightness(
-        rootPrimaryBackgroundColor.lightness() -
-          getColorDarkenStep(
-            rootPrimaryBackgroundColor,
-            totalSteps,
-            spotifyProgressBarBackgroundColorStepDark,
-          ),
-      );
+    ? Color(namePlateNameIdColor).alpha(0.2)
+    : Color(namePlateNameIdColor).alpha(0.15);
   const spotifyProgressBarProgressBackgroundColor = rootColor;
 
   // Theme normalized.

@@ -101,7 +101,7 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 - Support for idle status.
 - Support for do not disturb status.
-- Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold).
+- Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold), images (?), and links (?).
 - Fix `premiumMemberSince` and `memberSince`.
 - Support code splitting.
 - Support for failing image downloads/errors.
