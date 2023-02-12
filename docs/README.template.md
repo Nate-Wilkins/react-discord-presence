@@ -24,6 +24,8 @@ __Error State__
 
 [![Screenshot Loading React Discord Presence](./__screenshots__/Display/ErrorDiscordPresence/Custom_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
 
+You can find more examples in [`docs/Examples.md`](./docs/Examples.md).
+
 ## Usage
 
 You can use the self contained `DiscordPresence` component which will handle
@@ -61,6 +63,7 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
+- Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold).
 - Fix `premiumMemberSince` and `memberSince`.
 - Support code splitting.
 - Support for light theme.

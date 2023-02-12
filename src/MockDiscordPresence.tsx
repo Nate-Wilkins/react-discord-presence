@@ -1,17 +1,9 @@
 import { default as React, FunctionComponent } from 'react';
+import { DiscordPresence as IDiscordPresence } from 'schema-lanyard-discord-presence';
 import fetchMock from 'fetch-mock';
 import { createLanyardApiData } from '../test/create_lanyard_api_data';
 import { discord } from './api';
 import { DiscordPresence } from './DiscordPresence';
-import { DiscordPresenceData } from './display/presence/types';
-
-const data = {
-  aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
-NY 🌆 CA 🌁
-PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
-  memberSince: 'June 21, 2016',
-  premiumMemberSince: 'April 10, 2022',
-};
 
 /*
  * Mock the 'DiscordPresence' component for story development.
@@ -23,27 +15,25 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 export const MockDiscordPresence: FunctionComponent<{
   classes: Record<string, string>;
   args: { developerId: string };
+  data?: Partial<IDiscordPresence> & {
+    theme?: {
+      primary: string;
+      accent: string;
+    };
+    aboutMe?: string;
+    memberSince?: string;
+    premiumMemberSince?: string;
+  };
 
   // Test State.
   state: 'actual' | 'happy' | 'load' | 'error';
-
-  // Custom Formatters.
-  formatActivityDuration?: (d1: Date, d2: Date) => string;
-  formatBannerImageSrc?: (discordUserId: string) => string;
-  formatAvatarImageSrc?: (
-    discordUser: DiscordPresenceData['discord_user'],
-  ) => string;
 }> = ({
   classes,
   args,
+  data,
 
   // Test State.
   state,
-
-  // Custom Formatters.
-  formatActivityDuration,
-  formatBannerImageSrc,
-  formatAvatarImageSrc,
 }) => {
   const developerId = args.developerId;
 
@@ -103,13 +93,6 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
   }
 
   return (
-    <DiscordPresence
-      classes={classes}
-      args={{ developerId }}
-      data={data}
-      formatActivityDuration={formatActivityDuration}
-      formatBannerImageSrc={formatBannerImageSrc}
-      formatAvatarImageSrc={formatAvatarImageSrc}
-    />
+    <DiscordPresence classes={classes} args={{ developerId }} data={data} />
   );
 };

@@ -12,6 +12,26 @@ import { getDiscordBadges } from './get_discord_badges';
 import { DiscordPresenceData } from './types';
 
 /*
+ * Get color lighten step.
+ */
+const getColorLightnessStep = (
+  color: Color,
+  totalSteps: number,
+  step: number,
+) => {
+  const remainder = 100 - color.lightness();
+  return (step / totalSteps) * remainder;
+};
+
+/*
+ * Get color darken step.
+ */
+const getColorDarkenStep = (color: Color, totalSteps: number, step: number) => {
+  const remainder = color.lightness();
+  return (step / totalSteps) * remainder;
+};
+
+/*
  * Discord presence.
  *
  * Data model is based on the Discord Lanyard presence API.
@@ -69,23 +89,129 @@ export const DiscordPresence: FunctionComponent<{
   );
 
   // Setup theming colors.
-  const rootColorPrimary = Color(data.theme.primary);
-  const rootColorAccent = Color(data.theme.accent);
-  // TODO: Light theme testing.
-  const contentPrimaryColor = !rootColorPrimary.isDark()
-    ? rootColorPrimary.lighten(0.6)
-    : rootColorPrimary.darken(0.6);
-  const contentAccentColor = !rootColorAccent.isDark()
-    ? rootColorAccent.lighten(0.4)
-    : rootColorAccent.darken(0.4);
-  const namePlatePrimaryColor = !contentPrimaryColor.isDark()
-    ? contentPrimaryColor.lighten(0.4)
-    : contentPrimaryColor.darken(0.5);
-  const namePlateAccentColor = !contentAccentColor.isDark()
-    ? contentAccentColor.lighten(0.4)
-    : contentAccentColor.darken(0.5);
-  const namePlateNameColor = 'rgba(255, 255, 255, 1)';
-  const namePlateNameIdColor = 'rgba(185, 185, 185, 1)';
+  // This is a best estimate to how the theming function that Discord uses.
+  const totalSteps = 40; // How many content boxes there are overlayed in the DOM.
+  const colorPrimary = Color(data.theme.primary);
+  const colorAccent = Color(data.theme.accent);
+
+  // Root Colors.
+  const rootPrimaryColor = colorPrimary.isDark() ? '#ffffff' : 'rgb(6, 6, 7)';
+  const rootPrimaryBackgroundColorStepDark = 2;
+  const rootPrimaryBackgroundColorStepLight = 19;
+  const rootPrimaryBackgroundColor = !colorPrimary.isDark()
+    ? colorPrimary.lightness(
+        colorPrimary.lightness() +
+          getColorLightnessStep(
+            colorPrimary,
+            totalSteps,
+            rootPrimaryBackgroundColorStepLight,
+          ),
+      )
+    : colorPrimary.lightness(
+        colorPrimary.lightness() -
+          getColorDarkenStep(
+            colorPrimary,
+            totalSteps,
+            rootPrimaryBackgroundColorStepDark,
+          ),
+      );
+  const rootAccentBackgroundColor = !colorAccent.isDark()
+    ? colorAccent.lightness(
+        colorAccent.lightness() +
+          getColorLightnessStep(
+            colorAccent,
+            totalSteps,
+            rootPrimaryBackgroundColorStepLight,
+          ),
+      )
+    : colorAccent.lightness(
+        colorAccent.lightness() -
+          getColorDarkenStep(
+            colorAccent,
+            totalSteps,
+            rootPrimaryBackgroundColorStepDark,
+          ),
+      );
+
+  // Content Colors.
+  const contentPrimaryBackgroundColorStepLight = 20;
+  const contentPrimaryBackgroundColorStepDark = 24;
+  const contentPrimaryBackgroundColor = !rootPrimaryBackgroundColor.isDark()
+    ? rootPrimaryBackgroundColor.lightness(
+        rootPrimaryBackgroundColor.lightness() +
+          getColorLightnessStep(
+            rootPrimaryBackgroundColor,
+            totalSteps,
+            contentPrimaryBackgroundColorStepLight,
+          ),
+      )
+    : rootPrimaryBackgroundColor.lightness(
+        rootPrimaryBackgroundColor.lightness() -
+          getColorDarkenStep(
+            rootPrimaryBackgroundColor,
+            totalSteps,
+            contentPrimaryBackgroundColorStepDark,
+          ),
+      );
+  const contentAccentBackgroundColor = !rootAccentBackgroundColor.isDark()
+    ? rootAccentBackgroundColor.lightness(
+        rootAccentBackgroundColor.lightness() +
+          getColorLightnessStep(
+            rootAccentBackgroundColor,
+            totalSteps,
+            contentPrimaryBackgroundColorStepLight,
+          ),
+      )
+    : rootAccentBackgroundColor.lightness(
+        rootAccentBackgroundColor.lightness() -
+          getColorDarkenStep(
+            rootAccentBackgroundColor,
+            totalSteps,
+            contentPrimaryBackgroundColorStepDark,
+          ),
+      );
+
+  // Name Plate Colors.
+  const namePlatePrimaryBackgroundColorStepLight = 34;
+  const namePlatePrimaryBackgroundColorStepDark = 32;
+  const namePlatePrimaryBackgroundColor = !rootPrimaryBackgroundColor.isDark()
+    ? rootPrimaryBackgroundColor.lightness(
+        rootPrimaryBackgroundColor.lightness() +
+          getColorLightnessStep(
+            rootPrimaryBackgroundColor,
+            totalSteps,
+            namePlatePrimaryBackgroundColorStepLight,
+          ),
+      )
+    : rootPrimaryBackgroundColor.lightness(
+        rootPrimaryBackgroundColor.lightness() -
+          getColorDarkenStep(
+            rootPrimaryBackgroundColor,
+            totalSteps,
+            namePlatePrimaryBackgroundColorStepDark,
+          ),
+      );
+  const namePlateAccentBackgroundColor = !rootAccentBackgroundColor.isDark()
+    ? rootAccentBackgroundColor.lightness(
+        rootAccentBackgroundColor.lightness() +
+          getColorLightnessStep(
+            rootAccentBackgroundColor,
+            totalSteps,
+            namePlatePrimaryBackgroundColorStepLight,
+          ),
+      )
+    : rootAccentBackgroundColor.lightness(
+        rootAccentBackgroundColor.lightness() -
+          getColorDarkenStep(
+            rootAccentBackgroundColor,
+            totalSteps,
+            namePlatePrimaryBackgroundColorStepDark,
+          ),
+      );
+  const namePlateNameColor = rootPrimaryColor;
+  const namePlateNameIdColor = !rootPrimaryBackgroundColor.isDark()
+    ? 'rgba(79, 86, 96, 1)'
+    : 'rgba(185, 185, 185, 1)';
 
   // Event Handlers.
   const onAvatarMouseOver = () => {
@@ -100,17 +226,19 @@ export const DiscordPresence: FunctionComponent<{
       classes={classes}
       styleRoot={{
         ...style,
+
+        color: rootPrimaryColor,
         background: createLinearGradientVertical(
-          rootColorPrimary.hsl().string(),
-          0.65,
-          rootColorAccent.hsl().string(),
+          rootPrimaryBackgroundColor.hsl().string(),
+          0.5,
+          rootAccentBackgroundColor.hsl().string(),
         ),
       }}
       styleContent={{
         background: createLinearGradientVertical(
-          contentPrimaryColor.hsl().string(),
-          0.65,
-          contentAccentColor.hsl().string(),
+          contentPrimaryBackgroundColor.hsl().string(),
+          0.5,
+          contentAccentBackgroundColor.hsl().string(),
         ),
       }}
     >
@@ -153,7 +281,7 @@ export const DiscordPresence: FunctionComponent<{
             <DiscordPresenceUserStatus
               classes={classes}
               style={{
-                backgroundColor: namePlatePrimaryColor.hsl().string(),
+                backgroundColor: namePlatePrimaryBackgroundColor.hsl().string(),
               }}
               data={data}
             />
@@ -164,7 +292,7 @@ export const DiscordPresence: FunctionComponent<{
         <div
           className={classes.badges}
           style={{
-            backgroundColor: namePlatePrimaryColor.hsl().string(),
+            backgroundColor: namePlatePrimaryBackgroundColor.hsl().string(),
           }}
         >
           <>
@@ -199,9 +327,9 @@ export const DiscordPresence: FunctionComponent<{
         className={classes.namePlate}
         style={{
           background: createLinearGradientVertical(
-            namePlatePrimaryColor.hsl().string(),
+            namePlatePrimaryBackgroundColor.hsl().string(),
             0.7,
-            namePlateAccentColor.hsl().string(),
+            namePlateAccentBackgroundColor.hsl().string(),
           ),
         }}
       >
@@ -281,7 +409,7 @@ export const DiscordPresence: FunctionComponent<{
         {/* Member Since */}
         {data.memberSince ? (
           <div className={classes.memberSince}>
-            <h3>Discord Member Since</h3>
+            <h3>Member Since</h3>
 
             <p
               style={{
@@ -311,7 +439,9 @@ export const DiscordPresence: FunctionComponent<{
                         className={classes.activityIconBadgeImage}
                         src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.png`}
                         style={{
-                          backgroundColor: namePlatePrimaryColor.hsl().string(),
+                          backgroundColor: namePlatePrimaryBackgroundColor
+                            .hsl()
+                            .string(),
                         }}
                       />
                     ) : null}

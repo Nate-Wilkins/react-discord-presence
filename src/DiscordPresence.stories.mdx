@@ -40,6 +40,25 @@ Self contained Discord presence which handles:
 - Caching Discord presence data.
 - Displaying Discord presence data.
 
-<Story name="DiscordPresence">
+<Story name="DiscordPresence" args={{
+  data: {
+    memberSince: 'June 21, 2016',
+  }
+}}>
+  {Template.bind({})}
+</Story>
+
+## Examples
+
+Some example Discord user presences.
+
+<Story name="Examples_Proximitynow" args={{
+  args: {
+    developerId: "445035187370328066"
+  },
+  data: {
+    memberSince: 'May 12, 2018',
+  }
+}}>
   {Template.bind({})}
 </Story>

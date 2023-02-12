@@ -45,7 +45,7 @@ const BadgeLookup: {
   },
   [DiscordBadgeEnum.VerifiedDeveloper]: {
     className: 'badgeVerifiedDeveloper',
-    hoverText: '',
+    hoverText: 'Early Verified Bot Developer',
   },
   [DiscordBadgeEnum.CertifiedModerator]: {
     className: 'badgeCertifiedModerator',
@@ -58,7 +58,7 @@ const BadgeLookup: {
   [DiscordBadgeEnum.Spammer]: { className: 'badgeSpammer', hoverText: '' },
   [DiscordBadgeEnum.ActiveDeveloper]: {
     className: 'badgeActiveDeveloper',
-    hoverText: '',
+    hoverText: 'Active Developer',
   },
   [DiscordBadgeEnum.Quarantined]: {
     className: 'badgeQuarantined',
