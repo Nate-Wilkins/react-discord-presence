@@ -25,7 +25,7 @@ yarn add react-discord-presence
 
 Check it out on [StackBlitz](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx).
 
-[![Screenshot React Discord Presence](./__screenshots__/Display/DiscordPresence/DiscordPresence_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
+[![Screenshot React Discord Presence](./__screenshots__/Display/DiscordPresence/CustomCode_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
 
 __Loading State__
 
@@ -80,6 +80,7 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Add tails to hover popovers.
 - Talk with `@salvage_dev` about using `discord-presence` package name.
+- Find SVG badges for 'TeamPseudoUser', 'VerifiedBot', 'CertifiedModerator', 'BotHTTPInteractions', 'Spammer', and 'Quarantined'
 
 ### Accessor
 

@@ -53,6 +53,7 @@ function storybook() {
 # Run storybook screenshot capturer for storybook components.
 #
 function storybook_screenshot() {
+  rm -rf "./__screenshots__/"
   STORYBOOK_PORT=5656 yarn run storycap http://localhost:5656 -i "**"
 }
 
