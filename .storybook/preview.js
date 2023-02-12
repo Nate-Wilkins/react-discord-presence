@@ -1,10 +1,12 @@
 import { withConsole } from '@storybook/addon-console';
 import { withScreenshot } from 'storycap';
+import { mockDateDecorator } from 'storybook-mock-date-decorator';
 
 import '@storybook/addon-console';
 
 export const decorators = [
   (storyFn, context) => withConsole()(storyFn)(context),
+  mockDateDecorator,
   withScreenshot,
 ];
 

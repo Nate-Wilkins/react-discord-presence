@@ -25,7 +25,7 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 
 Display Discord presence.
 
-<Story name="Default">
+<Story name="Default" parameters={{ date: new Date(1676232584000) }}>
   <div style={{ fontSize: '16px' }}>
     <DiscordPresence
       classes={StyleDiscordPresenceDefault}
@@ -42,7 +42,7 @@ Display Discord presence with custom styling.
 
 - `DiscordPresenceCode.module.css`
 
-<Story name="CustomCode">
+<Story name="CustomCode" parameters={{ date: new Date(1676232584000) }}>
   <div style={{ fontSize: '16px' }}>
     <DiscordPresence
       classes={Object.assign({}, StyleDiscordPresenceDefault, StyleDiscordPresenceCode)}

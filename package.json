@@ -75,6 +75,7 @@
     "react-dom": ">=15.0.1",
     "source-map-loader": "2.0.1",
     "storybook-css-modules": "1.0.8",
+    "storybook-mock-date-decorator": "1.0.0",
     "storycap": "4.0.0",
     "ts-jest": "29.0.5",
     "ts-loader": "9.1.1",

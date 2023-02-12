@@ -1852,7 +1852,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.5.16":
+"@storybook/addons@6.5.16", "@storybook/addons@^6.4.19":
   version "6.5.16"
   resolved "http://rancher.stark.local:4873/@storybook%2faddons/-/addons-6.5.16.tgz#07e8f2205f86fa4c9dada719e3e096cb468e3cdd"
   integrity sha512-p3DqQi+8QRL5k7jXhXmJZLsE/GqHqyY6PcoA1oNTJr0try48uhTGUOYkgzmqtDaa/qPFO5LP+xCPzZXckGtquQ==
@@ -8842,6 +8842,11 @@ mkdirp@^1.0.0, mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "http://rancher.stark.local:4873/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+mockdate@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-3.0.5.tgz#789be686deb3149e7df2b663d2bc4392bc3284fb"
+  integrity sha512-iniQP4rj1FhBdBYS/+eQv7j1tadJ9lJtdzgOpvsOHng/GbcDh2Fhdeq+ZRldrPYdXvCyfFUmFeEwEGXZB5I/AQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "http://rancher.stark.local:4873/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -11036,6 +11041,14 @@ storybook-css-modules@1.0.8:
   version "1.0.8"
   resolved "http://rancher.stark.local:4873/storybook-css-modules/-/storybook-css-modules-1.0.8.tgz#19392c07a31849dbcd2753ae6331e7f8c0f2ec69"
   integrity sha512-anITwllH6nLw0quPElVBLRrE8QDbcRv0Dgl8sKLOc4uiqw+g1GE2l21Stjx3Wyv2O6ZKJScbyOpOuuz3SmeaOQ==
+
+storybook-mock-date-decorator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/storybook-mock-date-decorator/-/storybook-mock-date-decorator-1.0.0.tgz#f862926cbf3a2928a2a662a8fcf1f13dd72e91e2"
+  integrity sha512-4RBnKuYoScI826+xlpoXhn1HIb0f0rADe+Rq66HstWuy9+mtKcaV2wU0/pAJYeGxjKL9xEnsq3KsKntHSLGc7g==
+  dependencies:
+    "@storybook/addons" "^6.4.19"
+    mockdate "^3.0.5"
 
 storycap@4.0.0:
   version "4.0.0"
