@@ -26,6 +26,13 @@ __Error State__
 
 You can find more examples in [`docs/Examples.md`](./docs/Examples.md).
 
+## Requirements
+
+This solution uses the [Lanyard API](https://github.com/Phineas/lanyard) which will require the Discord user your
+displaying presence for be in the [Lanyard API Discord](https://discord.gg/UrXF2cfJ7F).
+
+If they're not in the Discord server, you'll get a response error from their API.
+
 ## Usage
 
 You can use the self contained `DiscordPresence` component which will handle
