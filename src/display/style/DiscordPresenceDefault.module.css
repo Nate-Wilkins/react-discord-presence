@@ -276,8 +276,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Set by inline style. */
-  background-color: yellow;
   width: 1.75em;
   height: 1.75em;
   border-radius: 50%;
@@ -286,8 +284,6 @@
 
 .status {
   display: block;
-  /* Set by inline style. */
-  background-color: yellow;
   width: 1.00em;
   height: 1.00em;
   border-radius: 50%;
