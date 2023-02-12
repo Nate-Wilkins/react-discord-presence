@@ -6,10 +6,6 @@ import { DiscordPresence } from './DiscordPresence';
 import { DiscordPresenceData } from './display/presence/types';
 
 const data = {
-  theme: {
-    primary: 'rgba(38, 114, 195, 1)',
-    accent: 'rgba(0, 26, 48, 1)',
-  },
   aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
 NY 🌆 CA 🌁
 PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
@@ -86,8 +82,6 @@ export const MockDiscordPresence: FunctionComponent<{
       {
         user: {
           id: developerId,
-          banner_color: '#f32010',
-          accent_color: '#f32010',
           bio: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
 NY 🌆 CA 🌁
 PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,

@@ -86,8 +86,6 @@ test('when using Discord presence component with invalid Lanyard API data', asyn
   const mockDataCdn = {
     user: {
       id: developerId,
-      banner_color: '#f32010',
-      accent_color: '#f32010',
       bio: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
 NY 🌆 CA 🌁
 PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,

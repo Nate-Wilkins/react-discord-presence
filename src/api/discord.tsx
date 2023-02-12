@@ -2,6 +2,7 @@ import {
   DiscordPresence,
   SchemaDiscordPresence,
 } from 'schema-lanyard-discord-presence';
+import Color from 'color';
 import { Response } from './types';
 
 export const Endpoints = {
@@ -18,7 +19,11 @@ export type DiscordGetPresenceRequest = {
 
 export type DiscordGetPresenceResponse = {
   presence: DiscordPresence & {
-    aboutMe?: string;
+    aboutMe: string;
+    theme?: {
+      primary: string;
+      accent: string;
+    };
     premiumMemberSince?: string;
   };
 };
@@ -84,6 +89,10 @@ export const getDiscordPresence = async ({
   // Discord CDN.
   let discordCdninfo: {
     aboutMe: string;
+    theme?: {
+      primary: string;
+      accent: string;
+    };
     premiumMemberSince?: string;
   };
   try {
@@ -98,10 +107,6 @@ export const getDiscordPresence = async ({
     }
     if (
       responseContentDiscordCdn.user.id !== developerId ||
-      typeof responseContentDiscordCdn.user.banner_color !== 'string' ||
-      // TODO: Banner theme colors not provided correctly right now.
-      // (typeof responseContentDiscordCdn.user.accent_color !== 'string' &&
-      //   typeof responseContentDiscordCdn.user.accent_color !== 'number') ||
       typeof responseContentDiscordCdn.user.bio !== 'string' ||
       (!!responseContentDiscordCdn.premium_since &&
         typeof responseContentDiscordCdn.premium_since !== 'string')
@@ -110,15 +115,24 @@ export const getDiscordPresence = async ({
     }
     discordCdninfo = {
       aboutMe: responseContentDiscordCdn.user.bio,
-      // TODO: Banner theme colors not provided correctly right now.
-      // theme: {
-      //   primary: Color(responseContentDiscordCdn.user.banner_color)
-      //     .hsl()
-      //     .toString(),
-      //   accent: Color(responseContentDiscordCdn.user.accent_color)
-      //     .hsl()
-      //     .toString(),
-      // },
+      ...(responseContentDiscordCdn.user_profile &&
+      responseContentDiscordCdn.user_profile.theme_colors instanceof Array &&
+      responseContentDiscordCdn.user_profile.theme_colors.length === 2
+        ? {
+            theme: {
+              primary: Color(
+                responseContentDiscordCdn.user_profile.theme_colors[0],
+              )
+                .hsl()
+                .toString(),
+              accent: Color(
+                responseContentDiscordCdn.user_profile.theme_colors[1],
+              )
+                .hsl()
+                .toString(),
+            },
+          }
+        : {}),
       ...(responseContentDiscordCdn.premium_since
         ? { premiumMemberSince: responseContentDiscordCdn.premium_since }
         : {}),

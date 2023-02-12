@@ -46,8 +46,6 @@ test('when using the accessor get discord presence with valid API data', async (
   const mockDataCdn = {
     user: {
       id: developerId,
-      banner_color: '#f32010',
-      accent_color: '#f32010',
       bio: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
 NY 🌆 CA 🌁
 PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
@@ -177,8 +175,6 @@ test('when using the accessor get discord presence with invalid Lanyard API data
   const mockDataCdn = {
     user: {
       id: developerId,
-      banner_color: '#f32010',
-      accent_color: '#f32010',
       bio: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
 NY 🌆 CA 🌁
 PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,

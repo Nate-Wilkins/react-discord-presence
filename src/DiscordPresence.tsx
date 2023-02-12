@@ -101,8 +101,9 @@ export const DiscordPresence: FunctionComponent<{
               data={{
                 ...dataAccessor,
                 ...data,
-                // TODO: When data accessor supports getting user's theme this should also be checked before using default theme.
-                ...(data && data.theme
+                ...(dataAccessor.theme
+                  ? { theme: dataAccessor.theme }
+                  : data && data.theme
                   ? { theme: data.theme }
                   : { theme: defaultTheme }),
               }}
