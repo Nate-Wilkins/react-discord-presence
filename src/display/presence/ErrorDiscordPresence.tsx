@@ -22,16 +22,16 @@ export const ErrorDiscordPresence: FunctionComponent<{
         ...style,
         color: theme.root.color,
         background: createLinearGradientVertical(
-          theme.root.backgroundColor.primary.hsl().string(),
+          theme.root.backgroundColor.primary,
           0.5,
-          theme.root.backgroundColor.accent.hsl().string(),
+          theme.root.backgroundColor.accent,
         ),
       }}
       styleContent={{
         background: createLinearGradientVertical(
-          theme.content.backgroundColor.primary.hsl().string(),
+          theme.content.backgroundColor.primary,
           0.5,
-          theme.content.backgroundColor.accent.hsl().string(),
+          theme.content.backgroundColor.accent,
         ),
       }}
     >

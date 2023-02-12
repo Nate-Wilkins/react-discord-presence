@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { getElapsedTimeFormat as defaultGetElapsedTimeFormat } from './get_elapsed_time_format';
+import { getElapsedTimeFormat } from './get_elapsed_time_format';
 
 /*
  * Discord presence activity duration.
@@ -8,9 +8,9 @@ export const DiscordPresenceActivityDuration: FunctionComponent<{
   start: number;
   end?: number | null;
   format?: (d1: Date, d2: Date) => string;
-}> = ({ start, end, format }) => {
+}> = ({ start, end, format: inputFormat }) => {
   const [now, setNow] = useState(end ? end : Date.now());
-  const getElapsedTimeFormat = format ? format : defaultGetElapsedTimeFormat;
+  const format = inputFormat ? inputFormat : getElapsedTimeFormat;
 
   // Setup timer for activity duration that hasn't ended.
   useEffect(() => {
@@ -25,5 +25,5 @@ export const DiscordPresenceActivityDuration: FunctionComponent<{
     };
   }, [start, end]);
 
-  return <p>{getElapsedTimeFormat(new Date(now), new Date(start))}</p>;
+  return <p>{format(new Date(now), new Date(start))}</p>;
 };

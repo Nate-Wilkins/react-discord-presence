@@ -12,7 +12,18 @@ export const createLanyardApiData = ({
   developerId: string;
 }): IDiscordPresence =>
   SchemaDiscordPresence.validateSync({
-    spotify: null,
+    spotify: {
+      track_id: '77wq6jYIE2g0VcMjRfHdY0',
+      timestamps: {
+        start: 1676232497145,
+        end: 1676232687101,
+      },
+      song: 'Black Betty',
+      artist: 'Caravan Palace',
+      album_art_url:
+        'https://i.scdn.co/image/ab67616d0000b2733f6f0a8864b04cf0486d92b7',
+      album: 'Black Betty - Single',
+    },
     listening_to_spotify: false,
     kv: {},
     discord_user: {
@@ -38,6 +49,28 @@ export const createLanyardApiData = ({
           animated: true,
         },
         created_at: 1675542370754,
+      },
+      {
+        type: 2,
+        timestamps: {
+          start: 1676232497145,
+          end: 1676232687101,
+        },
+        sync_id: '77wq6jYIE2g0VcMjRfHdY0',
+        state: 'Caravan Palace',
+        session_id: '04c61c1e05762235cd7162630e7d7f1a',
+        party: {
+          id: 'spotify:194976024457510912',
+        },
+        name: 'Spotify',
+        id: 'spotify:1',
+        flags: 48,
+        details: 'Black Betty',
+        created_at: 1676232497723,
+        assets: {
+          large_text: 'Black Betty - Single',
+          large_image: 'spotify:ab67616d0000b2733f6f0a8864b04cf0486d92b7',
+        },
       },
       {
         type: 0,

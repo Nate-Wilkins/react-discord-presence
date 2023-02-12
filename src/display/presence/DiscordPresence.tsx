@@ -6,6 +6,7 @@ import { DiscordBadgeEnum } from '../types';
 import { DiscordPresenceActivityDuration } from './DiscordPresenceActivityDuration';
 import { DiscordPresenceBadge } from './DiscordPresenceBadge';
 import { DiscordPresenceBox } from './DiscordPresenceBox';
+import { DiscordPresenceSpotifySongDuration } from './DiscordPresenceSpotifySongDuration';
 import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
 import { getDiscordBadges } from './get_discord_badges';
 import { getTheme } from './get_theme';
@@ -24,6 +25,7 @@ export const DiscordPresence: FunctionComponent<{
   // Custom Formatters.
   // Mostly used for testing, bc URLs by default point to some Discord assets.
   formatActivityDuration?: (d1: Date, d2: Date) => string;
+  formatActivitySpotifyDuration?: (d1: Date, d2: Date) => string;
   formatBannerImageSrc?: (discordUserId: string) => string;
   formatAvatarImageSrc?: (
     discordUser: DiscordPresenceData['discord_user'],
@@ -35,6 +37,7 @@ export const DiscordPresence: FunctionComponent<{
 
   // Custom Formatters.
   formatActivityDuration: inputFormatActivityDuration,
+  formatActivitySpotifyDuration: inputFormatActivitySpotifyDuration,
   formatBannerImageSrc: inputFormatBannerSrc,
   formatAvatarImageSrc: inputFormatAvatarImageSrc,
 }) => {
@@ -42,6 +45,7 @@ export const DiscordPresence: FunctionComponent<{
 
   // Setup formatters.
   const formatActivityDuration = inputFormatActivityDuration;
+  const formatActivitySpotifyDuration = inputFormatActivitySpotifyDuration;
   const formatBannerImageSrc = inputFormatBannerSrc
     ? inputFormatBannerSrc
     : (discordUserId: string) =>
@@ -58,9 +62,13 @@ export const DiscordPresence: FunctionComponent<{
     activity => activity.id === 'custom',
   );
 
-  // Activities w/ activity status.
+  // Activities without:
+  // - Status.
+  // - Spotify.
   const activities = data.activities.filter(
-    activity => activity.id !== 'custom',
+    activity =>
+      activity.id !== 'custom' &&
+      activity.id.toLowerCase().indexOf('spotify') !== 0,
   );
 
   // Badges.
@@ -84,19 +92,18 @@ export const DiscordPresence: FunctionComponent<{
       classes={classes}
       styleRoot={{
         ...style,
-
         color: theme.root.color,
         background: createLinearGradientVertical(
-          theme.root.backgroundColor.primary.hsl().string(),
+          theme.root.backgroundColor.primary,
           0.5,
-          theme.root.backgroundColor.accent.hsl().string(),
+          theme.root.backgroundColor.accent,
         ),
       }}
       styleContent={{
         background: createLinearGradientVertical(
-          theme.content.backgroundColor.primary.hsl().string(),
+          theme.content.backgroundColor.primary,
           0.5,
-          theme.content.backgroundColor.accent.hsl().string(),
+          theme.content.backgroundColor.accent,
         ),
       }}
     >
@@ -139,9 +146,7 @@ export const DiscordPresence: FunctionComponent<{
             <DiscordPresenceUserStatus
               classes={classes}
               style={{
-                backgroundColor: theme.namePlate.backgroundColor.primary
-                  .hsl()
-                  .string(),
+                backgroundColor: theme.namePlate.backgroundColor.primary,
               }}
               data={data}
             />
@@ -152,9 +157,7 @@ export const DiscordPresence: FunctionComponent<{
         <div
           className={classes.badges}
           style={{
-            backgroundColor: theme.namePlate.backgroundColor.primary
-              .hsl()
-              .string(),
+            backgroundColor: theme.namePlate.backgroundColor.primary,
           }}
         >
           <>
@@ -189,9 +192,9 @@ export const DiscordPresence: FunctionComponent<{
         className={classes.namePlate}
         style={{
           background: createLinearGradientVertical(
-            theme.namePlate.backgroundColor.primary.hsl().string(),
+            theme.namePlate.backgroundColor.primary,
             0.7,
-            theme.namePlate.backgroundColor.accent.hsl().string(),
+            theme.namePlate.backgroundColor.accent,
           ),
         }}
       >
@@ -283,6 +286,46 @@ export const DiscordPresence: FunctionComponent<{
           </div>
         ) : null}
 
+        {/* Spotify */}
+        {!data.spotify ? null : (
+          <div className={classes.listeningToSpotify}>
+            <h3>Listening to Spotify</h3>
+
+            <div className={classes.spotifySong}>
+              <div className={classes.activity}>
+                {/* Left */}
+                <div className={classes.activityIcon}>
+                  <img
+                    className={classes.activityIconImage}
+                    src={data.spotify.album_art_url}
+                  />
+                </div>
+
+                {/* Right */}
+                <div className={classes.activityDetails}>
+                  <h3>{data.spotify.song}</h3>
+
+                  <p>by {data.spotify.artist}</p>
+                  <p>on {data.spotify.album}</p>
+                </div>
+              </div>
+
+              {/* Song Duration */}
+              <DiscordPresenceSpotifySongDuration
+                classes={classes}
+                styleProgress={{ backgroundColor: theme.root.color }}
+                styleTotal={{
+                  backgroundColor:
+                    theme.spotifyProgressBar.total.backgroundColor,
+                }}
+                start={data.spotify.timestamps.start}
+                end={data.spotify.timestamps.end}
+                format={formatActivitySpotifyDuration}
+              />
+            </div>
+          </div>
+        )}
+
         {/* Activities */}
         {activities.length > 0 ? (
           <div className={classes.activities}>
@@ -290,6 +333,7 @@ export const DiscordPresence: FunctionComponent<{
 
             {activities.map(activity => (
               <div key={activity.id} className={classes.activity}>
+                {/* Left */}
                 {activity.assets ? (
                   <div className={classes.activityIcon}>
                     <img
@@ -301,9 +345,8 @@ export const DiscordPresence: FunctionComponent<{
                         className={classes.activityIconBadgeImage}
                         src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.png`}
                         style={{
-                          backgroundColor: theme.namePlate.backgroundColor.primary
-                            .hsl()
-                            .string(),
+                          backgroundColor:
+                            theme.namePlate.backgroundColor.primary,
                         }}
                       />
                     ) : null}
@@ -321,6 +364,7 @@ export const DiscordPresence: FunctionComponent<{
                   </div>
                 )}
 
+                {/* Right */}
                 <div className={classes.activityDetails}>
                   <h3>
                     <Text classes={classes}>{activity.name}</Text>

@@ -149,6 +149,28 @@ export const getTheme = (theme: { primary: string; accent: string }) => {
     ? 'rgba(79, 86, 96, 1)'
     : 'rgba(185, 185, 185, 1)';
 
+  // Spotify Progress Bar Colors.
+  const spotifyProgressBarBackgroundColorStepLight = 26;
+  const spotifyProgressBarBackgroundColorStepDark = 26;
+  const spotifyProgressBarTotalBackgroundColor = !rootPrimaryBackgroundColor.isDark()
+    ? rootPrimaryBackgroundColor.lightness(
+        rootPrimaryBackgroundColor.lightness() +
+          getColorLightnessStep(
+            rootPrimaryBackgroundColor,
+            totalSteps,
+            spotifyProgressBarBackgroundColorStepLight,
+          ),
+      )
+    : rootPrimaryBackgroundColor.lightness(
+        rootPrimaryBackgroundColor.lightness() -
+          getColorDarkenStep(
+            rootPrimaryBackgroundColor,
+            totalSteps,
+            spotifyProgressBarBackgroundColorStepDark,
+          ),
+      );
+  const spotifyProgressBarProgressBackgroundColor = rootColor;
+
   // Theme normalized.
   return {
     // Colors.
@@ -159,25 +181,33 @@ export const getTheme = (theme: { primary: string; accent: string }) => {
     root: {
       color: rootColor,
       backgroundColor: {
-        primary: rootPrimaryBackgroundColor,
-        accent: rootAccentBackgroundColor,
+        primary: rootPrimaryBackgroundColor.hsl().string(),
+        accent: rootAccentBackgroundColor.hsl().string(),
       },
     },
     content: {
       backgroundColor: {
-        primary: contentPrimaryBackgroundColor,
-        accent: contentAccentBackgroundColor,
+        primary: contentPrimaryBackgroundColor.hsl().string(),
+        accent: contentAccentBackgroundColor.hsl().string(),
       },
     },
     namePlate: {
       backgroundColor: {
-        primary: namePlatePrimaryBackgroundColor,
-        accent: namePlateAccentBackgroundColor,
+        primary: namePlatePrimaryBackgroundColor.hsl().string(),
+        accent: namePlateAccentBackgroundColor.hsl().string(),
       },
     },
     namePlateName: {
       color: namePlateNameColor,
     },
     namePlateNameId: { color: namePlateNameIdColor },
+    spotifyProgressBar: {
+      total: {
+        backgroundColor: spotifyProgressBarTotalBackgroundColor.hsl().string(),
+      },
+      progress: {
+        backgroundColor: spotifyProgressBarProgressBackgroundColor,
+      },
+    },
   };
 };

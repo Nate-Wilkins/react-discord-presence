@@ -276,7 +276,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: lightblue;
+  /* Set by inline style. */
+  background-color: yellow;
   width: 1.75em;
   height: 1.75em;
   border-radius: 50%;
@@ -285,7 +286,8 @@
 
 .status {
   display: block;
-  background-color: lightblue;
+  /* Set by inline style. */
+  background-color: yellow;
   width: 1.00em;
   height: 1.00em;
   border-radius: 50%;
@@ -338,6 +340,47 @@
   display: block;
   white-space: pre-line;
   margin-bottom: 0.8em;
+}
+
+.listeningToSpotify {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8em;
+}
+
+.listeningToSpotify h3 {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-bottom: 0.8em;
+}
+
+.spotifySong {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8em;
+}
+
+.spotifySongProgressBar {
+  width: 100%;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  border-radius: 1em;
+  /* Set by inline style. */
+  background-color: red;
+}
+
+.spotifySongProgressBarProgress {
+  height: 0.3em;
+  border-radius: 1em;
+  /* Set by inline style. */
+  background-color: green;
+}
+
+.spotifySongProgressBarDetails {
+  display: flex;
+  justify-content: space-between;
 }
 
 .activities {

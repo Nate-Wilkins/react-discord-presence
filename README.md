@@ -37,17 +37,35 @@ __Error State__
 
 You can find more examples in [`docs/Examples.md`](./docs/Examples.md).
 
+## Features
+
+- Self Contained
+- Banner
+- Avatar
+- User Online Status
+- User Status
+- Badges (Boost badge will match `premium_since`)
+- About Me
+- Member Since (Mostly, icons are on the Roadmap)
+- Spotify
+- Activity
+- Customization
+
+Please note that this component is only possible by the [Lanyard API](https://github.com/Phineas/lanyard) and the work done to get the correct data
+pulled into the display components.
+
 ## Requirements
 
 This solution uses the [Lanyard API](https://github.com/Phineas/lanyard) which will require the Discord user your
-displaying presence for be in the [Lanyard API Discord](https://discord.gg/UrXF2cfJ7F).
+displaying presence for be in the [Lanyard API Discord](https://discord.gg/UrXF2cfJ7F). You will also have to have
+"Developer Mode" on for the user.
 
 If they're not in the Discord server, you'll get a response error from their API.
 
 ## Usage
 
 You can use the self contained `DiscordPresence` component which will handle
-loading, error, and display states automatically for you.
+data retrieval, loading, error, and display states automatically for you.
 
 ### React
 
@@ -81,12 +99,12 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
+- Support for idle status.
+- Support for do not disturb status.
 - Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold).
 - Fix `premiumMemberSince` and `memberSince`.
 - Support code splitting.
-- Support for light theme.
 - Support for failing image downloads/errors.
-- Support for Spotify.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Add tails to hover popovers.
 - Talk with `@salvage_dev` about using `discord-presence` package name.

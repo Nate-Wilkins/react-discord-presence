@@ -19,7 +19,7 @@ export type DiscordGetPresenceRequest = {
 
 export type DiscordGetPresenceResponse = {
   presence: DiscordPresence & {
-    aboutMe: string;
+    aboutMe?: string;
     theme?: {
       primary: string;
       accent: string;
@@ -88,7 +88,7 @@ export const getDiscordPresence = async ({
 
   // Discord CDN.
   let discordCdninfo: {
-    aboutMe: string;
+    aboutMe?: string;
     theme?: {
       primary: string;
       accent: string;
@@ -105,16 +105,13 @@ export const getDiscordPresence = async ({
         `Unable to find Discord presence for user '${developerId}'.`,
       );
     }
-    if (
-      responseContentDiscordCdn.user.id !== developerId ||
-      typeof responseContentDiscordCdn.user.bio !== 'string' ||
-      (!!responseContentDiscordCdn.premium_since &&
-        typeof responseContentDiscordCdn.premium_since !== 'string')
-    ) {
+    if (responseContentDiscordCdn.user.id !== developerId) {
       throw new Error('Invalid response object.');
     }
     discordCdninfo = {
-      aboutMe: responseContentDiscordCdn.user.bio,
+      ...(typeof responseContentDiscordCdn.user.bio == 'string'
+        ? { aboutMe: responseContentDiscordCdn.user.bio }
+        : {}),
       ...(responseContentDiscordCdn.user_profile &&
       responseContentDiscordCdn.user_profile.theme_colors instanceof Array &&
       responseContentDiscordCdn.user_profile.theme_colors.length === 2
@@ -133,7 +130,7 @@ export const getDiscordPresence = async ({
             },
           }
         : {}),
-      ...(responseContentDiscordCdn.premium_since
+      ...(typeof responseContentDiscordCdn.premium_since === 'string'
         ? { premiumMemberSince: responseContentDiscordCdn.premium_since }
         : {}),
     };

@@ -21,7 +21,7 @@ import StyleDiscordPresenceDefault from './display/style/DiscordPresenceDefault.
 />
 
 export const Template = (args) => (
-  <div style={{ fontSize: '14px' }}>
+  <div style={{ fontSize: '16px' }}>
     <MockDiscordPresence
       args={{ developerId: args.developerId }}
       classes={StyleDiscordPresenceDefault}
@@ -58,6 +58,17 @@ Some example Discord user presences.
   },
   data: {
     memberSince: 'May 12, 2018',
+  }
+}}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Examples_Rajat" args={{
+  args: {
+    developerId: "754033245972201612"
+  },
+  data: {
+    memberSince: 'Sep 11, 2020',
   }
 }}>
   {Template.bind({})}

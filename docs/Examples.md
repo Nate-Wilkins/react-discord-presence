@@ -14,3 +14,5 @@
 ![Screenshot React Discord Presence nate-wilkins](../__screenshots__/DiscordPresence/DiscordPresence_small.png)
 
 ![Screenshot React Discord Presence Proximitynow](../__screenshots__/DiscordPresence/Examples_Proximitynow_small.png)
+
+![Screenshot React Discord Presence Rajat](../__screenshots__/DiscordPresence/Examples_Rajat_small.png)
