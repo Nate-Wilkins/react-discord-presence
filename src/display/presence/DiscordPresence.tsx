@@ -1,5 +1,4 @@
 import React, { CSSProperties, FunctionComponent, useState } from 'react';
-import Color from 'color';
 import { createLinearGradientVertical } from '../create_linear_gradient_vertical';
 import { DiscordImageEmoji } from '../image';
 import { Text } from '../Text';
@@ -9,27 +8,8 @@ import { DiscordPresenceBadge } from './DiscordPresenceBadge';
 import { DiscordPresenceBox } from './DiscordPresenceBox';
 import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
 import { getDiscordBadges } from './get_discord_badges';
+import { getTheme } from './get_theme';
 import { DiscordPresenceData } from './types';
-
-/*
- * Get color lighten step.
- */
-const getColorLightnessStep = (
-  color: Color,
-  totalSteps: number,
-  step: number,
-) => {
-  const remainder = 100 - color.lightness();
-  return (step / totalSteps) * remainder;
-};
-
-/*
- * Get color darken step.
- */
-const getColorDarkenStep = (color: Color, totalSteps: number, step: number) => {
-  const remainder = color.lightness();
-  return (step / totalSteps) * remainder;
-};
 
 /*
  * Discord presence.
@@ -88,130 +68,8 @@ export const DiscordPresence: FunctionComponent<{
     data.discord_user.public_flags,
   );
 
-  // Setup theming colors.
-  // This is a best estimate to how the theming function that Discord uses.
-  const totalSteps = 40; // How many content boxes there are overlayed in the DOM.
-  const colorPrimary = Color(data.theme.primary);
-  const colorAccent = Color(data.theme.accent);
-
-  // Root Colors.
-  const rootPrimaryColor = colorPrimary.isDark() ? '#ffffff' : 'rgb(6, 6, 7)';
-  const rootPrimaryBackgroundColorStepDark = 2;
-  const rootPrimaryBackgroundColorStepLight = 19;
-  const rootPrimaryBackgroundColor = !colorPrimary.isDark()
-    ? colorPrimary.lightness(
-        colorPrimary.lightness() +
-          getColorLightnessStep(
-            colorPrimary,
-            totalSteps,
-            rootPrimaryBackgroundColorStepLight,
-          ),
-      )
-    : colorPrimary.lightness(
-        colorPrimary.lightness() -
-          getColorDarkenStep(
-            colorPrimary,
-            totalSteps,
-            rootPrimaryBackgroundColorStepDark,
-          ),
-      );
-  const rootAccentBackgroundColor = !colorAccent.isDark()
-    ? colorAccent.lightness(
-        colorAccent.lightness() +
-          getColorLightnessStep(
-            colorAccent,
-            totalSteps,
-            rootPrimaryBackgroundColorStepLight,
-          ),
-      )
-    : colorAccent.lightness(
-        colorAccent.lightness() -
-          getColorDarkenStep(
-            colorAccent,
-            totalSteps,
-            rootPrimaryBackgroundColorStepDark,
-          ),
-      );
-
-  // Content Colors.
-  const contentPrimaryBackgroundColorStepLight = 20;
-  const contentPrimaryBackgroundColorStepDark = 24;
-  const contentPrimaryBackgroundColor = !rootPrimaryBackgroundColor.isDark()
-    ? rootPrimaryBackgroundColor.lightness(
-        rootPrimaryBackgroundColor.lightness() +
-          getColorLightnessStep(
-            rootPrimaryBackgroundColor,
-            totalSteps,
-            contentPrimaryBackgroundColorStepLight,
-          ),
-      )
-    : rootPrimaryBackgroundColor.lightness(
-        rootPrimaryBackgroundColor.lightness() -
-          getColorDarkenStep(
-            rootPrimaryBackgroundColor,
-            totalSteps,
-            contentPrimaryBackgroundColorStepDark,
-          ),
-      );
-  const contentAccentBackgroundColor = !rootAccentBackgroundColor.isDark()
-    ? rootAccentBackgroundColor.lightness(
-        rootAccentBackgroundColor.lightness() +
-          getColorLightnessStep(
-            rootAccentBackgroundColor,
-            totalSteps,
-            contentPrimaryBackgroundColorStepLight,
-          ),
-      )
-    : rootAccentBackgroundColor.lightness(
-        rootAccentBackgroundColor.lightness() -
-          getColorDarkenStep(
-            rootAccentBackgroundColor,
-            totalSteps,
-            contentPrimaryBackgroundColorStepDark,
-          ),
-      );
-
-  // Name Plate Colors.
-  const namePlatePrimaryBackgroundColorStepLight = 34;
-  const namePlatePrimaryBackgroundColorStepDark = 32;
-  const namePlatePrimaryBackgroundColor = !rootPrimaryBackgroundColor.isDark()
-    ? rootPrimaryBackgroundColor.lightness(
-        rootPrimaryBackgroundColor.lightness() +
-          getColorLightnessStep(
-            rootPrimaryBackgroundColor,
-            totalSteps,
-            namePlatePrimaryBackgroundColorStepLight,
-          ),
-      )
-    : rootPrimaryBackgroundColor.lightness(
-        rootPrimaryBackgroundColor.lightness() -
-          getColorDarkenStep(
-            rootPrimaryBackgroundColor,
-            totalSteps,
-            namePlatePrimaryBackgroundColorStepDark,
-          ),
-      );
-  const namePlateAccentBackgroundColor = !rootAccentBackgroundColor.isDark()
-    ? rootAccentBackgroundColor.lightness(
-        rootAccentBackgroundColor.lightness() +
-          getColorLightnessStep(
-            rootAccentBackgroundColor,
-            totalSteps,
-            namePlatePrimaryBackgroundColorStepLight,
-          ),
-      )
-    : rootAccentBackgroundColor.lightness(
-        rootAccentBackgroundColor.lightness() -
-          getColorDarkenStep(
-            rootAccentBackgroundColor,
-            totalSteps,
-            namePlatePrimaryBackgroundColorStepDark,
-          ),
-      );
-  const namePlateNameColor = rootPrimaryColor;
-  const namePlateNameIdColor = !rootPrimaryBackgroundColor.isDark()
-    ? 'rgba(79, 86, 96, 1)'
-    : 'rgba(185, 185, 185, 1)';
+  // Setup theme.
+  const theme = getTheme(data.theme);
 
   // Event Handlers.
   const onAvatarMouseOver = () => {
@@ -227,18 +85,18 @@ export const DiscordPresence: FunctionComponent<{
       styleRoot={{
         ...style,
 
-        color: rootPrimaryColor,
+        color: theme.root.color,
         background: createLinearGradientVertical(
-          rootPrimaryBackgroundColor.hsl().string(),
+          theme.root.backgroundColor.primary.hsl().string(),
           0.5,
-          rootAccentBackgroundColor.hsl().string(),
+          theme.root.backgroundColor.accent.hsl().string(),
         ),
       }}
       styleContent={{
         background: createLinearGradientVertical(
-          contentPrimaryBackgroundColor.hsl().string(),
+          theme.content.backgroundColor.primary.hsl().string(),
           0.5,
-          contentAccentBackgroundColor.hsl().string(),
+          theme.content.backgroundColor.accent.hsl().string(),
         ),
       }}
     >
@@ -281,7 +139,9 @@ export const DiscordPresence: FunctionComponent<{
             <DiscordPresenceUserStatus
               classes={classes}
               style={{
-                backgroundColor: namePlatePrimaryBackgroundColor.hsl().string(),
+                backgroundColor: theme.namePlate.backgroundColor.primary
+                  .hsl()
+                  .string(),
               }}
               data={data}
             />
@@ -292,7 +152,9 @@ export const DiscordPresence: FunctionComponent<{
         <div
           className={classes.badges}
           style={{
-            backgroundColor: namePlatePrimaryBackgroundColor.hsl().string(),
+            backgroundColor: theme.namePlate.backgroundColor.primary
+              .hsl()
+              .string(),
           }}
         >
           <>
@@ -302,7 +164,7 @@ export const DiscordPresence: FunctionComponent<{
                 classes={classes}
                 badge={badge}
                 stylePopover={{
-                  color: namePlateNameIdColor,
+                  color: theme.namePlateNameId.color,
                 }}
               />
             ))}
@@ -313,7 +175,7 @@ export const DiscordPresence: FunctionComponent<{
                   classes={classes}
                   badge={'PremiumMemberSince'}
                   stylePopover={{
-                    color: namePlateNameIdColor,
+                    color: theme.namePlateNameId.color,
                   }}
                 />
               </>
@@ -327,9 +189,9 @@ export const DiscordPresence: FunctionComponent<{
         className={classes.namePlate}
         style={{
           background: createLinearGradientVertical(
-            namePlatePrimaryBackgroundColor.hsl().string(),
+            theme.namePlate.backgroundColor.primary.hsl().string(),
             0.7,
-            namePlateAccentBackgroundColor.hsl().string(),
+            theme.namePlate.backgroundColor.accent.hsl().string(),
           ),
         }}
       >
@@ -349,7 +211,7 @@ export const DiscordPresence: FunctionComponent<{
             <h1
               style={{
                 fontSize: 'inherit',
-                color: namePlateNameColor,
+                color: theme.namePlateName.color,
               }}
             >
               {data.discord_user.username}
@@ -357,7 +219,7 @@ export const DiscordPresence: FunctionComponent<{
             <h2
               style={{
                 fontSize: 'inherit',
-                color: namePlateNameIdColor,
+                color: theme.namePlateNameId.color,
               }}
             >
               #{data.discord_user.discriminator}
@@ -398,7 +260,7 @@ export const DiscordPresence: FunctionComponent<{
 
             <p
               style={{
-                color: namePlateNameIdColor,
+                color: theme.namePlateNameId.color,
               }}
             >
               <Text classes={classes}>{data.aboutMe}</Text>
@@ -413,7 +275,7 @@ export const DiscordPresence: FunctionComponent<{
 
             <p
               style={{
-                color: namePlateNameIdColor,
+                color: theme.namePlateNameId.color,
               }}
             >
               <Text classes={classes}>{data.memberSince}</Text>
@@ -439,7 +301,7 @@ export const DiscordPresence: FunctionComponent<{
                         className={classes.activityIconBadgeImage}
                         src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.png`}
                         style={{
-                          backgroundColor: namePlatePrimaryBackgroundColor
+                          backgroundColor: theme.namePlate.backgroundColor.primary
                             .hsl()
                             .string(),
                         }}
