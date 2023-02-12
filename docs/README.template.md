@@ -33,6 +33,7 @@ You can find more examples in [`docs/Examples.md`](./docs/Examples.md).
 - Avatar
 - User Online Status
 - User Status
+- Emojis
 - Badges (Boost badge will match `premium_since`)
 - About Me
 - Member Since (Mostly, icons are on the Roadmap)
@@ -92,15 +93,18 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 - Support for do not disturb status.
 - Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold), images (?), and links (?).
 - Fix `premiumMemberSince` and `memberSince`.
-- Support code splitting.
 - Support for failing image downloads/errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Add tails to hover popovers.
-- Talk with `@salvage_dev` about using `discord-presence` package name.
 - Find SVG badges for 'TeamPseudoUser', 'VerifiedBot', 'CertifiedModerator', 'BotHTTPInteractions', 'Spammer', and 'Quarantined'
 
-### Accessor
+### Data
 
 - Support for realtime presence data with the web socket API.
 - Support for automated queries on an interval.
 - Support for custom `maxDelay` on call site.
+
+### Other
+
+- Support code splitting.
+- Talk with `@salvage_dev` about using `discord-presence` package name.
