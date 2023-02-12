@@ -359,7 +359,6 @@
 .spotifySong {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.8em;
 }
 
 .spotifySongProgressBar {
