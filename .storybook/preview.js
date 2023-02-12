@@ -13,7 +13,6 @@ export const parameters = {
   layout: 'fullscreen',
   screenshot: {
     fullPage: true,
-    // TODO: storybook theme: 'transparent' and ommitBackground: false
     omitBackground: true,
     viewports: {
       large: {

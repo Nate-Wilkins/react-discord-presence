@@ -12,11 +12,22 @@ yarn add react-discord-presence
 
 ## Example
 
-[![Screenshot React Discord Presence](./__screenshots__/Display/DiscordPresence/DiscordPresence_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
-
 Check it out on [StackBlitz](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx).
 
+[![Screenshot React Discord Presence](./__screenshots__/Display/DiscordPresence/DiscordPresence_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
+
+__Loading State__
+
+[![Screenshot Loading React Discord Presence](./__screenshots__/Display/LoadingDiscordPresence/Custom_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
+
+__Error State__
+
+[![Screenshot Loading React Discord Presence](./__screenshots__/Display/ErrorDiscordPresence/Custom_small.png)](https://stackblitz.com/edit/react-ts-nfdx3w?file=App.tsx)
+
 ## Usage
+
+You can use the self contained `DiscordPresence` component which will handle
+loading, error, and display states automatically for you.
 
 ### React
 
@@ -53,7 +64,6 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 - Fix `premiumMemberSince` and `memberSince`.
 - Support code splitting.
 - Support for light theme.
-- Support for screencapture of storybook components.
 - Support for failing image downloads/errors.
 - Support for Spotify.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
