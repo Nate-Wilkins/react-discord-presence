@@ -1,6 +1,6 @@
 {
   "name": "react-discord-presence",
-  "version": "10.8.1",
+  "version": "10.8.2",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your Discord presence in react.",
   "main": "dist/index.js",
