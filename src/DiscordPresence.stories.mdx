@@ -1,8 +1,8 @@
 import { Meta, Description, Story } from '@storybook/addon-docs';
+import { DiscordPresenceClassesDefault } from './display';
 import ImageAvatar from '../test/avatar.gif';
 import ImageBanner from '../test/banner.jpeg';
 import { MockDiscordPresence } from './MockDiscordPresence';
-import StyleDiscordPresenceDefault from './display/style/DiscordPresenceDefault.module.css';
 
 <Meta title="DiscordPresence" component={MockDiscordPresence}
   argTypes={{
@@ -24,7 +24,7 @@ export const Template = (args) => (
   <div style={{ fontSize: '16px' }}>
     <MockDiscordPresence
       args={{ developerId: args.developerId }}
-      classes={StyleDiscordPresenceDefault}
+      classes={DiscordPresenceClassesDefault}
       formatBannerImageSrc={() => ImageBanner}
       formatAvatarImageSrc={() => ImageAvatar}
       {...args }

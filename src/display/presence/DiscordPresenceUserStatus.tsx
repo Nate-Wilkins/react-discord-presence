@@ -66,20 +66,7 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
       <div
         className={classes.status}
         style={{ backgroundColor: 'rgb(116 127 141)' }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: 'calc(50% - 0.50em / 2)',
-            left: 'calc(50% - 0.50em / 2)',
-            display: 'block',
-            width: '0.50em',
-            height: '0.50em',
-            borderRadius: '50%',
-            ...style,
-          }}
-        ></div>
-      </div>
+      />
     </div>
   );
 };

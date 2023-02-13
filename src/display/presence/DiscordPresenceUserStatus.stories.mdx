@@ -1,6 +1,6 @@
 import { Meta, Description, Story } from '@storybook/addon-docs';
-import StyleDiscordPresenceDefault from '../style/DiscordPresenceDefault.module.css';
 import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
+import { DiscordPresenceClassesDefault } from '../style';
 
 <Meta title="Display/DiscordPresenceUserStatus" component={DiscordPresenceUserStatus} argTypes={{ }} />
 
@@ -14,7 +14,10 @@ Display Discord presence user status.
   <div style={{ fontSize: '16px' }}>
     <Box>
       <DiscordPresenceUserStatus
-        classes={StyleDiscordPresenceDefault}
+        classes={DiscordPresenceClassesDefault}
+        style={{
+          backgroundColor: '#5133ff',
+        }}
         data={{
           active_on_discord_desktop: false,
           active_on_discord_mobile: false,
@@ -29,7 +32,10 @@ Display Discord presence user status.
   <div style={{ fontSize: '16px' }}>
     <Box>
       <DiscordPresenceUserStatus
-        classes={StyleDiscordPresenceDefault}
+        classes={DiscordPresenceClassesDefault}
+        style={{
+          backgroundColor: '#5133ff',
+        }}
         data={{
           active_on_discord_desktop: true,
           active_on_discord_mobile: false,
@@ -44,7 +50,10 @@ Display Discord presence user status.
   <div style={{ fontSize: '16px' }}>
     <Box>
       <DiscordPresenceUserStatus
-        classes={StyleDiscordPresenceDefault}
+        classes={DiscordPresenceClassesDefault}
+        style={{
+          backgroundColor: '#5133ff',
+        }}
         data={{
           active_on_discord_desktop: false,
           active_on_discord_mobile: true,
@@ -59,7 +68,10 @@ Display Discord presence user status.
   <div style={{ fontSize: '16px' }}>
     <Box>
       <DiscordPresenceUserStatus
-        classes={StyleDiscordPresenceDefault}
+        classes={DiscordPresenceClassesDefault}
+        style={{
+          backgroundColor: '#5133ff',
+        }}
         data={{
           active_on_discord_desktop: false,
           active_on_discord_mobile: false,

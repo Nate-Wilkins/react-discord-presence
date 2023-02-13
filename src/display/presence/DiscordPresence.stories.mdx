@@ -2,9 +2,12 @@ import { Meta, Description, Story } from '@storybook/addon-docs';
 import { createLanyardApiData } from '../../../test/create_lanyard_api_data';
 import ImageBanner from '../../../test/banner.jpeg';
 import ImageAvatar from '../../../test/avatar.gif';
-import StyleDiscordPresenceDefault from '../style/DiscordPresenceDefault.module.css';
-import StyleDiscordPresenceCode from '../style/DiscordPresenceCode.module.css';
 import { DiscordPresence } from './DiscordPresence';
+import {
+  DiscordPresenceClassesDefault,
+  DiscordPresenceClassesCode,
+  DiscordPresenceClassesDefaultLocal,
+} from '../style';
 
 <Meta title="Display/DiscordPresence" component={DiscordPresence} argTypes={{ }} />
 
@@ -28,7 +31,7 @@ Display Discord presence.
 <Story name="Default" parameters={{ date: new Date(1676232584000) }}>
   <div style={{ fontSize: '16px' }}>
     <DiscordPresence
-      classes={StyleDiscordPresenceDefault}
+      classes={DiscordPresenceClassesDefault}
       data={data}
       formatBannerImageSrc={() => ImageBanner}
       formatAvatarImageSrc={() => ImageAvatar}
@@ -45,7 +48,12 @@ Display Discord presence with custom styling.
 <Story name="CustomCode" parameters={{ date: new Date(1676232584000) }}>
   <div style={{ fontSize: '16px' }}>
     <DiscordPresence
-      classes={Object.assign({}, StyleDiscordPresenceDefault, StyleDiscordPresenceCode)}
+      classes={Object.assign(
+        {},
+        DiscordPresenceClassesDefault,
+        DiscordPresenceClassesDefaultLocal,
+        DiscordPresenceClassesCode,
+      )}
       data={data}
       formatBannerImageSrc={() => ImageBanner}
       formatAvatarImageSrc={() => ImageAvatar}

@@ -1,5 +1,5 @@
 import { Meta, Description, Story } from '@storybook/addon-docs';
-import StyleDiscordPresenceDefault from '../style/DiscordPresenceDefault.module.css';
+import { DiscordPresenceClassesDefault } from '../style';
 import { ErrorDiscordPresence } from './ErrorDiscordPresence';
 
 <Meta title="Display/ErrorDiscordPresence" component={ErrorDiscordPresence} argTypes={{ }} />
@@ -11,7 +11,7 @@ Display error state for Discord presence.
 <Story name="Default">
   <div style={{ fontSize: '16px' }}>
     <ErrorDiscordPresence
-      classes={StyleDiscordPresenceDefault}
+      classes={DiscordPresenceClassesDefault}
       theme={{ primary: '#36393f', accent: '#2f3136', }}
       error="Unkown error description."
     />
@@ -21,7 +21,7 @@ Display error state for Discord presence.
 <Story name="Custom">
   <div style={{ fontSize: '16px' }}>
     <ErrorDiscordPresence
-      classes={StyleDiscordPresenceDefault}
+      classes={DiscordPresenceClassesDefault}
       theme={{ primary: '#2672c3', accent: '#001a30', }}
       error="Unkown error description."
     />

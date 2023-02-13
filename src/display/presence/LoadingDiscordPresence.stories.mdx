@@ -1,5 +1,5 @@
 import { Meta, Description, Story } from '@storybook/addon-docs';
-import StyleDiscordPresenceDefault from '../style/DiscordPresenceDefault.module.css';
+import { DiscordPresenceClassesDefault } from '../style';
 import { LoadingDiscordPresence } from './LoadingDiscordPresence';
 
 <Meta title="Display/LoadingDiscordPresence" component={LoadingDiscordPresence} argTypes={{ }} />
@@ -11,7 +11,7 @@ Display loading state for Discord presence.
 <Story name="Default">
   <div style={{ fontSize: '16px' }}>
     <LoadingDiscordPresence
-      classes={StyleDiscordPresenceDefault}
+      classes={DiscordPresenceClassesDefault}
       theme={{ primary: '#36393f', accent: '#2f3136', }}
     />
   </div>
@@ -20,7 +20,7 @@ Display loading state for Discord presence.
 <Story name="Custom">
   <div style={{ fontSize: '16px' }}>
     <LoadingDiscordPresence
-      classes={StyleDiscordPresenceDefault}
+      classes={DiscordPresenceClassesDefault}
       theme={{ primary: '#2672c3', accent: '#001a30', }}
     />
   </div>

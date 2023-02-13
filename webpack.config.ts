@@ -66,10 +66,18 @@ export default {
           },
         ],
       },
-      // TODO: Can this embed styles?
       {
         test: /\.css$/,
         use: [
+          {
+            loader: 'file-loader',
+            options: {
+              emitFile: true,
+              name() {
+                return '[path][name].[ext]';
+              },
+            },
+          },
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
@@ -84,7 +92,7 @@ export default {
         test: /\.(jpg|jpe?g|png|gif|mp3|svg|gltf|fbx|txt|pdf|md|xml|webp|ttf)$/i,
         use: [
           {
-            loader: require.resolve('file-loader'),
+            loader: 'file-loader',
             options: {
               emitFile: true,
               name() {
