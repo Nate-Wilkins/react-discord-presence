@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Delete all ignored files.
+git ls-files -o --ignored --exclude-standard | xargs rm -rf
+
+# Delete all empty directories.
+find . -type d -empty -delete
