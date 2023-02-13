@@ -1,7 +1,9 @@
-scripts/
-.gitignore
-tsconfig.json
-webpack.config.ts
-yarn.lock
-node_modules/
-__screenshots__/
+*
+!dist/
+!.tool-versions
+!.npmignore
+!LICENSE
+!package.json
+!README.md
+!tsconfig.json
+!yarn.lock
