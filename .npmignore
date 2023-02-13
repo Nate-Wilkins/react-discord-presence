@@ -1,5 +1,5 @@
 *
-!dist/
+!dist/**/*
 !.tool-versions
 !.npmignore
 !LICENSE
