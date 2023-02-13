@@ -14,7 +14,7 @@
   "scripts": {
     "docs": "ts-node ./scripts/generate_docs.ts && cp ./docs/README.md ./README.md && rm ./docs/README.md",
     "build:ts": "ts-node ./node_modules/webpack/bin/webpack",
-    "clean": "git clean -X -q -f",
+    "clean": "git clean -X -f",
     "build": "yarn run clean && yarn run build:ts && yarn run docs",
     "lint": "yarn run eslint --ext .jsx,.js,.ts,.tsx ./",
     "test": "yarn run jest --coverage && yarn run lint",

@@ -100,6 +100,7 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
+- NPM package should have dist and README only.
 - Support for idle status.
 - Support for do not disturb status.
 - Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold), images (?), and links (?).
