@@ -1,9 +1,17 @@
 {
   "name": "react-discord-presence",
-  "version": "10.10.5",
+  "version": "10.10.8",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your Discord presence in react.",
   "main": "dist/index.js",
+  "files": [
+    "dist/",
+    ".tool-versions",
+    "README.md",
+    "LICENSE",
+    "tsconfig.json",
+    "yarn.lock"
+  ],
   "types": "dist/src/index.d.ts",
   "repository": {
     "type": "git",
