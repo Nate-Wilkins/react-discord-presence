@@ -1,5 +1,5 @@
 #
-# Run cleanup on temporary files.
+# Run cleanup on ignored files.
 #
 function clean() {
   yarn clean
