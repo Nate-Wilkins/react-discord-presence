@@ -22,6 +22,7 @@ Display Discord presence user status.
           active_on_discord_desktop: false,
           active_on_discord_mobile: false,
           active_on_discord_web: false,
+          discord_status: 'offline',
         }}
       />
     </Box>
@@ -40,6 +41,7 @@ Display Discord presence user status.
           active_on_discord_desktop: true,
           active_on_discord_mobile: false,
           active_on_discord_web: false,
+          discord_status: 'online',
         }}
       />
     </Box>
@@ -58,6 +60,7 @@ Display Discord presence user status.
           active_on_discord_desktop: false,
           active_on_discord_mobile: true,
           active_on_discord_web: false,
+          discord_status: 'online',
         }}
       />
     </Box>
@@ -76,6 +79,45 @@ Display Discord presence user status.
           active_on_discord_desktop: false,
           active_on_discord_mobile: false,
           active_on_discord_web: true,
+          discord_status: 'online',
+        }}
+      />
+    </Box>
+  </div>
+</Story>
+
+<Story name="Do Not Disturb">
+  <div style={{ fontSize: '16px' }}>
+    <Box>
+      <DiscordPresenceUserStatus
+        classes={DiscordPresenceClassesDefault}
+        style={{
+          backgroundColor: '#5133ff',
+        }}
+        data={{
+          active_on_discord_desktop: false,
+          active_on_discord_mobile: false,
+          active_on_discord_web: true,
+          discord_status: 'dnd',
+        }}
+      />
+    </Box>
+  </div>
+</Story>
+
+<Story name="Idle">
+  <div style={{ fontSize: '16px' }}>
+    <Box>
+      <DiscordPresenceUserStatus
+        classes={DiscordPresenceClassesDefault}
+        style={{
+          backgroundColor: '#5133ff',
+        }}
+        data={{
+          active_on_discord_desktop: false,
+          active_on_discord_mobile: false,
+          active_on_discord_web: true,
+          discord_status: 'idle',
         }}
       />
     </Box>
