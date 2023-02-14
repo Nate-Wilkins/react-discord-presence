@@ -50,6 +50,13 @@ function storybook() {
 }
 
 #
+# Run storybook build.
+#
+function storybook_build() {
+  yarn run storybook:build
+}
+
+#
 # Run storybook screenshot capturer for storybook components.
 #
 function storybook_screenshot() {
@@ -78,6 +85,7 @@ function help() {
   echo '   publish                Run publish pipeline for the distributable.                   '
   echo '   storybook              Run storybook.                                                '
   echo '   storybook_screenshot   Run storybook screenshot capturer for storybook components.   '
+  echo '   storybook_build        Run storybook build.                                          '
   echo '   distributable_size     Run viewer to see distributable size.                         '
   echo '   help                   Run help.                                                     '
   echo '                                                                                        '

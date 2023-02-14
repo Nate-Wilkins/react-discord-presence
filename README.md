@@ -71,11 +71,11 @@ data retrieval, loading, error, and display states automatically for you.
 ### React
 
 ```typescript
-import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import { DiscordPresence,  } from 'react-discord-presence';
+import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
 // ...
 <DiscordPresence
-  classes={discordPresenceClasses}
+  classes={DiscordPresenceClassesDefault}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```

@@ -1,6 +1,6 @@
 {
   "name": "react-discord-presence",
-  "version": "10.10.8",
+  "version": "10.11.0",
   "author": "nate-wilkins <nate-wilkins@code-null.com>",
   "description": "Display your Discord presence in react.",
   "main": "dist/index.js",
@@ -77,6 +77,8 @@
     "mustache": "4.2.0",
     "node-fetch": "2.6.9",
     "path-browserify": "1.0.1",
+    "postcss": "8.4.21",
+    "postcss-loader": "7.0.2",
     "prettier": "1.19.1",
     "puppeteer": "19.6.3",
     "react": ">=15.0.1",

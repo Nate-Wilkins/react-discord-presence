@@ -9,6 +9,7 @@
 !.storybook
 !.tool-versions
 
+storybook/
 dist/
 lib/
 build/

@@ -17,10 +17,10 @@
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
 // ...
 <DiscordPresence
-  classes={discordPresenceClasses}
+  classes={DiscordPresenceClassesDefault}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
@@ -29,25 +29,25 @@ import discordPresenceClasses from 'react-discord-presence/dist/src/display/styl
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
-import discordPresenceCodeClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceCode.module.css';
+import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import DiscordPresenceClassesCode from 'react-discord-presence/dist/src/display/style/DiscordPresenceCode.module.css';
 // ...
 <DiscordPresence
-  classes={Object.assign({}, discordPresenceClasses, discordPresenceCodeClasses}}
+  classes={Object.assign({}, DiscordPresenceClassesDefault, DiscordPresenceClassesCode}}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
 
 - `DiscordPresenceDefaultLocal.module.css`: Modifies the badges to point at distributed assets. Useful for additional
-  processing. This might require additional webpack setup.
+  processing. This will require additional webpack setup (ie `file-loader`).
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
-import discordPresenceLocalClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefaultLocal.module.css';
+import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import DiscordPresenceClassesDefaultLocal  from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefaultLocal.module.css';
 // ...
 <DiscordPresence
-  classes={Object.assign({}, discordPresenceClasses, discordPresenceLocalClasses}}
+  classes={Object.assign({}, DiscordPresenceClassesDefault, DiscordPresenceClassesDefaultLocal}}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
@@ -104,11 +104,11 @@ __`./index.tsx`__
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import discordPresenceClasses from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
-import customClasses from './DiscordPresenceCustom.module.css';
+import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import DiscordPresenceClassesCustom from './DiscordPresenceCustom.module.css';
 // ...
 <DiscordPresence
-  classes={Object.assign({}, discordPresenceClasses, customClasses}}
+  classes={Object.assign({}, DiscordPresenceClassesDefault, DiscordPresenceClassesCustom}}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
