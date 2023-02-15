@@ -93,19 +93,16 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 - [Schema Lanyard API Discord Presence](https://github.com/Nate-Wilkins/schema-lanyard-discord-presence): Schema for the
   Lanyard API.
 - [Lanyard API](https://github.com/Phineas/lanyard): REST and WS API that provides Discord presence data.
-- [Discord CDN Alternative](https://gist.github.com/dustinrouillard/04be36180ed80db144a4857408478854): REST API the
+- [Discord CDN Alternative](https://gist.github.com/dustinrouillard/04be36180ed80db144a4857408478854): REST API that
   provides Discord presence data.
 
 ## Roadmap
 
 ### Display
 
-- NPM package should have dist and README only.
-- Support for idle status.
-- Support for do not disturb status.
+- Support for failing image downloads/errors.
 - Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold), images (?), and links (?).
 - Fix `premiumMemberSince` and `memberSince`.
-- Support for failing image downloads/errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Add tails to hover popovers.
 - Find SVG badges for 'TeamPseudoUser', 'VerifiedBot', 'CertifiedModerator', 'BotHTTPInteractions', 'Spammer', and 'Quarantined'
@@ -116,7 +113,7 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 - Support for automated queries on an interval.
 - Support for custom `maxDelay` on call site.
 
-### Other
+### Build
 
 - Support code splitting.
-- Talk with `@salvage_dev` about using `discord-presence` package name.
+- Flatten asset distributable output (CSS/Images/etc)
