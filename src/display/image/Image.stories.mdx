@@ -1,0 +1,47 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { Image } from './Image';
+import { ErrorImage } from './ErrorImage';
+import DiscordMarkBlack from './DiscordMarkBlack.svg';
+
+<Meta title="Display/Image" component={Image}
+  argTypes={{
+    src: {
+      defaultValue: DiscordMarkBlack,
+      control: { type: 'text' }
+    }
+  }}
+/>
+
+export const Box = ({ children }) => <div style={{ display: 'inline-block', border: '1px dotted black', padding: '1em' }}>{children}</div>;
+
+export const Template = ({ ...args }) => (
+  <Box>
+    <Image {...args} />
+  </Box>
+);
+
+# Image
+
+A self contained image asset that can handle:
+
+- Loading the image (through the browser's `img` tag).
+- Errors that may occur when loading the image.
+- Caching (through the browser's content cache).
+- Display the image `src` attribute.
+
+## Display
+
+<Story name="Display" args={{ width: 300, height: 300, }}>
+  {Template.bind({})}
+</Story>
+
+## Error
+
+<Story name="Error" args={{
+  width: 300,
+  height: 300,
+  src: "./not_valid_path",
+  renderError: ({ width, height }) => <ErrorImage style={{ stroke: '#333333', fill: '#333333', width, height }} />
+ }}>
+  {Template.bind({})}
+</Story>

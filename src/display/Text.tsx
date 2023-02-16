@@ -1,14 +1,18 @@
-import React, { FunctionComponent } from 'react';
+import React, { CSSProperties, FunctionComponent } from 'react';
 import Twemoji from 'react-twemoji';
 
 /*
  * Text with Emoji support.
  */
 export const Text: FunctionComponent<{
-  classes: Record<string, string>;
+  className?: string;
+  style?: CSSProperties;
+  emojiClassName: string;
   children: string;
-}> = ({ classes, children }) => (
-  <Twemoji options={{ className: classes.emoji }} tag="span">
-    {children}
+}> = ({ className, style, emojiClassName, children }) => (
+  <Twemoji noWrapper options={{ className: emojiClassName }}>
+    <span className={className} style={style}>
+      {children}
+    </span>
   </Twemoji>
 );

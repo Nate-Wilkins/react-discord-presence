@@ -4,6 +4,9 @@ import fetchMock from 'fetch-mock';
 import { createLanyardApiData } from '../test/create_lanyard_api_data';
 import { discord } from './api';
 import { DiscordPresence } from './DiscordPresence';
+import { DiscordPresenceData } from './display';
+import ImageAvatar from '../test/avatar.gif';
+import ImageBanner from '../test/banner.jpeg';
 
 /*
  * Mock the 'DiscordPresence' component for story development.
@@ -41,6 +44,10 @@ export const MockDiscordPresence: FunctionComponent<{
   fetchMock.reset();
 
   // Mock external dependencies by state.
+  let formatAvatarImageSrc:
+    | null
+    | ((input: DiscordPresenceData['discord_user']) => string) = null;
+  let formatBannerImageSrc: null | ((discordUserId: string) => string) = null;
   if (state === 'actual') {
     // noop - no mocking.
   } else if (state === 'load') {
@@ -78,6 +85,9 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
         },
       },
     );
+    // Mock Image Sources.
+    formatBannerImageSrc = () => ImageBanner;
+    formatAvatarImageSrc = () => ImageAvatar;
   } else if (state === 'error') {
     // Mock Lanyard API.
     fetchMock.get(`${discord.Endpoints.V1ApiLanyard}/users/${developerId}`, {
@@ -93,6 +103,12 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
   }
 
   return (
-    <DiscordPresence classes={classes} args={{ developerId }} data={data} />
+    <DiscordPresence
+      classes={classes}
+      args={{ developerId }}
+      data={data}
+      {...(formatAvatarImageSrc ? { formatAvatarImageSrc } : {})}
+      {...(formatBannerImageSrc ? { formatBannerImageSrc } : {})}
+    />
   );
 };

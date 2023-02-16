@@ -137,6 +137,40 @@ const main = async () => {
   try {
     console.info('[build:generate_docs] Build documents.');
 
+    // Get repository information.
+    console.log(`[build:generate_docs] Git Hours.`);
+    const {
+      stdout: commandGitHoursStdout,
+      stderr: commandGitHoursStderr,
+    } = await exec('jikyuu --format json');
+    if (commandGitHoursStderr) {
+      throw new Error(commandGitHoursStderr);
+    }
+    const gitHoursAuthors: {
+      name: string;
+      email: string;
+      hours: number;
+      commits: number;
+    }[] = [];
+    for (const author of JSON.parse(commandGitHoursStdout)) {
+      const gitHoursAuthor = {
+        name: author.author_name,
+        email: author.email,
+        hours: Number(Number(author.hours).toFixed(2)),
+        commits: Number(author.commit_count),
+      };
+      if (gitHoursAuthor.name !== 'Total') {
+        console.log(
+          `    ${gitHoursAuthor.email} (${gitHoursAuthor.hours}hrs) (${gitHoursAuthor.commits}commits)`,
+        );
+        gitHoursAuthors.push(gitHoursAuthor);
+      } else {
+        console.log(
+          `      Total: (${gitHoursAuthor.hours}hrs) (${gitHoursAuthor.commits}commits)`,
+        );
+      }
+    }
+
     // Get package information.
     console.info('[build:generate_docs] Get package information.');
     const pkg = loadJsonFileSync('package.json', documentContentEncoding);
@@ -166,6 +200,7 @@ const main = async () => {
         hashType: documentPackagePeerDependencyHash,
         cdnFileLookup: documentPackagePeerDependencyUnpkgCdnFile,
       }),
+      authors: gitHoursAuthors,
       iframe: {
         source: '',
         dataUri: '',

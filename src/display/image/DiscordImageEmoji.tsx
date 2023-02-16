@@ -1,21 +1,30 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
+import { Image } from './Image';
 
 /*
  * Discord image emoji.
  */
 export const DiscordImageEmoji: FunctionComponent<{
-  classes: Record<string, string>;
+  className: string;
   id: string;
   animated: boolean;
-}> = ({ classes, id, animated }) => {
+  width: number;
+  height: number;
+  renderError?: (renderErrorProps: {
+    width: number;
+    height: number;
+  }) => ReactNode;
+}> = ({ className, id, animated, width, height, renderError }) => {
   return (
-    <img
-      className={classes.emoji}
+    <Image
+      className={className}
       alt={`emoji ${id}`}
-      width={20}
+      width={width}
+      height={height}
       src={`https://cdn.discordapp.com/emojis/${id}${
         animated ? '.gif' : '.png'
       }`}
+      renderError={renderError}
     />
   );
 };

@@ -89,7 +89,6 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
-- Support for failing image downloads/errors.
 - Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold), images (?), and links (?).
 - Fix `premiumMemberSince` and `memberSince`.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
@@ -106,3 +105,9 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 - Support code splitting.
 - Flatten asset distributable output (CSS/Images/etc)
+
+## Contributions
+
+| Author  | Estimated Hours |
+| ------------- | ------------- |
+<%#authors%>| [![<%name%>](https://github.com/<%name%>.png?size=64)](https://github.com/<%name%>) | <p align="right"><%hours%> Hours</p> |<%/authors%>

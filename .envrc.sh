@@ -6,10 +6,17 @@ function clean() {
 }
 
 #
+# Run NodeJS packages install with yarn.
+#
+function install() {
+  yarn install
+  yarn run yarn-deduplicate
+}
+
+#
 # Run build pipeline to create distributable.
 #
 function build() {
-  yarn install
   NODE_ENV=production yarn build
 }
 
@@ -17,12 +24,14 @@ function build() {
 # Run documentation generation.
 #
 function docs() {
-  yarn install
   yarn run docs
 }
 
 #
 # Run source code linting.
+#
+# Dependencies:
+# - [jikyuu](https://github.com/Ruin0x11/jikyuu): Estimates hours spent per Git author.
 #
 function lint() {
   yarn lint
@@ -78,10 +87,11 @@ function help() {
   echo '                                                                                        '
   echo 'Usage                                                                                   '
   echo '   clean                  Run cleanup on temporary files.                               '
+  echo '   install                Run NodeJS packages install with yarn.                        '
   echo '   build                  Run build pipeline to create distributable.                   '
   echo '   docs                   Run documentation generation.                                 '
-  echo '   lint                   Run source code linting.                                      '
   echo '   test                   Run tests.                                                    '
+  echo '   lint                   Run source code linting.                                      '
   echo '   publish                Run publish pipeline for the distributable.                   '
   echo '   storybook              Run storybook.                                                '
   echo '   storybook_screenshot   Run storybook screenshot capturer for storybook components.   '

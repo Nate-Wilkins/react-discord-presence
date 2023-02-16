@@ -1,0 +1,38 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { DiscordPresenceClassesDefault } from './display';
+import { DiscordPresence } from './DiscordPresence';
+
+<Meta title="Examples" component={DiscordPresence} />
+
+export const Template = (args) => (
+  <div style={{ fontSize: '16px' }}>
+    <DiscordPresence classes={DiscordPresenceClassesDefault} args={{ developerId: args.args.developerId }} data={args.data} />
+  </div>
+);
+
+## Examples
+
+Some example Discord user presences.
+
+<Story name="Proximitynow" args={{
+  args: {
+    developerId: "445035187370328066"
+  },
+  data: {
+    memberSince: 'May 12, 2018',
+  }
+}}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Rajat" args={{
+  args: {
+    developerId: "754033245972201612"
+  },
+  data: {
+    memberSince: 'Sep 11, 2020',
+  }
+}}>
+  {Template.bind({})}
+</Story>
+
