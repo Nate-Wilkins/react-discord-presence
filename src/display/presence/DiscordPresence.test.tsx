@@ -2,8 +2,7 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { createLanyardApiData } from '../../../test/create_lanyard_api_data';
 import { DiscordPresence } from './DiscordPresence';
-
-const defaultClasses = {};
+import DiscordPresenceClassesDefault from '../style/DiscordPresenceDefault.module.css';
 
 test('when using Discord presence component', async () => {
   // Given Discord presence component.
@@ -23,7 +22,7 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
 
   // When using the component.
   const queries = render(
-    <DiscordPresence classes={defaultClasses} data={data} />,
+    <DiscordPresence classes={DiscordPresenceClassesDefault} data={data} />,
   );
 
   // Then the Discord presence is rendered.

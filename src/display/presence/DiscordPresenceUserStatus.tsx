@@ -61,11 +61,7 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
   // Do Not Disturb.
   if (status === 'dnd') {
     return (
-      <div
-        data-status={`online-${active_on_discord_desktop ? 'desktop' : 'web'}`}
-        className={classes.statusBorder}
-        style={style}
-      >
+      <div data-status={`dnd`} className={classes.statusBorder} style={style}>
         <svg
           className={classes.status}
           style={{ stroke: '#ed4244', fill: '#ed4244' }}

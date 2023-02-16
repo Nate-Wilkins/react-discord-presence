@@ -1,8 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import { DiscordImageEmoji } from './DiscordImageEmoji';
-
-const defaultClasses = {};
+import DiscordPresenceClassesDefault from '../style/DiscordPresenceDefault.module.css';
 
 test('when using the basic discord image emoji', async () => {
   // Given discord image emoji component.
@@ -11,7 +10,13 @@ test('when using the basic discord image emoji', async () => {
 
   // When using the component.
   const queries = render(
-    <DiscordImageEmoji classes={defaultClasses} id={id} animated={false} />,
+    <DiscordImageEmoji
+      className={DiscordPresenceClassesDefault.emoji}
+      id={id}
+      animated={false}
+      width={32}
+      height={32}
+    />,
   );
 
   // Then the discord image emoji is rendered.
@@ -28,7 +33,13 @@ test('when using the animated discord image emoji', async () => {
 
   // When using the component.
   const queries = render(
-    <DiscordImageEmoji classes={defaultClasses} id={id} animated />,
+    <DiscordImageEmoji
+      className={DiscordPresenceClassesDefault.emoji}
+      id={id}
+      animated
+      width={32}
+      height={32}
+    />,
   );
 
   // Then the discord image emoji is rendered.
