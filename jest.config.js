@@ -26,4 +26,7 @@ module.exports = {
   },
   setupFiles: ['jest-date-mock'],
   reporters: ['default'],
+  moduleNameMapper: {
+    '\\.(css)$': 'identity-obj-proxy',
+  },
 };
