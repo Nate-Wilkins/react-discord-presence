@@ -36,6 +36,12 @@ const documentPackagePeerDependencyHash = 'sha256';
 const documentPackagePeerDependencyUnpkgCdnFile = {
   react: 'umd/react.production.min.js',
   'react-dom': 'umd/react-dom.production.min.js',
+  color: 'index.js',
+  'data-accessor': 'dist/index.js',
+  'date-fns': 'index.js',
+  'react-twemoji': 'lib/Twemoji/index.js',
+  'schema-lanyard-discord-presence': 'dist/index.js',
+  'use-error-boundary': 'lib/index.umd.js',
 };
 const documentTemplateIframeSource = `<!DOCTYPE html>
 <html lang="en">

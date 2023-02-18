@@ -29,17 +29,16 @@
     "storybook": "start-storybook -p $STORYBOOK_PORT",
     "storybook:build": "yarn run build-storybook -o ./storybook"
   },
-  "dependencies": {
-    "color": "4.2.3",
-    "data-accessor": "11.0.0",
-    "date-fns": "2.29.3",
-    "react-twemoji": "0.5.0",
-    "schema-lanyard-discord-presence": "0.7.3",
-    "use-error-boundary": "2.0.6"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": ">=15.0.1",
-    "react-dom": ">=15.0.1"
+    "react-dom": ">=15.0.1",
+    "color": ">=4.2.3",
+    "data-accessor": ">=11.0.0",
+    "date-fns": ">=2.29.3",
+    "react-twemoji": ">=0.5.0",
+    "schema-lanyard-discord-presence": ">=0.7.3",
+    "use-error-boundary": ">=2.0.6"
   },
   "devDependencies": {
     "@storybook/addon-actions": "6.5.16",
@@ -60,6 +59,12 @@
     "@types/react-twemoji": "0.4.0",
     "@typescript-eslint/eslint-plugin": "5.49.0",
     "@typescript-eslint/parser": "5.49.0",
+    "color": "4.2.3",
+    "data-accessor": "11.0.0",
+    "date-fns": "2.29.3",
+    "react-twemoji": "0.5.0",
+    "schema-lanyard-discord-presence": "0.7.3",
+    "use-error-boundary": "2.0.6",
     "circular-dependency-plugin": "5.2.2",
     "eslint": "7.17.0",
     "eslint-plugin-bdd": "2.1.1",
