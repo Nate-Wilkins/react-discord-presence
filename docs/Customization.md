@@ -11,6 +11,17 @@
 
 # Customization
 
+## Size
+
+To change the relative size of the component you can update the container's `font-size`.
+`1em` is the default.
+
+```
+<div style={{ fontSize: '16px' }}>
+  <DiscordPresence {...} />
+</div>
+```
+
 ## Styling
 
 - `DiscordPresenceDefault.module.css`: Default styling.
@@ -37,21 +48,6 @@ import DiscordPresenceClassesCode from 'react-discord-presence/dist/src/display/
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
-
-- `DiscordPresenceDefaultLocal.module.css`: Modifies the badges to point at distributed assets. Useful for additional
-  processing. This will require additional webpack setup (ie `file-loader`).
-
-```typescript
-import { DiscordPresence } from 'react-discord-presence';
-import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
-import DiscordPresenceClassesDefaultLocal  from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefaultLocal.module.css';
-// ...
-<DiscordPresence
-  classes={Object.assign({}, DiscordPresenceClassesDefault, DiscordPresenceClassesDefaultLocal}}
-  args={{ developerId: "<your-developer-id>" }}
-/>
-```
-
 
 - Custom
 
@@ -113,7 +109,7 @@ import DiscordPresenceClassesCustom from './DiscordPresenceCustom.module.css';
 />
 ```
 
-## Data Access
+## Customize Everything
 
 The main entry point is great for embedded, self contained, components but if you want more fine
 grained controls then you can use the composing components.
@@ -134,15 +130,18 @@ import { AccessorGetDiscordPresence } from 'react-accessor-discord-presence';
 
 - `Boundary`: Used to contain the error and loading states of the component. You can disregard this if you already have
   error and loading state handlers. (`ErrorBoundary` and `Suspense` components).
+- `ThemeDiscordPresence`: Used to provide theme styling to the rest of the components, primarily for dynamic theming support.
+- `ThemeDiscordPresenceOverride`: Used to override the default theme styling if the user has a theme setup.
 - `LoadingDiscordPresence`: Used to display a loading indicator when the `AccessorGetDiscordPresence` is retrieving data.
 - `ErrorDiscordPresence`: Used to display errors that may occur within the `Boundary`.
 - `DisplayDiscordPresence`: Used to display Discord presence data.
-- `defaultTheme`: Has to be provided to set background color of error and loading components (no theme if no data is loaded).
+- `theme`: Has to be provided to set background color of error and loading components or if no user theme.
 
 ```typescript
 import { AccessorQuery } from 'data-accessor';
 import {
   Boundary,
+  ThemeDiscordPresence,
   AccessorGetDiscordPresence,
   ErrorDiscordPresence,
   DisplayDiscordPresence,
@@ -159,31 +158,39 @@ const createCache = () => {
   return cacheStore;
 };
 // ...
-<Boundary
-  onLoading={
-    <LoadingDiscordPresence classes={classes} theme={defaultTheme} />
+<ThemeDiscordPresence
+  classes={classes}
+  theme={
+    theme
+      ? theme
+      : {
+          primary: '#36393f',
+          accent: '#2f3136',
+        }
   }
-  onError={({ error }) => (
-    <ErrorDiscordPresence
-      classes={classes}
-      theme={defaultTheme}
-      error={error}
-    />
-  )}
 >
-  <AccessorGetDiscordPresence
-    cache={() => cache}
-    args={{ developerId: "<your-developer-id>" }}
+  <Boundary
+    onLoading={<LoadingDiscordPresence />}
+    onError={({ error }) => <ErrorDiscordPresence error={error} />}
   >
-    {({ data }) =>
-      !data || !data.discord_user ? (
-        <ErrorDiscordPresence />
-      ) : (
-        <DisplayDiscordPresence
-          classes={classes}
-          data={data}
-        />
-      )
-    }
-  </AccessorGetDiscordPresence>
-</Boundary>
+    <AccessorGetDiscordPresence cache={() => cacheStore} args={args}>
+      {({ data: dataAccessor }) =>
+        !dataAccessor || !dataAccessor.discord_user ? (
+          // Should never happen.
+          <ErrorDiscordPresence error="Unknown Error." />
+        ) : (
+          <ThemeDiscordPresenceOverride
+            theme={data && data.theme ? data.theme : dataAccessor.theme}
+          >
+            <DisplayDiscordPresence
+              data={{
+                ...dataAccessor,
+                ...data,
+              }}
+            />
+          </ThemeDiscordPresenceOverride>
+        )
+      }
+    </AccessorGetDiscordPresence>
+  </Boundary>
+</ThemeDiscordPresence>

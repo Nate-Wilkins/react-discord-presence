@@ -42,6 +42,7 @@ const documentPackagePeerDependencyUnpkgCdnFile = {
   'react-twemoji': 'lib/Twemoji/index.js',
   'schema-lanyard-discord-presence': 'dist/index.js',
   'use-error-boundary': 'lib/index.umd.js',
+  'discord-markdown-parser': 'dist/index.js',
 };
 const documentTemplateIframeSource = `<!DOCTYPE html>
 <html lang="en">

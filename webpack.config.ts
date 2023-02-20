@@ -42,8 +42,6 @@ export default {
       : undefined,
 
   optimization: {
-    sideEffects: true,
-    usedExports: true,
     minimize: true,
     concatenateModules: true,
     removeAvailableModules: false,
@@ -71,6 +69,7 @@ export default {
       {
         test: /\.(css|jpg|jpe?g|png|gif|mp3|svg|gltf|fbx|txt|pdf|md|xml|webp|ttf)$/i,
         use: [
+          'style-loader',
           {
             loader: 'file-loader',
             options: {

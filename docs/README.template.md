@@ -57,6 +57,15 @@ If they're not in the Discord server, you'll get a response error from their API
 You can use the self contained `DiscordPresence` component which will handle
 data retrieval, loading, error, and display states automatically for you.
 
+Make sure to load up a supported font before rendering the component.
+`Inter` is used by default.
+
+```
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+</style>
+```
+
 ### React
 
 ```typescript
@@ -89,7 +98,6 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
-- Fix `premiumMemberSince` and `memberSince`.
 - Modify Twemoji to use `ErrorImage` when the emoji image errors.
 - Modify loading images to use `ErrorImage` when the badge image errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?

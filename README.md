@@ -68,6 +68,15 @@ If they're not in the Discord server, you'll get a response error from their API
 You can use the self contained `DiscordPresence` component which will handle
 data retrieval, loading, error, and display states automatically for you.
 
+Make sure to load up a supported font before rendering the component.
+`Inter` is used by default.
+
+```
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+</style>
+```
+
 ### React
 
 ```typescript
@@ -100,10 +109,9 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
-- Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold), images (?), and links (?).
-- Fix `premiumMemberSince` and `memberSince`.
+- Modify Twemoji to use `ErrorImage` when the emoji image errors.
+- Modify loading images to use `ErrorImage` when the badge image errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
-- Add tails to hover popovers.
 - Find SVG badges for 'TeamPseudoUser', 'VerifiedBot', 'CertifiedModerator', 'BotHTTPInteractions', 'Spammer', and 'Quarantined'
 
 ### Data
@@ -114,11 +122,11 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Build
 
-- Support code splitting.
 - Flatten asset distributable output (CSS/Images/etc)
 
 ## Contributions
 
 | Author  | Estimated Hours |
 | ------------- | ------------- |
-| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">26.7 Hours</p> |
+| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">28.48 Hours</p> |
+

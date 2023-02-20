@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'Inter';
-  src: local('Inter'), url(https://github.com/Nate-Wilkins/react-discord-presence/blob/main/src/display/font/inter/Inter-VariableFont_slntwght.ttf) format('truetype');
-}
-
-
 .root {
   --discord-presence-width: 30em;
   --discord-presence-state-height: 45em;

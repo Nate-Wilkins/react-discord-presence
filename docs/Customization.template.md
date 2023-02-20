@@ -1,5 +1,16 @@
 # Customization
 
+## Size
+
+To change the relative size of the component you can update the container's `font-size`.
+`1em` is the default.
+
+```
+<div style={{ fontSize: '16px' }}>
+  <DiscordPresence {...} />
+</div>
+```
+
 ## Styling
 
 - `DiscordPresenceDefault.module.css`: Default styling.
@@ -26,21 +37,6 @@ import DiscordPresenceClassesCode from 'react-discord-presence/dist/src/display/
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
-
-- `DiscordPresenceDefaultLocal.module.css`: Modifies the badges to point at distributed assets. Useful for additional
-  processing. This will require additional webpack setup (ie `file-loader`).
-
-```typescript
-import { DiscordPresence } from 'react-discord-presence';
-import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
-import DiscordPresenceClassesDefaultLocal  from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefaultLocal.module.css';
-// ...
-<DiscordPresence
-  classes={Object.assign({}, DiscordPresenceClassesDefault, DiscordPresenceClassesDefaultLocal}}
-  args={{ developerId: "<your-developer-id>" }}
-/>
-```
-
 
 - Custom
 
