@@ -37,7 +37,7 @@ export type ThemePalette = {
       backgroundColor: string;
     };
   };
-  popover: { color: string; backgroundColor: string };
+  popover: { color: string; backgroundColor: string; boxShadowColor: string };
   blockquoteBorder: { color: string };
   spoiler: { color: string; backgroundColor: string };
   timestamp: { backgroundColor: string };
@@ -256,6 +256,10 @@ export const getThemePalette = (theme: {
     popover: {
       color: popoverColor.hsl().toString(),
       backgroundColor: popoverBackgroundColor.hsl().toString(),
+      boxShadowColor: popoverBackgroundColor
+        .alpha(0.85)
+        .hsl()
+        .toString(),
     },
     spotifyProgressBar: {
       total: {

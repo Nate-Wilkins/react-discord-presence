@@ -62,6 +62,9 @@ export const DiscordPresenceBadgeImage: FunctionComponent<{
           style={{
             backgroundColor: theme.popover.backgroundColor,
             color: theme.popover.color,
+            // NOTE: `boxShadowColor` is not available.
+            //       If it were the other box shadow properties would go in the class.
+            boxShadow: `0.25em 0.25em 0.25em 0 ${theme.popover.boxShadowColor}`,
           }}
         >
           <div style={{ position: 'relative' }}>

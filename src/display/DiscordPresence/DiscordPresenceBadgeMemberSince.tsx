@@ -20,7 +20,7 @@ export const DiscordPresenceBadgeMemberSince: FunctionComponent<{
     ? 'https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/member_since.webp'
     : inputFormatImageSrc('MemberSince');
 
-  const hoverText = `Server boosting since ${format(since, 'LLL d, yyyy')}`;
+  const hoverText = `Subscriber since ${format(since, 'LLL d, yyyy')}`;
 
   return (
     <DiscordPresenceBadgeImage

@@ -13,7 +13,7 @@ test('when using Discord presence component', async () => {
     aboutMe: `Software Engineer.  Skier/Snowboarder. Photographer. Gamer.
 NY 🌆 CA 🌁
 PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
-    memberSince: new Date('6/21/2016'),
+    memberSince: new Date('10/19/2022'),
     premiumMemberSince: new Date('4/10/2022'),
   };
 
