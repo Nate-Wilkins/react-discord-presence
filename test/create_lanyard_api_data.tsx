@@ -100,6 +100,22 @@ export const createLanyardApiData = ({
         created_at: 1675651894051,
         application_id: '356875221078245376',
       },
+      {
+        type: 0,
+        timestamps: {
+          start: 1676895782000,
+        },
+        name: 'YouTube',
+        id: 'f7c5f368d72a4f8',
+        details: 'Browsing...',
+        created_at: 1676827887435,
+        assets: {
+          large_text: 'PreMiD  v2.2.0 • Ext v2.2.3',
+          large_image:
+            'mp:external/aMfYN8fu5BRlIE4qbxnOZLsp-nNQ7SfJA8-3qM8Zneo/https/i.imgur.com/o5injgg.png',
+        },
+        application_id: '463097721130188830',
+      },
     ],
     active_on_discord_web: false,
     active_on_discord_mobile: false,

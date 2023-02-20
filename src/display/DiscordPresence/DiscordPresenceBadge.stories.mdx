@@ -1,0 +1,180 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { DiscordPresenceClassesDefault } from '../style';
+import { ThemeDiscordPresence } from './ThemeDiscordPresence';
+import { DiscordPresenceLayout } from './DiscordPresenceLayout';
+import { DiscordPresenceBadgeShowcase } from './DiscordPresenceBadgeShowcase';
+import { DiscordPresenceBadge } from './DiscordPresenceBadge';
+import { DiscordPresenceBadgeMemberSince } from './DiscordPresenceBadgeMemberSince';
+import { DiscordPresenceBadgePremiumMemberSince } from './DiscordPresenceBadgePremiumMemberSince';
+import { DiscordBadgeEnum } from '../types';
+
+<Meta title="Display/DiscordPresenceBadge" component={DiscordPresenceBadge} argTypes={{ }} />
+
+export const Box = ({ children }) => <div style={{ display: 'inline-block', border: '1px dotted black', padding: '1em' }}>{children}</div>;
+
+export const Template = (args) => (
+  <div style={{ fontSize: '16px' }}>
+    <ThemeDiscordPresence
+      classes={DiscordPresenceClassesDefault}
+      theme={{ primary: '#2672c3', accent: '#001a30' }}
+    >
+      <Box>
+        <DiscordPresenceLayout>
+          <div style={{ padding: '10em', }}>
+            <DiscordPresenceBadgeShowcase>
+            {args.badge !== 'MemberSince' && args.badge !== 'PremiumMemberSince'
+              ? <DiscordPresenceBadge badge={args.badge} format={args.format} />
+              : args.badge === 'MemberSince'
+                ? <DiscordPresenceBadgeMemberSince since={args.since} format={args.format} />
+                : <DiscordPresenceBadgePremiumMemberSince since={args.since} format={args.format} />}
+            </DiscordPresenceBadgeShowcase>
+          </div>
+        </DiscordPresenceLayout>
+      </Box>
+    </ThemeDiscordPresence>
+  </div>
+)
+
+# DiscordPresenceBadge
+
+Display Discord presence badge.
+
+## Static Badges
+
+<Story name="Staff" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.Staff }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Partner" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.Partner }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Hypesquad" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.Hypesquad }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="BugHunterLevel1" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.BugHunterLevel1 }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="HypeSquadOnlineHouse1" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.HypeSquadOnlineHouse1 }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="HypeSquadOnlineHouse2" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.HypeSquadOnlineHouse2 }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="HypeSquadOnlineHouse3" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.HypeSquadOnlineHouse3 }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="PremiumEarlySupporter" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.PremiumEarlySupporter }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="TeamPseudoUser" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.TeamPseudoUser }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="BugHunterLevel2" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.BugHunterLevel2 }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="VerifiedBot" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.VerifiedBot }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="VerifiedDeveloper" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.VerifiedDeveloper }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="CertifiedModerator" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.CertifiedModerator }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="BotHTTPInteractions" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.BotHTTPInteractions }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Spammer" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.Spammer }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="ActiveDeveloper" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.ActiveDeveloper }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Quarantined" parameters={{ date: new Date("4/10/2022") }} args={{ badge: DiscordBadgeEnum.Quarantined }}>
+  {Template.bind({})}
+</Story>
+
+## Time Badges
+
+### MemberSince
+
+<Story name="MemberSince" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "MemberSince", since: new Date("5/10/2022") }}>
+  {Template.bind({})}
+</Story>
+
+### PremiumMemberSince (Boosting)
+
+#### 1 Months
+
+<Story name="PremiumMemberSince 1 Month" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("5/10/2022") }}>
+  {Template.bind({})}
+</Story>
+
+### 2 Months
+
+<Story name="PremiumMemberSince 2 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("6/10/2022") }}>
+  {Template.bind({})}
+</Story>
+
+### 3 Months
+
+<Story name="PremiumMemberSince 3 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("7/10/2022") }}>
+  {Template.bind({})}
+</Story>
+
+### 6 Months
+
+<Story name="PremiumMemberSince 6 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("10/10/2022") }}>
+  {Template.bind({})}
+</Story>
+
+### 9 Months
+
+<Story name="PremiumMemberSince 9 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("1/10/2023") }}>
+  {Template.bind({})}
+</Story>
+
+### 12 Months
+
+<Story name="PremiumMemberSince 12 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("4/10/2023") }}>
+  {Template.bind({})}
+</Story>
+
+### 15 Months
+
+<Story name="PremiumMemberSince 15 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("7/10/2023") }}>
+  {Template.bind({})}
+</Story>
+
+### 18 Months
+
+<Story name="PremiumMemberSince 18 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("10/10/2023") }}>
+  {Template.bind({})}
+</Story>
+
+### 24 Months
+
+<Story name="PremiumMemberSince 24 Months" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("6/10/2024") }}>
+  {Template.bind({})}
+</Story>
+
+## Error
+
+<Story name="Error" parameters={{ date: new Date("4/10/2022") }} args={{ badge: "PremiumMemberSince", since: new Date("6/10/2024"), format: () => './non_existant_path' }}>
+  {Template.bind({})}
+</Story>

@@ -24,8 +24,8 @@ export const MockDiscordPresence: FunctionComponent<{
       accent: string;
     };
     aboutMe?: string;
-    memberSince?: string;
-    premiumMemberSince?: string;
+    memberSince?: Date;
+    premiumMemberSince?: Date;
   };
 
   // Test State.

@@ -24,7 +24,7 @@ export type DiscordGetPresenceResponse = {
       primary: string;
       accent: string;
     };
-    premiumMemberSince?: string;
+    premiumMemberSince?: Date;
   };
 };
 
@@ -93,7 +93,7 @@ export const getDiscordPresence = async ({
       primary: string;
       accent: string;
     };
-    premiumMemberSince?: string;
+    premiumMemberSince?: Date;
   };
   try {
     // Parse. (Discord CDN API)
@@ -131,7 +131,11 @@ export const getDiscordPresence = async ({
           }
         : {}),
       ...(typeof responseContentDiscordCdn.premium_since === 'string'
-        ? { premiumMemberSince: responseContentDiscordCdn.premium_since }
+        ? {
+            premiumMemberSince: new Date(
+              responseContentDiscordCdn.premium_since,
+            ),
+          }
         : {}),
     };
   } catch (e) {

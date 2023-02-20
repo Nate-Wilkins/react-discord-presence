@@ -1,30 +1,27 @@
 import {
-  CSSProperties,
   default as React,
   FunctionComponent,
   useEffect,
   useState,
 } from 'react';
 import { getElapsedTimeFormat } from './get_elapsed_time_format';
+import { useTheme } from './ThemeDiscordPresence';
 
 /*
  * Spotify song duration.
  */
 export const DiscordPresenceSpotifySongDuration: FunctionComponent<{
-  classes: Record<string, string>;
-  styleProgress?: CSSProperties;
-  styleTotal?: CSSProperties;
   start: number;
   end: number;
   format?: (d1: Date, d2: Date) => string;
-}> = ({
-  classes,
-  styleProgress,
-  styleTotal,
-  start,
-  end,
-  format: inputFormat,
-}) => {
+}> = ({ start, end, format: inputFormat }) => {
+  const { classes, theme } = useTheme();
+
+  const styleProgress = { backgroundColor: theme.root.color };
+  const styleTotal = {
+    backgroundColor: theme.spotifyProgressBar.total.backgroundColor,
+  };
+
   const [now, setNow] = useState(Date.now());
   const format = inputFormat
     ? inputFormat
@@ -64,10 +61,10 @@ export const DiscordPresenceSpotifySongDuration: FunctionComponent<{
       <div className={classes.spotifySongProgressBarDetails}>
         <p>
           {now < end
-            ? format(new Date(now), new Date(start))
-            : format(new Date(end), new Date(start))}
+            ? format(new Date(start), new Date(now))
+            : format(new Date(start), new Date(end))}
         </p>
-        <p>{format(new Date(end), new Date(start))}</p>
+        <p>{format(new Date(start), new Date(end))}</p>
       </div>
     </div>
   );

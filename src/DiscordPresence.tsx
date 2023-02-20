@@ -1,5 +1,5 @@
 import { AccessorQuery } from 'data-accessor';
-import React, { CSSProperties, FunctionComponent } from 'react';
+import { default as React, FunctionComponent } from 'react';
 import { DiscordPresence as IDiscordPresence } from 'schema-lanyard-discord-presence';
 import { AccessorGetDiscordPresence, createCache } from './accessor';
 import { Boundary } from './Boundary';
@@ -9,6 +9,8 @@ import {
   DiscordPresenceData,
   ErrorDiscordPresence,
   LoadingDiscordPresence,
+  ThemeDiscordPresence,
+  ThemeDiscordPresenceOverride,
 } from './display';
 
 /*
@@ -22,7 +24,6 @@ import {
  */
 export const DiscordPresence: FunctionComponent<{
   classes: Record<string, string>;
-  style?: CSSProperties;
   theme?: { primary: string; accent: string };
   args: { developerId: string };
   data?: Partial<IDiscordPresence> & {
@@ -31,8 +32,8 @@ export const DiscordPresence: FunctionComponent<{
       accent: string;
     };
     aboutMe?: string;
-    memberSince?: string;
-    premiumMemberSince?: string;
+    memberSince?: Date;
+    premiumMemberSince?: Date;
   };
 
   // Custom Formatters.
@@ -43,7 +44,6 @@ export const DiscordPresence: FunctionComponent<{
   ) => string;
 }> = ({
   classes: inputClasses,
-  style,
   theme,
   args,
   data,
@@ -65,55 +65,46 @@ export const DiscordPresence: FunctionComponent<{
   // TODO: DiscordPresenceClassesDefault doesn't work here.
   //       Not sure how to get webpack or any build to embed styles like this.
   const classes = inputClasses ? inputClasses : DiscordPresenceClassesDefault;
-  const defaultTheme = theme
-    ? theme
-    : {
-        primary: '#36393f',
-        accent: '#2f3136',
-      };
 
   return (
-    <Boundary
-      onLoading={
-        <LoadingDiscordPresence classes={classes} theme={defaultTheme} />
+    <ThemeDiscordPresence
+      classes={classes}
+      theme={
+        theme
+          ? theme
+          : {
+              primary: '#36393f',
+              accent: '#2f3136',
+            }
       }
-      onError={({ error }) => (
-        <ErrorDiscordPresence
-          classes={classes}
-          theme={defaultTheme}
-          error={error}
-        />
-      )}
     >
-      <AccessorGetDiscordPresence cache={() => cacheStore} args={args}>
-        {({ data: dataAccessor }) =>
-          !dataAccessor || !dataAccessor.discord_user ? (
-            // Should never happen.
-            <ErrorDiscordPresence
-              classes={classes}
-              theme={defaultTheme}
-              error="Unknown Error."
-            />
-          ) : (
-            <DisplayDiscordPresence
-              classes={classes}
-              style={style}
-              data={{
-                ...dataAccessor,
-                ...data,
-                ...(dataAccessor.theme
-                  ? { theme: dataAccessor.theme }
-                  : data && data.theme
-                  ? { theme: data.theme }
-                  : { theme: defaultTheme }),
-              }}
-              formatActivityDuration={formatActivityDuration}
-              formatAvatarImageSrc={formatAvatarImageSrc}
-              formatBannerImageSrc={formatBannerImageSrc}
-            />
-          )
-        }
-      </AccessorGetDiscordPresence>
-    </Boundary>
+      <Boundary
+        onLoading={<LoadingDiscordPresence />}
+        onError={({ error }) => <ErrorDiscordPresence error={error} />}
+      >
+        <AccessorGetDiscordPresence cache={() => cacheStore} args={args}>
+          {({ data: dataAccessor }) =>
+            !dataAccessor || !dataAccessor.discord_user ? (
+              // Should never happen.
+              <ErrorDiscordPresence error="Unknown Error." />
+            ) : (
+              <ThemeDiscordPresenceOverride
+                theme={data && data.theme ? data.theme : dataAccessor.theme}
+              >
+                <DisplayDiscordPresence
+                  data={{
+                    ...dataAccessor,
+                    ...data,
+                  }}
+                  formatActivityDuration={formatActivityDuration}
+                  formatAvatarImageSrc={formatAvatarImageSrc}
+                  formatBannerImageSrc={formatBannerImageSrc}
+                />
+              </ThemeDiscordPresenceOverride>
+            )
+          }
+        </AccessorGetDiscordPresence>
+      </Boundary>
+    </ThemeDiscordPresence>
   );
 };

@@ -3,8 +3,8 @@ import React from 'react';
 import { DiscordImageEmoji } from './DiscordImageEmoji';
 import DiscordPresenceClassesDefault from '../style/DiscordPresenceDefault.module.css';
 
-test('when using the basic discord image emoji', async () => {
-  // Given discord image emoji component.
+test('when using the basic Discord image emoji', async () => {
+  // Given the Discord image emoji component.
   // And a emoji id
   const id = '49n2j';
 
@@ -19,15 +19,15 @@ test('when using the basic discord image emoji', async () => {
     />,
   );
 
-  // Then the discord image emoji is rendered.
+  // Then the Discord image emoji is rendered.
   const $img = queries.getByRole('img');
   expect($img.getAttribute('src')).toEqual(
-    `https://cdn.discordapp.com/emojis/${id}.png`,
+    `https://cdn.Discordapp.com/emojis/${id}.png`,
   );
 });
 
-test('when using the animated discord image emoji', async () => {
-  // Given discord image emoji component.
+test('when using the animated Discord image emoji', async () => {
+  // Given the Discord image emoji component.
   // And a emoji id
   const id = '49n2j';
 
@@ -42,9 +42,9 @@ test('when using the animated discord image emoji', async () => {
     />,
   );
 
-  // Then the discord image emoji is rendered.
+  // Then the Discord image emoji is rendered.
   const $img = queries.getByRole('img');
   expect($img.getAttribute('src')).toEqual(
-    `https://cdn.discordapp.com/emojis/${id}.gif`,
+    `https://cdn.Discordapp.com/emojis/${id}.gif`,
   );
 });

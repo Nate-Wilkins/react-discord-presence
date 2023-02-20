@@ -89,10 +89,10 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
-- Fix "About Me" to support "`" (code quotes), "*" (italics), "**" (bold), images (?), and links (?).
 - Fix `premiumMemberSince` and `memberSince`.
+- Modify Twemoji to use `ErrorImage` when the emoji image errors.
+- Modify loading images to use `ErrorImage` when the badge image errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
-- Add tails to hover popovers.
 - Find SVG badges for 'TeamPseudoUser', 'VerifiedBot', 'CertifiedModerator', 'BotHTTPInteractions', 'Spammer', and 'Quarantined'
 
 ### Data
@@ -103,7 +103,6 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Build
 
-- Support code splitting.
 - Flatten asset distributable output (CSS/Images/etc)
 
 ## Contributions
@@ -111,3 +110,4 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 | Author  | Estimated Hours |
 | ------------- | ------------- |
 <%#authors%>| [![<%name%>](https://github.com/<%name%>.png?size=64)](https://github.com/<%name%>) | <p align="right"><%hours%> Hours</p> |<%/authors%>
+

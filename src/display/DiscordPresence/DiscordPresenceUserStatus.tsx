@@ -1,4 +1,5 @@
 import React, { CSSProperties, FunctionComponent } from 'react';
+import { useTheme } from './ThemeDiscordPresence';
 
 const UserStatusOffline: FunctionComponent<{
   classes: Record<string, string>;
@@ -20,8 +21,6 @@ const UserStatusOffline: FunctionComponent<{
  * Whether they're online/offline and what device they're using.
  */
 export const DiscordPresenceUserStatus: FunctionComponent<{
-  classes: Record<string, string>;
-  style?: CSSProperties;
   data: {
     active_on_discord_desktop: boolean;
     active_on_discord_mobile: boolean;
@@ -29,8 +28,6 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
     discord_status: string;
   };
 }> = ({
-  classes,
-  style,
   data: {
     active_on_discord_web,
     active_on_discord_desktop,
@@ -38,6 +35,11 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
     discord_status: inputStatus,
   },
 }) => {
+  const { classes, theme } = useTheme();
+  const style = {
+    backgroundColor: theme.namePlate.backgroundColor.primary,
+  };
+
   let status: 'online' | 'idle' | 'dnd' | 'offline';
   if (
     inputStatus == 'online' ||

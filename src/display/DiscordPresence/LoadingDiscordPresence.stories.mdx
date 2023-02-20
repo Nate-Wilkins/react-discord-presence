@@ -1,0 +1,34 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { DiscordPresenceClassesDefault } from '../style';
+import { ThemeDiscordPresence } from './ThemeDiscordPresence';
+import { LoadingDiscordPresence } from './LoadingDiscordPresence';
+
+<Meta title="Display/LoadingDiscordPresence" component={LoadingDiscordPresence} argTypes={{ }} />
+
+export const Template = (args) => (
+  <div style={{ fontSize: '16px' }}>
+    <ThemeDiscordPresence
+      classes={DiscordPresenceClassesDefault}
+      theme={args.theme}
+    >
+      <LoadingDiscordPresence />
+    </ThemeDiscordPresence>
+  </div>
+)
+
+# LoadingDiscordPresence
+
+Display loading state for Discord presence.
+
+## Default Theme
+
+<Story name="Default" args={{ theme: { primary: '#36393f', accent: '#2f3136' } }}>
+  {Template.bind({})}
+</Story>
+
+## Custom Theme
+
+<Story name="Custom" args={{ theme: { primary: '#2672c3', accent: '#001a30' } }}>
+  {Template.bind({})}
+</Story>
+

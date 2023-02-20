@@ -1,0 +1,317 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { DiscordPresenceClassesDefault } from '../style';
+import { getThemePalette } from './get_theme_palette';
+import { DiscordPresenceMarkdownDiscord } from './DiscordPresenceMarkdownDiscord';
+import { ThemeDiscordPresence } from './ThemeDiscordPresence';
+
+<Meta title="Markdown" component={DiscordPresenceMarkdownDiscord} />
+
+export const Template = (args) => (
+  <div style={{ fontSize: '16px' }}>
+    <ThemeDiscordPresence
+      classes={DiscordPresenceClassesDefault}
+      theme={{ primary: '#ffffff', accent: '#333333', }}
+    >
+      <DiscordPresenceMarkdownDiscord>
+        {args.children}
+      </DiscordPresenceMarkdownDiscord>
+    </ThemeDiscordPresence>
+  </div>
+)
+
+# DiscordPresenceMarkdownDiscord
+
+The Discord flavored Markdown component for Discord presence.
+
+This component handles hooking up styling and theme support to the `DiscordMarkdown` component.
+
+## Text
+
+<Story
+  name="Text"
+  args={{
+    children: "Hello World!"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Bold
+
+<Story
+  name="Text Bold"
+  args={{
+    children: "**Hello World!**"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Italics
+
+<Story
+  name="Text Italics"
+  args={{
+    children: "*Hello World!*"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Underline
+
+<Story
+  name="Text Underline"
+  args={{
+    children: "__Hello World!__"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Strikethrough
+
+<Story
+  name="Text Strikethrough"
+  args={{
+    children: "~~Hello World?~~"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Bold + Italics
+
+<Story
+  name="Text Bold + Italics"
+  args={{
+    children: "***Hello World?***"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Underline + Italics
+
+<Story
+  name="Text Underline + Italics"
+  args={{
+    children: "__*Hello World?*__"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Bold + Strikethrough
+
+<Story
+  name="Text Bold + Strikethrough"
+  args={{
+    children: "~~**Hello World?**~~"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Underline + Strikethrough
+
+<Story
+  name="Text Underline + Strikethrough"
+  args={{
+    children: "~~__Hello World?__~~"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Bold + Italics + Underline + Strikethrough
+
+<Story
+  name="Text Bold + Italics + Underline + Strikethrough"
+  args={{
+    children: "~~__***Hello World?***__~~"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Autolink
+
+<Story
+  name="Autolink"
+  args={{
+    children: "https://github.com/Nate-Wilkins/react-discord-presence"
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Blockquote
+
+<Story
+  name="Blockquote"
+  args={{
+    children: `> Time is emit backwards.
+> - Somebody I Used to Know`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Italics
+
+<Story
+  name="Blockquote Italics"
+  args={{
+    children: `> *Time is emit backwards.*
+> - Somebody I Used to Know`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Bold
+
+<Story
+  name="Blockquote Bold"
+  args={{
+    children: `> **Time is emit backwards.**
+> - Somebody I Used to Know`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Underline
+
+<Story
+  name="Blockquote Underline"
+  args={{
+    children: `> __Time is emit backwards.__
+> - Somebody I Used to Know`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Bold + Strikethrough
+
+<Story
+  name="Blockquote Bold + Strikethrough"
+  args={{
+    children: `> ~~**Time is emit backwards.**~~
+> - Somebody I Used to Know`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Bold + Strikethrough + Underline
+
+<Story
+  name="Blockquote Bold + Strikethrough + Underline"
+  args={{
+    children: `> ~~__**Time is emit backwards.**__~~
+> - Somebody I Used to Know`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Mention
+
+### @here
+
+<Story
+  name="Mention @here"
+  args={{
+    children: `@here`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### @everyone
+
+<Story
+  name="Mention @everyone"
+  args={{
+    children: `@everyone`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Block Code
+
+<Story
+  name="Block Code"
+  args={{
+    children: `\`\`\`
+const main = () => {
+  console.log("Hello World!");
+};
+main();
+\`\`\`
+`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Inline Code
+
+<Story
+  name="Inline Code"
+  args={{
+    children: `\`console.log("Hello World!");\``
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Emoji
+
+### Discord
+
+<Story
+  name="Emoji Discord"
+  args={{
+    children: `<:_2:1023214439148830750>`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+### Twitter
+
+<Story
+  name="Emoji Twitter"
+  args={{
+    children: `🦆`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Spoiler
+
+<Story
+  name="Spoiler"
+  args={{
+    children: `||Hello World!||`
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Timestamp
+
+<Story
+  name="Timestamp"
+  args={{
+    children: `<t:766016789:f>`
+  }}
+>
+  {Template.bind({})}
+</Story>

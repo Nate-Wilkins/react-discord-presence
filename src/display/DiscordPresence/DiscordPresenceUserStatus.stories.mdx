@@ -1,0 +1,112 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { ThemeDiscordPresence } from './ThemeDiscordPresence';
+import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
+import { DiscordPresenceLayout } from './DiscordPresenceLayout';
+import { DiscordPresenceClassesDefault } from '../style';
+
+<Meta title="Display/DiscordPresenceUserStatus" component={DiscordPresenceUserStatus} argTypes={{ }} />
+
+export const Box = ({ children }) => <div style={{ position: 'relative', display: 'flex', border: '1px dotted black', width: '5em', height: '5em' }}>{children}</div>;
+
+export const Template = (args) => (
+  <div style={{ fontSize: '16px' }}>
+    <ThemeDiscordPresence
+      classes={DiscordPresenceClassesDefault}
+      theme={{ primary: '#2672c3', accent: '#001a30' }}
+    >
+      <DiscordPresenceLayout>
+        <Box>
+          <DiscordPresenceUserStatus data={args.data} />
+        </Box>
+      </DiscordPresenceLayout>
+    </ThemeDiscordPresence>
+  </div>
+)
+
+# DiscordPresenceUserStatus
+
+Display Discord presence user status.
+
+<Story
+  name="Offline"
+  args={{
+    data: {
+      active_on_discord_desktop: false,
+      active_on_discord_mobile: false,
+      active_on_discord_web: false,
+      discord_status: 'offline',
+    }
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Online (Desktop)"
+  args={{
+    data: {
+      active_on_discord_desktop: true,
+      active_on_discord_mobile: false,
+      active_on_discord_web: false,
+      discord_status: 'online',
+    }
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Online (Mobile)"
+  args={{
+    data: {
+      active_on_discord_desktop: false,
+      active_on_discord_mobile: true,
+      active_on_discord_web: false,
+      discord_status: 'online',
+    }
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Online (Web)"
+  args={{
+    data: {
+      active_on_discord_desktop: false,
+      active_on_discord_mobile: false,
+      active_on_discord_web: true,
+      discord_status: 'online',
+    }
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Do Not Disturb"
+  args={{
+    data: {
+      active_on_discord_desktop: false,
+      active_on_discord_mobile: false,
+      active_on_discord_web: true,
+      discord_status: 'dnd',
+    }
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Idle"
+  args={{
+    data: {
+      active_on_discord_desktop: false,
+      active_on_discord_mobile: false,
+      active_on_discord_web: true,
+      discord_status: 'idle',
+    }
+  }}
+>
+  {Template.bind({})}
+</Story>

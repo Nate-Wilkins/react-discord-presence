@@ -1,15 +1,20 @@
-import React, { CSSProperties, FunctionComponent, useState } from 'react';
+import { format } from 'date-fns';
+import { default as React, FunctionComponent, useState } from 'react';
 import { createLinearGradientVertical } from '../create_linear_gradient_vertical';
 import { DiscordImageEmoji, ErrorImage, Image } from '../image';
-import { Text } from '../Text';
 import { DiscordBadgeEnum } from '../types';
 import { DiscordPresenceActivityDuration } from './DiscordPresenceActivityDuration';
 import { DiscordPresenceBadge } from './DiscordPresenceBadge';
-import { DiscordPresenceBox } from './DiscordPresenceBox';
+import { DiscordPresenceBadgeMemberSince } from './DiscordPresenceBadgeMemberSince';
+import { DiscordPresenceBadgePremiumMemberSince } from './DiscordPresenceBadgePremiumMemberSince';
+import { DiscordPresenceBadgeShowcase } from './DiscordPresenceBadgeShowcase';
+import { DiscordPresenceLayout } from './DiscordPresenceLayout';
+import { DiscordPresenceMarkdownDiscord } from './DiscordPresenceMarkdownDiscord';
 import { DiscordPresenceSpotifySongDuration } from './DiscordPresenceSpotifySongDuration';
 import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
+import { getActivityImageSource } from './get_activity_image_source';
 import { getDiscordBadges } from './get_discord_badges';
-import { getTheme } from './get_theme';
+import { useTheme } from './ThemeDiscordPresence';
 import { DiscordPresenceData } from './types';
 
 /*
@@ -19,8 +24,6 @@ import { DiscordPresenceData } from './types';
  */
 export const DiscordPresence: FunctionComponent<{
   data: DiscordPresenceData;
-  classes: Record<string, string>;
-  style?: CSSProperties;
 
   // Custom Formatters.
   // Mostly used for testing, bc URLs by default point to some Discord assets.
@@ -30,17 +33,20 @@ export const DiscordPresence: FunctionComponent<{
   formatAvatarImageSrc?: (
     discordUser: DiscordPresenceData['discord_user'],
   ) => string;
+  formatBadgeImageSrc?: (
+    badge: DiscordBadgeEnum | 'PremiumMemberSince' | 'MemberSince',
+  ) => string;
 }> = ({
   data,
-  classes,
-  style,
 
   // Custom Formatters.
   formatActivityDuration: inputFormatActivityDuration,
   formatActivitySpotifyDuration: inputFormatActivitySpotifyDuration,
   formatBannerImageSrc: inputFormatBannerSrc,
   formatAvatarImageSrc: inputFormatAvatarImageSrc,
+  formatBadgeImageSrc: inputFormatBadgeImageSrc,
 }) => {
+  const { classes, theme } = useTheme();
   const [isHoveringAvatar, setIsHoveringAvatar] = useState<boolean>(false);
 
   // Setup formatters.
@@ -56,6 +62,7 @@ export const DiscordPresence: FunctionComponent<{
         `https://cdn.discordapp.com/avatars/${discordUser.id}/${
           discordUser.avatar
         }${!discordUser.avatar.startsWith('a_') ? '.png' : '.gif'}`;
+  const formatBadgeImageSrc = inputFormatBadgeImageSrc;
 
   // Pull out activity status.
   const activityStatus = data.activities.find(
@@ -76,9 +83,6 @@ export const DiscordPresence: FunctionComponent<{
     data.discord_user.public_flags,
   );
 
-  // Setup theme.
-  const theme = getTheme(data.theme);
-
   // Event Handlers.
   const onAvatarMouseOver = () => {
     setIsHoveringAvatar(true);
@@ -88,25 +92,7 @@ export const DiscordPresence: FunctionComponent<{
   };
 
   return (
-    <DiscordPresenceBox
-      classes={classes}
-      styleRoot={{
-        ...style,
-        color: theme.root.color,
-        background: createLinearGradientVertical(
-          theme.root.backgroundColor.primary,
-          0.5,
-          theme.root.backgroundColor.accent,
-        ),
-      }}
-      styleContent={{
-        background: createLinearGradientVertical(
-          theme.content.backgroundColor.primary,
-          0.5,
-          theme.content.backgroundColor.accent,
-        ),
-      }}
-    >
+    <DiscordPresenceLayout>
       <div className={classes.background}>
         {/* Banner */}
         <Image
@@ -163,48 +149,32 @@ export const DiscordPresence: FunctionComponent<{
               </div>
             </div>
 
-            <DiscordPresenceUserStatus
-              classes={classes}
-              style={{
-                backgroundColor: theme.namePlate.backgroundColor.primary,
-              }}
-              data={data}
-            />
+            <DiscordPresenceUserStatus data={data} />
           </a>
         </div>
 
         {/* Badges */}
-        <div
-          className={classes.badges}
-          style={{
-            backgroundColor: theme.namePlate.backgroundColor.primary,
-          }}
-        >
-          <>
-            {badges.map(badge => (
-              <DiscordPresenceBadge
-                key={badge}
-                classes={classes}
-                badge={badge}
-                stylePopover={{
-                  color: theme.namePlateNameId.color,
-                }}
-              />
-            ))}
-            {!data.premiumMemberSince ? null : (
-              <>
-                {/* TODO: Member Since */}
-                <DiscordPresenceBadge
-                  classes={classes}
-                  badge={'PremiumMemberSince'}
-                  stylePopover={{
-                    color: theme.namePlateNameId.color,
-                  }}
-                />
-              </>
-            )}
-          </>
-        </div>
+        <DiscordPresenceBadgeShowcase>
+          {badges.map(badge => (
+            <DiscordPresenceBadge
+              key={badge}
+              badge={badge}
+              format={formatBadgeImageSrc}
+            />
+          ))}
+          {!data.memberSince ? null : (
+            <DiscordPresenceBadgeMemberSince
+              since={data.memberSince}
+              format={formatBadgeImageSrc}
+            />
+          )}
+          {!data.premiumMemberSince ? null : (
+            <DiscordPresenceBadgePremiumMemberSince
+              since={data.premiumMemberSince}
+              format={formatBadgeImageSrc}
+            />
+          )}
+        </DiscordPresenceBadgeShowcase>
       </div>
 
       {/* Name + ID */}
@@ -281,11 +251,11 @@ export const DiscordPresence: FunctionComponent<{
                   />
                 </span>
               ) : null}
-              <Text style={{ display: 'flex' }} emojiClassName={classes.emoji}>
+              <DiscordPresenceMarkdownDiscord>
                 {`${
                   activityStatus.details ? `${activityStatus.details} ` : ''
                 }${activityStatus.state ? `${activityStatus.state}` : ''}`}
-              </Text>
+              </DiscordPresenceMarkdownDiscord>
             </p>
           </div>
         ) : null}
@@ -302,7 +272,9 @@ export const DiscordPresence: FunctionComponent<{
                 color: theme.namePlateNameId.color,
               }}
             >
-              <Text emojiClassName={classes.emoji}>{data.aboutMe}</Text>
+              <DiscordPresenceMarkdownDiscord>
+                {data.aboutMe}
+              </DiscordPresenceMarkdownDiscord>
             </p>
           </div>
         ) : null}
@@ -317,7 +289,9 @@ export const DiscordPresence: FunctionComponent<{
                 color: theme.namePlateNameId.color,
               }}
             >
-              <Text emojiClassName={classes.emoji}>{data.memberSince}</Text>
+              <DiscordPresenceMarkdownDiscord>
+                {format(data.memberSince, 'LLL d, yyyy')}
+              </DiscordPresenceMarkdownDiscord>
             </p>
           </div>
         ) : null}
@@ -359,12 +333,6 @@ export const DiscordPresence: FunctionComponent<{
 
               {/* Song Duration */}
               <DiscordPresenceSpotifySongDuration
-                classes={classes}
-                styleProgress={{ backgroundColor: theme.root.color }}
-                styleTotal={{
-                  backgroundColor:
-                    theme.spotifyProgressBar.total.backgroundColor,
-                }}
                 start={data.spotify.timestamps.start}
                 end={data.spotify.timestamps.end}
                 format={formatActivitySpotifyDuration}
@@ -385,7 +353,13 @@ export const DiscordPresence: FunctionComponent<{
                   <div className={classes.activityIcon}>
                     <Image
                       className={classes.activityIconImage}
-                      src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png`}
+                      src={getActivityImageSource({
+                        type: 'large',
+                        activity: {
+                          ...activity,
+                          assets: activity.assets,
+                        },
+                      })}
                       width={40}
                       height={40}
                       renderError={() => (
@@ -401,7 +375,13 @@ export const DiscordPresence: FunctionComponent<{
                     {activity.assets.small_image ? (
                       <Image
                         className={classes.activityIconBadgeImage}
-                        src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.png`}
+                        src={getActivityImageSource({
+                          type: 'small',
+                          activity: {
+                            ...activity,
+                            assets: activity.assets,
+                          },
+                        })}
                         width={128}
                         height={128}
                         style={{
@@ -445,18 +425,20 @@ export const DiscordPresence: FunctionComponent<{
                 {/* Right */}
                 <div className={classes.activityDetails}>
                   <h3>
-                    <Text emojiClassName={classes.emoji}>{activity.name}</Text>
+                    <DiscordPresenceMarkdownDiscord>
+                      {activity.name}
+                    </DiscordPresenceMarkdownDiscord>
                   </h3>
 
                   <p>
-                    <Text emojiClassName={classes.emoji}>
+                    <DiscordPresenceMarkdownDiscord>
                       {activity.details || ''}
-                    </Text>
+                    </DiscordPresenceMarkdownDiscord>
                   </p>
                   <p>
-                    <Text emojiClassName={classes.emoji}>
+                    <DiscordPresenceMarkdownDiscord>
                       {activity.state || ''}
-                    </Text>
+                    </DiscordPresenceMarkdownDiscord>
                   </p>
                   {activity.timestamps &&
                   typeof activity.timestamps.start === 'number' ? (
@@ -476,6 +458,6 @@ export const DiscordPresence: FunctionComponent<{
           </div>
         ) : null}
       </div>
-    </DiscordPresenceBox>
+    </DiscordPresenceLayout>
   );
 };

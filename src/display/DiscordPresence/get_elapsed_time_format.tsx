@@ -1,8 +1,15 @@
 import { formatDistance } from 'date-fns';
 
-// https://stackoverflow.com/a/16767434/422312
+/*
+ * Get elapsed time between two dates.
+ *
+ * https://stackoverflow.com/a/16767434/422312
+ *
+ * @param d1 - Date occuring first.
+ * @param d2 - Date occuring second.
+ */
 const getElapsedTime = (d1: Date, d2: Date) => {
-  let difference = d1.getTime() - d2.getTime();
+  let difference = d2.getTime() - d1.getTime();
 
   const days = Math.floor(difference / 1000 / 60 / 60 / 24);
   difference -= days * 1000 * 60 * 60 * 24;
@@ -17,6 +24,10 @@ const getElapsedTime = (d1: Date, d2: Date) => {
 
 /*
  * Get the elapsed time format for the provided duration in milliseconds.
+ *
+ * @param d1 - Date occuring first.
+ * @param d2 - Date occuring second.
+ * @param type - Formatting type.
  */
 export const getElapsedTimeFormat = (
   d1: Date,
@@ -43,7 +54,9 @@ export const getElapsedTimeFormat = (
       '0',
     )}:`}${String(seconds).padStart(2, '0')}`;
   } else {
-    const formattedDistance = formatDistance(d1, d2);
+    const formattedDistance = formatDistance(d1, d2, {
+      addSuffix: true,
+    }).replace(/(about|almost) /, '');
     if (formattedDistance.length <= 1) return formattedDistance;
     return formattedDistance[0].toUpperCase() + formattedDistance.substring(1);
   }

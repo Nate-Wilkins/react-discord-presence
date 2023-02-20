@@ -43,8 +43,8 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
       primary: 'rgba(38, 114, 195, 1)',
       accent: 'rgba(0, 26, 48, 1)',
     },
-    premiumMemberSince: 'April 10, 2022',
-    memberSince: 'June 21, 2016',
+    premiumMemberSince: new Date('4/10/2022'),
+    memberSince: new Date('6/21/2016'),
   };
 
   // When using the component.
@@ -102,8 +102,8 @@ PGP: F0EC3EA278223282B26CA4C1AAA34B2FC4B660C6`,
       primary: 'rgba(38, 114, 195, 1)',
       accent: 'rgba(0, 26, 48, 1)',
     },
-    premiumMemberSince: 'April 10, 2022',
-    memberSince: 'June 21, 2016',
+    premiumMemberSince: new Date('4/10/2022'),
+    memberSince: new Date('6/21/2016'),
   };
 
   // When using the component.
@@ -151,8 +151,8 @@ test('when using Discord presence component with invalid Discord CDN API data', 
       primary: 'rgba(38, 114, 195, 1)',
       accent: 'rgba(0, 26, 48, 1)',
     },
-    premiumMemberSince: 'April 10, 2022',
-    memberSince: 'June 21, 2016',
+    premiumMemberSince: new Date('4/10/2022'),
+    memberSince: new Date('6/21/2016'),
   };
 
   // When using the component.

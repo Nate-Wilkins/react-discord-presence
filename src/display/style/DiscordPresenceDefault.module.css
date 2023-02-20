@@ -22,10 +22,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--discord-presence-border-radius);
-  padding: 0.25em;
-  overflow-wrap: break-word;
-  word-break: break-word;
 }
 .root * {
   /* TODO: Need more research in how 'all: unset' works bc I think it could help 'normalize' here. */
@@ -35,7 +31,16 @@
   padding: 0;
 }
 
-.content {
+.layer1 {
+  border-radius: var(--discord-presence-border-radius);
+  padding: 0.25em;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.layer2 {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   position: relative;
   border-radius: var(--discord-presence-border-radius);
@@ -138,70 +143,40 @@
   top: -3em;
   width: fit-content;
   white-space: pre;
-  background-color: #202225;
   padding: 0.4em;
   border-radius: var(--discord-presence-border-radius);
 }
-
-.badgeStaff {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordstaff.svg);
-}
-.badgePartner {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordpartner.svg);
-}
-.badgeHypesquad {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadevents.svg);
-}
-.badgeBugHunterLevel1 {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordbughunter1.svg);
-}
-.badgeHypeSquadOnlineHouse1 {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadbravery.svg);
-}
-.badgeHypeSquadOnlineHouse2 {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadbrilliance.svg);
-}
-.badgeHypeSquadOnlineHouse3 {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/hypesquadbalance.svg);
-}
-.badgePremiumEarlySupporter {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordearlysupporter.svg);
-}
-.badgeTeamPseudoUser {
-  /* TODO: Not Supported 'TeamPseudoUser'. */
-}
-.badgeBugHunterLevel2 {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordbughunter2.svg);
-}
-.badgeVerifiedBot {
-  /* TODO: Not Supported 'VerifiedBot'. */
-}
-.badgeVerifiedDeveloper {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/discordbotdev.svg);
-}
-.badgeCertifiedModerator {
-  /* TODO: Not Supported 'CertifiedModerator'. */
-}
-.badgeBotHTTPInteractions {
-  /* TODO: Not Supported 'BotHTTPInteractions'. */
-}
-.badgeSpammer {
-  /* TODO: Not Supported 'Spammer'. */
-}
-.badgeActiveDeveloper {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/activedeveloper.svg);
-}
-.badgeQuarantined {
-  /* TODO: Not Supported 'Quarantined'. */
-}
-.badgePremiumMemberSince {
-  background-image: url(https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/premium_member_since.webp);
+.popoverTail {
+  display: block;
+  border-style: solid;
+  border-width: 0.5em;
+  width: 0;
+  height: 0;
+  top: 1.6em;
+  position: absolute;
+  left: calc(50% - 0.5em);
+  rotate: -90deg;
 }
 
-.badge img {
-  height: 100%;
-  width: 100%;
-}
+.badgeStaff { }
+.badgePartner { }
+.badgeHypesquad { }
+.badgeBugHunterLevel1 { }
+.badgeHypeSquadOnlineHouse1 { }
+.badgeHypeSquadOnlineHouse2 { }
+.badgeHypeSquadOnlineHouse3 { }
+.badgePremiumEarlySupporter { }
+.badgeTeamPseudoUser { }
+.badgeBugHunterLevel2 { }
+.badgeVerifiedBot { }
+.badgeVerifiedDeveloper { }
+.badgeCertifiedModerator { }
+.badgeBotHTTPInteractions { }
+.badgeSpammer { }
+.badgeActiveDeveloper { }
+.badgeQuarantined { }
+.badgeMemberSince { }
+.badgePremiumMemberSince { }
 
 .avatar {
   position: absolute;
@@ -441,9 +416,52 @@
   padding: 0.25em;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .emoji {
   width: 1em;
   height: 1em;
+}
+
+.blockquote {
+  position:relative;
+  padding-left: 0.90em;
+}
+.blockquoteBorder {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.25em;
+  height: 100%;
+  border-radius: 5em;
+}
+
+.blockCode {
+  display: inline-flex;
+  white-space: pre;
+  padding: 0.6em;
+  border-radius: 0.2em;
+}
+
+.inlineCode {
+  display: inline-flex;
+  padding: 0.3em;
+  border-radius: 0.2em;
+}
+
+.spoiler {
+  display: inline-flex;
+  padding: 0.3em;
+  border-radius: 0.2em;
+}
+
+.timestamp {
+  display: inline-flex;
+  padding: 0.3em;
+  border-radius: 0.2em;
 }
 
 .hr {
