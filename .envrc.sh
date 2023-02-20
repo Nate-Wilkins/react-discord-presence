@@ -132,7 +132,7 @@ function storybook_build() {
 function storybook_screenshot() {
   check --env develop
   rm -rf "./__screenshots__/"
-  yarn run storycap http://localhost:$STORYBOOK_PORT -i "**"
+  yarn run storycap http://localhost:$STORYBOOK_PORT -i "Examples/**" --captureTimeout 30000
 }
 
 #

@@ -128,5 +128,5 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 | Author  | Estimated Hours |
 | ------------- | ------------- |
-| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">28.48 Hours</p> |
+| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">30.18 Hours</p> |
 

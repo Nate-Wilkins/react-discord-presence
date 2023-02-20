@@ -31,6 +31,6 @@ export const parameters = {
       },
     },
     waitAssets: true,
-    delay: 1600,
+    delay: 15 * 1000,
   },
 };
