@@ -16,7 +16,7 @@ export const DiscordPresenceBadgePremiumMemberSince: FunctionComponent<{
   const { classes } = useTheme();
 
   const defaultFormat = () => {
-    const months = differenceInMonths(since, new Date());
+    const months = differenceInMonths(new Date(), since);
 
     // 24 Months.
     if (months >= 24) {
