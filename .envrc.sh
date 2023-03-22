@@ -66,8 +66,10 @@ function reset() {
 #
 function install() {
   check --env develop
-  yarn install
-  yarn run yarn-deduplicate
+  if [[ $? -eq 0 ]]; then
+    yarn install
+    yarn run yarn-deduplicate
+  fi
 }
 
 #
@@ -80,15 +82,15 @@ function build() {
 #
 # Run documentation generation.
 #
+# Dependencies:
+# - [jikyuu](https://github.com/Ruin0x11/jikyuu): Estimates hours spent per Git author.
+#
 function docs() {
   yarn run docs
 }
 
 #
 # Run source code linting.
-#
-# Dependencies:
-# - [jikyuu](https://github.com/Ruin0x11/jikyuu): Estimates hours spent per Git author.
 #
 function lint() {
   yarn lint
@@ -99,7 +101,9 @@ function lint() {
 #
 function test() {
   check --env develop
-  yarn test
+  if [[ $? -eq 0 ]]; then
+    yarn test
+  fi
 }
 
 #
@@ -107,7 +111,9 @@ function test() {
 #
 function publish() {
   check --env release
-  yarn publish $@
+  if [[ $? -eq 0 ]]; then
+    yarn publish $@
+  fi
 }
 
 #
@@ -115,7 +121,9 @@ function publish() {
 #
 function storybook() {
   check --env develop
-  yarn run storybook
+  if [[ $? -eq 0 ]]; then
+    yarn run storybook
+  fi
 }
 
 #
@@ -123,7 +131,9 @@ function storybook() {
 #
 function storybook_build() {
   check --env develop
-  yarn run storybook:build
+  if [[ $? -eq 0 ]]; then
+    yarn run storybook:build
+  fi
 }
 
 #
@@ -131,8 +141,10 @@ function storybook_build() {
 #
 function storybook_screenshot() {
   check --env develop
-  rm -rf "./__screenshots__/"
-  yarn run storycap http://localhost:$STORYBOOK_PORT -i "Examples/**" -i "Display/DiscordPresence/**" -i "Display/LoadingDiscordPresence/**" -i "Display/ErrorDiscordPresence/**" --captureTimeout 30000
+  if [[ $? -eq 0 ]]; then
+    rm -rf "./__screenshots__/"
+    yarn run storycap http://localhost:$STORYBOOK_PORT -i "Examples/**" -i "Display/DiscordPresence/**" -i "Display/LoadingDiscordPresence/**" -i "Display/ErrorDiscordPresence/**" --captureTimeout 30000
+  fi
 }
 
 #
@@ -140,7 +152,9 @@ function storybook_screenshot() {
 #
 function distributable_size() {
   check --env release
-  dust "./dist"
+  if [[ $? -eq 0 ]]; then
+    dust "./dist"
+  fi
 }
 
 #

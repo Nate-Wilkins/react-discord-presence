@@ -8,6 +8,43 @@ The rules for this can be found in their source and should support everything th
 However, if it doesn't, we probably need to update that package or use a more versatile system to update markdown
 syntax extensions like [`remark`](https://github.com/remarkjs/remark).
 
+## TODO: Make sure the following works?
+
+```
+**Bold**
+*italic*
+***Bold and italic***
+__underline__
+_italic_
+___undeeline and italic___
+___**bold italic underline**___
+~~strike through~~
+||spoiler||
+
+`code line`
+'''
+code block ''' (' is actually backtick `)'
+
+> single quote
+>>> multi line quote
+
+[hyperlink](url "alt text")
+[hyperlink_noembed](<url> "alt text")
+
+<#channelID> //mentions channel
+<@userID> //mentions user
+<@&roleID> //mentions role
+<a:_:emoji_id> //Animated Emoji
+<:_:emoji_id> //static emoji
+<t:unix_time_in_seconds> //Timestamp
+</command_name:command_ID> //Mention slash command
+</command_name subcommand_name:command_id> //Mention slash subcommand
+
+<id:home> Mention Server Home Page
+<id:customize> Mention Rolemenu
+<id:browse> Mention Channel Toggle menu
+```
+
 ---
 
 ## External Resources

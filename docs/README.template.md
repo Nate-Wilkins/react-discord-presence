@@ -98,6 +98,7 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
+- Update `memberSince` to use `(developerId / 4194304 + 1420070400000) / 1000`.
 - Modify Twemoji to use `ErrorImage` when the emoji image errors.
 - Modify loading images to use `ErrorImage` when the badge image errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
