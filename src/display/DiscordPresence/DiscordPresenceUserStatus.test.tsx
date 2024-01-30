@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import { DiscordPresenceUserStatus } from './DiscordPresenceUserStatus';
+import { ThemeDiscordPresence } from './ThemeDiscordPresence';
 import DiscordPresenceClassesDefault from '../style/DiscordPresenceDefault.module.css';
 
 test('when using the Discord presence user status component with the user "Offline"', async () => {
@@ -15,10 +16,12 @@ test('when using the Discord presence user status component with the user "Offli
 
   // When using the component.
   const queries = render(
-    <DiscordPresenceUserStatus
+    <ThemeDiscordPresence
       classes={DiscordPresenceClassesDefault}
-      data={data}
-    />,
+      theme={{ primary: '#333', accent: '#000' }}
+    >
+      <DiscordPresenceUserStatus data={data} />
+    </ThemeDiscordPresence>,
   );
 
   // Then the Discord presence user status is rendered.
@@ -38,10 +41,12 @@ test('when using the Discord presence user status component with the user "Onlin
 
   // When using the component.
   const queries = render(
-    <DiscordPresenceUserStatus
+    <ThemeDiscordPresence
       classes={DiscordPresenceClassesDefault}
-      data={data}
-    />,
+      theme={{ primary: '#333', accent: '#000' }}
+    >
+      <DiscordPresenceUserStatus data={data} />
+    </ThemeDiscordPresence>,
   );
 
   // Then the Discord presence user status is rendered.
@@ -61,10 +66,12 @@ test('when using the Discord presence user status component with the user "Onlin
 
   // When using the component.
   const queries = render(
-    <DiscordPresenceUserStatus
+    <ThemeDiscordPresence
       classes={DiscordPresenceClassesDefault}
-      data={data}
-    />,
+      theme={{ primary: '#333', accent: '#000' }}
+    >
+      <DiscordPresenceUserStatus data={data} />
+    </ThemeDiscordPresence>,
   );
 
   // Then the Discord presence user status is rendered.
@@ -84,10 +91,12 @@ test('when using the Discord presence user status component with the user "Onlin
 
   // When using the component.
   const queries = render(
-    <DiscordPresenceUserStatus
+    <ThemeDiscordPresence
       classes={DiscordPresenceClassesDefault}
-      data={data}
-    />,
+      theme={{ primary: '#333', accent: '#000' }}
+    >
+      <DiscordPresenceUserStatus data={data} />
+    </ThemeDiscordPresence>,
   );
 
   // Then the Discord presence user status is rendered.
@@ -107,10 +116,12 @@ test('when using the Discord presence user status component with the user "Idle"
 
   // When using the component.
   const queries = render(
-    <DiscordPresenceUserStatus
+    <ThemeDiscordPresence
       classes={DiscordPresenceClassesDefault}
-      data={data}
-    />,
+      theme={{ primary: '#333', accent: '#000' }}
+    >
+      <DiscordPresenceUserStatus data={data} />
+    </ThemeDiscordPresence>,
   );
 
   // Then the Discord presence user status is rendered.
@@ -130,10 +141,12 @@ test('when using the Discord presence user status component with the user in "Do
 
   // When using the component.
   const queries = render(
-    <DiscordPresenceUserStatus
+    <ThemeDiscordPresence
       classes={DiscordPresenceClassesDefault}
-      data={data}
-    />,
+      theme={{ primary: '#333', accent: '#000' }}
+    >
+      <DiscordPresenceUserStatus data={data} />
+    </ThemeDiscordPresence>,
   );
 
   // Then the Discord presence user status is rendered.

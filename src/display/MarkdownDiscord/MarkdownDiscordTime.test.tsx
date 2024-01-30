@@ -89,7 +89,7 @@ test(`when using the markdown Discord time with a format of 'R'`, async () => {
 
   // Then the markdown Discord time format is rendered.
   const $root = queries.baseElement;
-  expect($root.textContent).toEqual('29 years ago');
+  expect($root.textContent).toEqual('30 years ago');
 });
 
 test(`when using the markdown Discord time with a format of 'T'`, async () => {

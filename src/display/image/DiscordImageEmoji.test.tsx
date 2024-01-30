@@ -22,7 +22,7 @@ test('when using the basic Discord image emoji', async () => {
   // Then the Discord image emoji is rendered.
   const $img = queries.getByRole('img');
   expect($img.getAttribute('src')).toEqual(
-    `https://cdn.Discordapp.com/emojis/${id}.png`,
+    `https://cdn.discordapp.com/emojis/${id}.png`,
   );
 });
 
@@ -45,6 +45,6 @@ test('when using the animated Discord image emoji', async () => {
   // Then the Discord image emoji is rendered.
   const $img = queries.getByRole('img');
   expect($img.getAttribute('src')).toEqual(
-    `https://cdn.Discordapp.com/emojis/${id}.gif`,
+    `https://cdn.discordapp.com/emojis/${id}.gif`,
   );
 });
