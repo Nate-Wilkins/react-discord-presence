@@ -24,6 +24,9 @@ export const createCache = () => ({
  * API:
  *   https://api.lanyard.rest/v1/users/{developerId}
  *
+ * Example:
+ *   https://api.lanyard.rest/v1/users/194976024457510912
+ *
  * TODO: Support WebSocket and or automated query intervals.
  */
 export const AccessorGetDiscordPresence = AccessorQuery.createComponent<

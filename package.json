@@ -38,7 +38,7 @@
     "react": ">=15.0.1",
     "react-dom": ">=15.0.1",
     "react-twemoji": ">=0.5.0",
-    "schema-lanyard-discord-presence": ">=0.7.3",
+    "schema-lanyard-discord-presence": ">=0.8.0",
     "use-error-boundary": ">=2.0.6"
   },
   "devDependencies": {
