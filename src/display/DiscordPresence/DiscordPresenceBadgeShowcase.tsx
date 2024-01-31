@@ -1,4 +1,6 @@
 import { default as React, FunctionComponent, ReactNode } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { useTheme } from './ThemeDiscordPresence';
 
 /*
@@ -11,7 +13,7 @@ export const DiscordPresenceBadgeShowcase: FunctionComponent<{
 
   return (
     <div
-      className={classes.badges}
+      className={cn(DiscordPresenceClassesDefault.badges, classes?.badges)}
       style={{
         backgroundColor: theme.namePlate.backgroundColor.primary,
       }}

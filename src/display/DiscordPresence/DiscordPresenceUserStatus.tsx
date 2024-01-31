@@ -1,14 +1,23 @@
 import React, { CSSProperties, FunctionComponent } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { useTheme } from './ThemeDiscordPresence';
 
 const UserStatusOffline: FunctionComponent<{
-  classes: Record<string, string>;
+  classes?: Record<string, string>;
   style?: CSSProperties;
 }> = ({ classes, style }) => {
   return (
-    <div data-status="offline" className={classes.statusBorder} style={style}>
+    <div
+      data-status="offline"
+      className={cn(
+        DiscordPresenceClassesDefault.statusBorder,
+        classes?.statusBorder,
+      )}
+      style={style}
+    >
       <div
-        className={classes.status}
+        className={cn(DiscordPresenceClassesDefault.status, classes?.status)}
         style={{ backgroundColor: 'rgb(116 127 141)' }}
       />
     </div>
@@ -63,9 +72,16 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
   // Do Not Disturb.
   if (status === 'dnd') {
     return (
-      <div data-status={`dnd`} className={classes.statusBorder} style={style}>
+      <div
+        data-status={`dnd`}
+        className={cn(
+          DiscordPresenceClassesDefault.statusBorder,
+          classes?.statusBorder,
+        )}
+        style={style}
+      >
         <svg
-          className={classes.status}
+          className={cn(DiscordPresenceClassesDefault.status, classes?.status)}
           style={{ stroke: '#ed4244', fill: '#ed4244' }}
           strokeWidth="0"
           viewBox="0 0 24 24"
@@ -83,7 +99,14 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
   // Idle.
   if (status === 'idle') {
     return (
-      <div data-status="idle" className={classes.statusBorder} style={style}>
+      <div
+        data-status="idle"
+        className={cn(
+          DiscordPresenceClassesDefault.statusBorder,
+          classes?.statusBorder,
+        )}
+        style={style}
+      >
         <svg
           style={{ fill: '#faa61a' }}
           strokeWidth="0"
@@ -114,11 +137,14 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
     return (
       <div
         data-status={`online-${active_on_discord_desktop ? 'desktop' : 'web'}`}
-        className={classes.statusBorder}
+        className={cn(
+          DiscordPresenceClassesDefault.statusBorder,
+          classes?.statusBorder,
+        )}
         style={style}
       >
         <div
-          className={classes.status}
+          className={cn(DiscordPresenceClassesDefault.status, classes?.status)}
           style={{ backgroundColor: '#3ba55c' }}
         />
       </div>
@@ -130,12 +156,21 @@ export const DiscordPresenceUserStatus: FunctionComponent<{
     return (
       <div
         data-status={`online-mobile`}
-        className={classes.statusBorder}
+        className={cn(
+          DiscordPresenceClassesDefault.statusBorder,
+          classes?.statusBorder,
+        )}
         style={style}
       >
         {/* Material UI - Icon - PhoneAndroid */}
         <svg
-          className={`${classes.status} ${classes.statusMobile}`}
+          className={`${cn(
+            DiscordPresenceClassesDefault.status,
+            classes?.status,
+          )} ${cn(
+            DiscordPresenceClassesDefault.statusMobile,
+            classes?.statusMobile,
+          )}`}
           style={{ stroke: '#3ba55c', fill: '#3ba55c' }}
           focusable="false"
           aria-hidden="true"

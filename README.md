@@ -81,12 +81,9 @@ Make sure to load up a supported font before rendering the component.
 
 ```typescript
 import { DiscordPresence,  } from 'react-discord-presence';
-import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+
 // ...
-<DiscordPresence
-  classes={DiscordPresenceClassesDefault}
-  args={{ developerId: "<your-developer-id>" }}
-/>
+<DiscordPresence args={{ developerId: "<your-developer-id>" }} />
 ```
 
 ### Custom
@@ -109,8 +106,8 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
+- Update `memberSince` to use `(developerId / 4194304 + 1420070400000) / 1000`.
 - Modify Twemoji to use `ErrorImage` when the emoji image errors.
-- Modify loading images to use `ErrorImage` when the badge image errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Find SVG badges for 'TeamPseudoUser', 'VerifiedBot', 'CertifiedModerator', 'BotHTTPInteractions', 'Spammer', and 'Quarantined'
 
@@ -128,4 +125,4 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 | Author  | Estimated Hours |
 | ------------- | ------------- |
-| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">30.18 Hours</p> |
+| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">33.02 Hours</p> || [![dependabot[bot]](https://github.com/dependabot[bot].png?size=64)](https://github.com/dependabot[bot]) | <p align="right">0.52 Hours</p> |

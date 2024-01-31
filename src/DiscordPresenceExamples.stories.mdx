@@ -1,12 +1,14 @@
 import { Meta, Description, Story } from '@storybook/addon-docs';
-import { DiscordPresenceClassesDefault } from './display';
 import { DiscordPresence } from './DiscordPresence';
 
 <Meta title="Examples" component={DiscordPresence} />
 
 export const Template = (args) => (
   <div style={{ fontSize: '16px' }}>
-    <DiscordPresence classes={DiscordPresenceClassesDefault} args={{ developerId: args.args.developerId }} data={args.data} />
+    <DiscordPresence
+      args={{ developerId: args.args.developerId }}
+      data={args.data}
+    />
   </div>
 );
 
@@ -46,4 +48,3 @@ Some example Discord user presences.
 }}>
   {Template.bind({})}
 </Story>
-

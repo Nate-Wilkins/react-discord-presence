@@ -6,5 +6,8 @@ export {
   LoadingDiscordPresence,
   ErrorDiscordPresence,
   DiscordPresence as DisplayDiscordPresence,
+  // Styles.
+  DiscordPresenceClassesDefault,
+  DiscordPresenceClassesCode,
 } from './display';
 export { AccessorGetDiscordPresence, createCache } from './accessor';

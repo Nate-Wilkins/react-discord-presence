@@ -1,4 +1,6 @@
 import { default as React, FunctionComponent } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { DiscordPresenceLayout } from './DiscordPresenceLayout';
 import { useTheme } from './ThemeDiscordPresence';
 
@@ -11,8 +13,19 @@ export const LoadingDiscordPresence: FunctionComponent = () => {
   return (
     <DiscordPresenceLayout>
       <div
-        className={`${classes.loading} ${
-          theme.primary.isDark() ? classes.loadingWhite : classes.loadingBlack
+        className={`${cn(
+          DiscordPresenceClassesDefault.loading,
+          classes?.loading,
+        )} ${
+          theme.primary.isDark()
+            ? cn(
+                DiscordPresenceClassesDefault.loadingWhite,
+                classes?.loadingWhite,
+              )
+            : cn(
+                DiscordPresenceClassesDefault.loadingBlack,
+                classes?.loadingBlack,
+              )
         }`}
         data-testid="progress"
       />

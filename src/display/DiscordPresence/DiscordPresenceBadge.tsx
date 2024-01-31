@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { DiscordBadgeEnum } from '../types';
 import { DiscordPresenceBadgeImage } from './DiscordPresenceBadgeImage';
 import { useTheme } from './ThemeDiscordPresence';
@@ -130,7 +132,10 @@ export const DiscordPresenceBadge: FunctionComponent<{
     className: classNameLookup,
     hoverText,
   } = BadgeLookup[badge];
-  const className = classes[classNameLookup];
+  const className = cn(
+    DiscordPresenceClassesDefault[classNameLookup],
+    classes?.[classNameLookup],
+  );
   const source = !format ? defaultSource : format(badge);
 
   return (

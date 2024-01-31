@@ -4,6 +4,8 @@ import {
   useEffect,
   useState,
 } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { getElapsedTimeFormat } from './get_elapsed_time_format';
 import { useTheme } from './ThemeDiscordPresence';
 
@@ -46,9 +48,18 @@ export const DiscordPresenceSpotifySongDuration: FunctionComponent<{
 
   return (
     <div>
-      <div className={classes.spotifySongProgressBar} style={styleTotal}>
+      <div
+        className={cn(
+          DiscordPresenceClassesDefault.spotifySongProgressBar,
+          classes?.spotifySongProgressBar,
+        )}
+        style={styleTotal}
+      >
         <div
-          className={classes.spotifySongProgressBarProgress}
+          className={cn(
+            DiscordPresenceClassesDefault.spotifySongProgressBarProgress,
+            classes?.spotifySongProgressBarProgress,
+          )}
           style={{
             ...styleProgress,
             width: `${
@@ -58,7 +69,12 @@ export const DiscordPresenceSpotifySongDuration: FunctionComponent<{
         />
       </div>
 
-      <div className={classes.spotifySongProgressBarDetails}>
+      <div
+        className={cn(
+          DiscordPresenceClassesDefault.spotifySongProgressBarDetails,
+          classes?.spotifySongProgressBarDetails,
+        )}
+      >
         <p>
           {now < end
             ? format(new Date(start), new Date(now))

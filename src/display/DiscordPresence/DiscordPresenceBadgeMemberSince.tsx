@@ -1,5 +1,7 @@
 import { format } from 'date-fns';
 import { default as React, FunctionComponent } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { DiscordBadgeEnum } from '../types';
 import { DiscordPresenceBadgeImage } from './DiscordPresenceBadgeImage';
 import { useTheme } from './ThemeDiscordPresence';
@@ -15,7 +17,10 @@ export const DiscordPresenceBadgeMemberSince: FunctionComponent<{
 }> = ({ since, format: inputFormatImageSrc }) => {
   const { classes } = useTheme();
 
-  const className = classes['badgeMemberSince'];
+  const className = cn(
+    DiscordPresenceClassesDefault.badgeMemberSince,
+    classes?.['badgeMemberSince'],
+  );
   const source = !inputFormatImageSrc
     ? 'https://raw.githubusercontent.com/Nate-Wilkins/discord-badges/main/assets/member_since.webp'
     : inputFormatImageSrc('MemberSince');

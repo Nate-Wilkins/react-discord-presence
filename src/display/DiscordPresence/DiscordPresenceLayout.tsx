@@ -1,5 +1,7 @@
 import { default as React, FunctionComponent, ReactNode } from 'react';
+import cn from 'classnames';
 import { createLinearGradientVertical } from '../create_linear_gradient_vertical';
+import { DiscordPresenceClassesDefault } from '../style';
 import { useTheme } from './ThemeDiscordPresence';
 
 /*
@@ -17,7 +19,7 @@ export const DiscordPresenceLayout: FunctionComponent<{
 
   return (
     <div
-      className={classes.layer1}
+      className={cn(DiscordPresenceClassesDefault.layer1, classes?.layer1)}
       style={{
         background: createLinearGradientVertical(
           theme.root.backgroundColor.primary,
@@ -27,7 +29,7 @@ export const DiscordPresenceLayout: FunctionComponent<{
       }}
     >
       <div
-        className={classes.layer2}
+        className={cn(DiscordPresenceClassesDefault.layer2, classes?.layer2)}
         style={{
           background: createLinearGradientVertical(
             theme.content.backgroundColor.primary,

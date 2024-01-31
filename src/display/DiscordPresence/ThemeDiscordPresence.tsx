@@ -7,6 +7,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { getThemePalette, ThemePalette } from './get_theme_palette';
 
 type Theme = {
@@ -15,7 +17,7 @@ type Theme = {
 };
 
 export const ThemeProviderContext = createContext<null | {
-  classes: Record<string, string>;
+  classes?: Record<string, string>;
   theme: ThemePalette;
   setTheme: (theme: Theme) => void;
 }>(null);
@@ -26,7 +28,7 @@ export const ThemeProviderContext = createContext<null | {
  * Used to provide default styles and a "theme" palette.
  */
 export const ThemeDiscordPresence: FunctionComponent<{
-  classes: Record<string, string>;
+  classes?: Record<string, string>;
   theme: { primary: string; accent: string };
   children: ReactNode;
 }> = ({ classes, theme: inputTheme, children }) => {
@@ -47,7 +49,7 @@ export const ThemeDiscordPresence: FunctionComponent<{
       value={{ classes, theme, setTheme: onSetTheme }}
     >
       <div
-        className={classes.root}
+        className={cn(DiscordPresenceClassesDefault.root, classes?.root)}
         style={{
           color: theme.root.color,
         }}

@@ -70,12 +70,9 @@ Make sure to load up a supported font before rendering the component.
 
 ```typescript
 import { DiscordPresence,  } from 'react-discord-presence';
-import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+
 // ...
-<DiscordPresence
-  classes={DiscordPresenceClassesDefault}
-  args={{ developerId: "<your-developer-id>" }}
-/>
+<DiscordPresence args={{ developerId: "<your-developer-id>" }} />
 ```
 
 ### Custom
@@ -98,11 +95,8 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
-- Update `webpack.config` to use `style-loader` and `css-loader` to inline css content in JS.
-  This worked for your other game engine project should work for this too unless bundling is different.
 - Update `memberSince` to use `(developerId / 4194304 + 1420070400000) / 1000`.
 - Modify Twemoji to use `ErrorImage` when the emoji image errors.
-- Modify loading images to use `ErrorImage` when the badge image errors.
 - Support for overflow in activities & activity details? Should this be a custom scrollbar?
 - Find SVG badges for 'TeamPseudoUser', 'VerifiedBot', 'CertifiedModerator', 'BotHTTPInteractions', 'Spammer', and 'Quarantined'
 

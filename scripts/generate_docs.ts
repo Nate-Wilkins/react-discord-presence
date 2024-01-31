@@ -36,6 +36,7 @@ const documentPackagePeerDependencyHash = 'sha256';
 const documentPackagePeerDependencyUnpkgCdnFile = {
   react: 'umd/react.production.min.js',
   'react-dom': 'umd/react-dom.production.min.js',
+  classnames: 'index.js',
   color: 'index.js',
   'data-accessor': 'dist/index.js',
   'date-fns': 'index.js',

@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react';
+import cn from 'classnames';
 import { ErrorImage } from '../image';
 import { MarkdownDiscord } from '../MarkdownDiscord';
 import { useTheme } from './ThemeDiscordPresence';
+import { DiscordPresenceClassesDefault } from '../style';
 
 /*
  * Wrapper around `MarkdownDiscord` to make it easier to work with styling specifically
@@ -14,21 +16,36 @@ export const DiscordPresenceMarkdownDiscord: FunctionComponent<{
 
   return (
     <MarkdownDiscord
-      emojiClassName={classes.emoji}
-      blockQuoteClassName={classes.blockquote}
-      blockQuoteBorderClassName={classes.blockquoteBorder}
+      emojiClassName={cn(DiscordPresenceClassesDefault.emoji, classes?.emoji)}
+      blockQuoteClassName={cn(
+        DiscordPresenceClassesDefault.blockquote,
+        classes?.blockquote,
+      )}
+      blockQuoteBorderClassName={cn(
+        DiscordPresenceClassesDefault.blockquoteBorder,
+        classes?.blockquoteBorder,
+      )}
       blockQuoteBorderStyle={{
         background: theme.blockquoteBorder.color,
       }}
-      blockCodeClassName={classes.blockCode}
+      blockCodeClassName={cn(
+        DiscordPresenceClassesDefault.blockCode,
+        classes?.blockCode,
+      )}
       blockCodeStyle={{
         background: theme.timestamp.backgroundColor,
       }}
-      inlineCodeClassName={classes.inlineCode}
+      inlineCodeClassName={cn(
+        DiscordPresenceClassesDefault.inlineCode,
+        classes?.inlineCode,
+      )}
       inlineCodeStyle={{
         background: theme.timestamp.backgroundColor,
       }}
-      spoilerClassName={classes.spoiler}
+      spoilerClassName={cn(
+        DiscordPresenceClassesDefault.spoiler,
+        classes?.spoiler,
+      )}
       spoilerStyle={{
         color: theme.spoiler.backgroundColor,
         background: theme.spoiler.backgroundColor,
@@ -37,14 +54,14 @@ export const DiscordPresenceMarkdownDiscord: FunctionComponent<{
         color: theme.spoiler.color,
         background: theme.spoiler.backgroundColor,
       }}
-      timestampClassName={classes.timestamp}
+      timestampClassName={cn(DiscordPresenceClassesDefault.timestamp, classes?.timestamp)}
       timestampStyle={{
         background: theme.timestamp.backgroundColor,
       }}
-      underlineClassName={classes.underline}
+      underlineClassName={cn(DiscordPresenceClassesDefault.underline, classes?.underline)}
       renderEmojiError={() => (
         <ErrorImage
-          className={classes.emoji}
+          className={cn(DiscordPresenceClassesDefault.emoji, classes?.emoji)}
           style={{
             stroke: theme.root.color,
             fill: theme.root.color,

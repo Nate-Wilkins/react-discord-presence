@@ -4,7 +4,9 @@ import {
   FunctionComponent,
   useState,
 } from 'react';
+import cn from 'classnames';
 import { ErrorImage, Image } from '../image';
+import { DiscordPresenceClassesDefault } from '../style';
 import { useTheme } from './ThemeDiscordPresence';
 
 /*
@@ -38,7 +40,10 @@ export const DiscordPresenceBadgeImage: FunctionComponent<{
       }}
     >
       <Image
-        className={`${classes.badge} ${className}`}
+        className={`${cn(
+          DiscordPresenceClassesDefault.badge,
+          classes?.badge,
+        )} ${className}`}
         style={style}
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
@@ -47,7 +52,10 @@ export const DiscordPresenceBadgeImage: FunctionComponent<{
         height={21}
         renderError={() => (
           <ErrorImage
-            className={`${classes.badge} ${className}`}
+            className={`${cn(
+              DiscordPresenceClassesDefault.badge,
+              classes?.badge,
+            )} ${className}`}
             style={{
               stroke: theme.root.color,
               fill: theme.root.color,
@@ -58,7 +66,10 @@ export const DiscordPresenceBadgeImage: FunctionComponent<{
 
       {!hoverText || !isHovering ? null : (
         <div
-          className={classes.popover}
+          className={cn(
+            DiscordPresenceClassesDefault.popover,
+            classes?.popover,
+          )}
           style={{
             backgroundColor: theme.popover.backgroundColor,
             color: theme.popover.color,
@@ -69,7 +80,10 @@ export const DiscordPresenceBadgeImage: FunctionComponent<{
         >
           <div style={{ position: 'relative' }}>
             <div
-              className={classes.popoverTail}
+              className={cn(
+                DiscordPresenceClassesDefault.popoverTail,
+                classes?.popoverTail,
+              )}
               style={{
                 borderColor: `transparent ${theme.popover.backgroundColor} transparent transparent`,
               }}

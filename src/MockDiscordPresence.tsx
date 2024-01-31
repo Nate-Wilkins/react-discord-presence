@@ -16,7 +16,7 @@ import ImageBanner from '../test/banner.jpeg';
  * - Error handling.
  */
 export const MockDiscordPresence: FunctionComponent<{
-  classes: Record<string, string>;
+  classes?: Record<string, string>;
   args: { developerId: string };
   data?: Partial<IDiscordPresence> & {
     theme?: {

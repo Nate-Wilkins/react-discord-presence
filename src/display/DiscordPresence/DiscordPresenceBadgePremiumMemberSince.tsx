@@ -1,5 +1,7 @@
 import { differenceInMonths, format } from 'date-fns';
 import { default as React, FunctionComponent } from 'react';
+import cn from 'classnames';
+import { DiscordPresenceClassesDefault } from '../style';
 import { DiscordBadgeEnum } from '../types';
 import { DiscordPresenceBadgeImage } from './DiscordPresenceBadgeImage';
 import { useTheme } from './ThemeDiscordPresence';
@@ -56,7 +58,10 @@ export const DiscordPresenceBadgePremiumMemberSince: FunctionComponent<{
     }
   };
 
-  const className = classes['badgePremiumMemberSince'];
+  const className = cn(
+    DiscordPresenceClassesDefault['badgePremiumMemberSince'],
+    classes?.['badgePremiumMemberSince'],
+  );
   const source = !inputFormatImageSrc
     ? defaultFormat()
     : inputFormatImageSrc('PremiumMemberSince');

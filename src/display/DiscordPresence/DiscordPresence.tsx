@@ -1,7 +1,9 @@
 import { format } from 'date-fns';
 import { default as React, FunctionComponent, useState } from 'react';
+import cn from 'classnames';
 import { createLinearGradientVertical } from '../create_linear_gradient_vertical';
 import { DiscordImageEmoji, ErrorImage, Image } from '../image';
+import { DiscordPresenceClassesDefault } from '../style';
 import { DiscordBadgeEnum } from '../types';
 import { DiscordPresenceActivityDuration } from './DiscordPresenceActivityDuration';
 import { DiscordPresenceBadge } from './DiscordPresenceBadge';
@@ -93,16 +95,27 @@ export const DiscordPresence: FunctionComponent<{
 
   return (
     <DiscordPresenceLayout>
-      <div className={classes.background}>
+      <div
+        className={cn(
+          DiscordPresenceClassesDefault.background,
+          classes?.background,
+        )}
+      >
         {/* Banner */}
         <Image
           src={formatBannerImageSrc(data.discord_user.id)}
           width={300}
           height={105}
-          className={classes.backgroundImage}
+          className={cn(
+            DiscordPresenceClassesDefault.backgroundImage,
+            classes?.backgroundImage,
+          )}
           renderError={() => (
             <ErrorImage
-              className={classes.backgroundImage}
+              className={cn(
+                DiscordPresenceClassesDefault.backgroundImage,
+                classes?.backgroundImage,
+              )}
               style={{
                 stroke: theme.root.color,
                 fill: theme.root.color,
@@ -112,13 +125,20 @@ export const DiscordPresence: FunctionComponent<{
         />
 
         {/* Avatar */}
-        <div className={classes.avatar}>
+        <div
+          className={cn(DiscordPresenceClassesDefault.avatar, classes?.avatar)}
+        >
           <a
             href={`https://discord.com/users/${data.discord_user.id}`}
             target="_blank"
             rel="noreferrer"
           >
-            <div className={classes.avatarViewProfileContainer}>
+            <div
+              className={cn(
+                DiscordPresenceClassesDefault.avatarViewProfileContainer,
+                classes?.avatarViewProfileContainer,
+              )}
+            >
               {/* TODO: Add in avatar decoration? What is this? */}
               <Image
                 onMouseOver={onAvatarMouseOver}
@@ -142,7 +162,10 @@ export const DiscordPresence: FunctionComponent<{
                 )}
               />
               <div
-                className={classes.avatarViewProfile}
+                className={cn(
+                  DiscordPresenceClassesDefault.avatarViewProfile,
+                  classes?.avatarViewProfile,
+                )}
                 style={{ opacity: !isHoveringAvatar ? 0 : 1 }}
               >
                 View Profile
@@ -179,7 +202,10 @@ export const DiscordPresence: FunctionComponent<{
 
       {/* Name + ID */}
       <div
-        className={classes.namePlate}
+        className={cn(
+          DiscordPresenceClassesDefault.namePlate,
+          classes?.namePlate,
+        )}
         style={{
           background: createLinearGradientVertical(
             theme.namePlate.backgroundColor.primary,
@@ -195,7 +221,10 @@ export const DiscordPresence: FunctionComponent<{
           }}
         >
           <div
-            className={classes.namePlateHeader}
+            className={cn(
+              DiscordPresenceClassesDefault.namePlateHeader,
+              classes?.namePlateHeader,
+            )}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -234,14 +263,20 @@ export const DiscordPresence: FunctionComponent<{
               typeof activityStatus.emoji.animated === 'boolean' ? (
                 <span style={{ display: 'flex', marginRight: '0.5em' }}>
                   <DiscordImageEmoji
-                    className={classes.emoji}
+                    className={cn(
+                      DiscordPresenceClassesDefault.emoji,
+                      classes?.emoji,
+                    )}
                     id={activityStatus.emoji.id}
                     animated={activityStatus.emoji.animated}
                     width={32}
                     height={32}
                     renderError={() => (
                       <ErrorImage
-                        className={classes.emoji}
+                        className={cn(
+                          DiscordPresenceClassesDefault.emoji,
+                          classes?.emoji,
+                        )}
                         style={{
                           stroke: theme.root.color,
                           fill: theme.root.color,
@@ -260,11 +295,13 @@ export const DiscordPresence: FunctionComponent<{
           </div>
         ) : null}
 
-        <hr className={classes.hr} />
+        <hr className={cn(DiscordPresenceClassesDefault.hr, classes?.hr)} />
 
         {/* About */}
         {data.aboutMe ? (
-          <div className={classes.about}>
+          <div
+            className={cn(DiscordPresenceClassesDefault.about, classes?.about)}
+          >
             <h3>About Me</h3>
 
             <p
@@ -281,7 +318,12 @@ export const DiscordPresence: FunctionComponent<{
 
         {/* Member Since */}
         {data.memberSince ? (
-          <div className={classes.memberSince}>
+          <div
+            className={cn(
+              DiscordPresenceClassesDefault.memberSince,
+              classes?.memberSince,
+            )}
+          >
             <h3>Member Since</h3>
 
             <p
@@ -298,21 +340,47 @@ export const DiscordPresence: FunctionComponent<{
 
         {/* Spotify */}
         {!data.spotify ? null : (
-          <div className={classes.listeningToSpotify}>
+          <div
+            className={cn(
+              DiscordPresenceClassesDefault.listeningToSpotify,
+              classes?.listeningToSpotify,
+            )}
+          >
             <h3>Listening to Spotify</h3>
 
-            <div className={classes.spotifySong}>
-              <div className={classes.activity}>
+            <div
+              className={cn(
+                DiscordPresenceClassesDefault.spotifySong,
+                classes?.spotifySong,
+              )}
+            >
+              <div
+                className={cn(
+                  DiscordPresenceClassesDefault.activity,
+                  classes?.activity,
+                )}
+              >
                 {/* Left */}
-                <div className={classes.activityIcon}>
+                <div
+                  className={cn(
+                    DiscordPresenceClassesDefault.activityIcon,
+                    classes?.activityIcon,
+                  )}
+                >
                   <Image
-                    className={classes.activityIconImage}
+                    className={cn(
+                      DiscordPresenceClassesDefault.activityIconImage,
+                      classes?.activityIconImage,
+                    )}
                     src={data.spotify.album_art_url}
                     width={640}
                     height={640}
                     renderError={() => (
                       <ErrorImage
-                        className={classes.activityIconImage}
+                        className={cn(
+                          DiscordPresenceClassesDefault.activityIconImage,
+                          classes?.activityIconImage,
+                        )}
                         style={{
                           stroke: theme.root.color,
                           fill: theme.root.color,
@@ -323,7 +391,12 @@ export const DiscordPresence: FunctionComponent<{
                 </div>
 
                 {/* Right */}
-                <div className={classes.activityDetails}>
+                <div
+                  className={cn(
+                    DiscordPresenceClassesDefault.activityDetails,
+                    classes?.activityDetails,
+                  )}
+                >
                   <h3>{data.spotify.song}</h3>
 
                   <p>by {data.spotify.artist}</p>
@@ -343,16 +416,35 @@ export const DiscordPresence: FunctionComponent<{
 
         {/* Activities */}
         {activities.length > 0 ? (
-          <div className={classes.activities}>
+          <div
+            className={cn(
+              DiscordPresenceClassesDefault.activities,
+              classes?.activities,
+            )}
+          >
             <h3>Current Activity</h3>
 
             {activities.map(activity => (
-              <div key={activity.id} className={classes.activity}>
+              <div
+                key={activity.id}
+                className={cn(
+                  DiscordPresenceClassesDefault.activity,
+                  classes?.activity,
+                )}
+              >
                 {/* Left */}
                 {activity.assets ? (
-                  <div className={classes.activityIcon}>
+                  <div
+                    className={cn(
+                      DiscordPresenceClassesDefault.activityIcon,
+                      classes?.activityIcon,
+                    )}
+                  >
                     <Image
-                      className={classes.activityIconImage}
+                      className={cn(
+                        DiscordPresenceClassesDefault.activityIconImage,
+                        classes?.activityIconImage,
+                      )}
                       src={getActivityImageSource({
                         type: 'large',
                         activity: {
@@ -364,7 +456,10 @@ export const DiscordPresence: FunctionComponent<{
                       height={40}
                       renderError={() => (
                         <ErrorImage
-                          className={classes.activityIconImage}
+                          className={cn(
+                            DiscordPresenceClassesDefault.activityIconImage,
+                            classes?.activityIconImage,
+                          )}
                           style={{
                             stroke: theme.root.color,
                             fill: theme.root.color,
@@ -374,7 +469,10 @@ export const DiscordPresence: FunctionComponent<{
                     />
                     {activity.assets.small_image ? (
                       <Image
-                        className={classes.activityIconBadgeImage}
+                        className={cn(
+                          DiscordPresenceClassesDefault.activityIconBadgeImage,
+                          classes?.activityIconBadgeImage,
+                        )}
                         src={getActivityImageSource({
                           type: 'small',
                           activity: {
@@ -390,7 +488,10 @@ export const DiscordPresence: FunctionComponent<{
                         }}
                         renderError={() => (
                           <ErrorImage
-                            className={classes.activityIconBadgeImage}
+                            className={cn(
+                              DiscordPresenceClassesDefault.activityIconBadgeImage,
+                              classes?.activityIconBadgeImage,
+                            )}
                             style={{
                               stroke: theme.root.color,
                               fill: theme.root.color,
@@ -401,17 +502,28 @@ export const DiscordPresence: FunctionComponent<{
                     ) : null}
                   </div>
                 ) : (
-                  <div className={classes.activityIcon}>
+                  <div
+                    className={cn(
+                      DiscordPresenceClassesDefault.activityIcon,
+                      classes?.activityIcon,
+                    )}
+                  >
                     {/* NOTE: Images from the CDN are not very big and scaling them up looks bad. Padding is to reduce scaling. */}
                     <Image
-                      className={classes.activityIconImage}
+                      className={cn(
+                        DiscordPresenceClassesDefault.activityIconImage,
+                        classes?.activityIconImage,
+                      )}
                       style={{ padding: '0.75em' }}
                       src={`https://dcdn.dstn.to/app-icons/${activity.application_id}`}
                       width={40}
                       height={40}
                       renderError={() => (
                         <ErrorImage
-                          className={classes.activityIconImage}
+                          className={cn(
+                            DiscordPresenceClassesDefault.activityIconImage,
+                            classes?.activityIconImage,
+                          )}
                           style={{
                             stroke: theme.root.color,
                             fill: theme.root.color,
@@ -423,7 +535,12 @@ export const DiscordPresence: FunctionComponent<{
                 )}
 
                 {/* Right */}
-                <div className={classes.activityDetails}>
+                <div
+                  className={cn(
+                    DiscordPresenceClassesDefault.activityDetails,
+                    classes?.activityDetails,
+                  )}
+                >
                   <h3>
                     <DiscordPresenceMarkdownDiscord>
                       {activity.name}

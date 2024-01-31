@@ -1,5 +1,7 @@
 import { default as React, FunctionComponent } from 'react';
+import cn from 'classnames';
 import { ErrorImage } from '../image';
+import { DiscordPresenceClassesDefault } from '../style';
 import { DiscordPresenceLayout } from './DiscordPresenceLayout';
 import { useTheme } from './ThemeDiscordPresence';
 
@@ -13,7 +15,7 @@ export const ErrorDiscordPresence: FunctionComponent<{
 
   return (
     <DiscordPresenceLayout>
-      <div className={classes.error}>
+      <div className={cn(DiscordPresenceClassesDefault.error, classes?.error)}>
         <ErrorImage
           style={{ stroke: theme.root.color, fill: theme.root.color }}
         />

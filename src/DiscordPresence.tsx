@@ -5,7 +5,6 @@ import { AccessorGetDiscordPresence, createCache } from './accessor';
 import { Boundary } from './Boundary';
 import {
   DiscordPresence as DisplayDiscordPresence,
-  DiscordPresenceClassesDefault,
   DiscordPresenceData,
   ErrorDiscordPresence,
   LoadingDiscordPresence,
@@ -23,7 +22,7 @@ import {
  * - Displaying Discord presence data.
  */
 export const DiscordPresence: FunctionComponent<{
-  classes: Record<string, string>;
+  classes?: Record<string, string>;
   theme?: { primary: string; accent: string };
   args: { developerId: string };
   data?: Partial<IDiscordPresence> & {
@@ -43,7 +42,7 @@ export const DiscordPresence: FunctionComponent<{
     discordUser: DiscordPresenceData['discord_user'],
   ) => string;
 }> = ({
-  classes: inputClasses,
+  classes,
   theme,
   args,
   data,
@@ -60,11 +59,6 @@ export const DiscordPresence: FunctionComponent<{
     }),
     ...createCache(),
   };
-
-  // Localized styles.
-  // TODO: DiscordPresenceClassesDefault doesn't work here.
-  //       Not sure how to get webpack or any build to embed styles like this.
-  const classes = inputClasses ? inputClasses : DiscordPresenceClassesDefault;
 
   return (
     <ThemeDiscordPresence

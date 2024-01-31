@@ -63,12 +63,14 @@ function reset() {
 
 #
 # Run NodeJS packages install with yarn.
+# Run Rust packages install with cargo.
 #
 function install() {
   check --env develop
   if [[ $? -eq 0 ]]; then
     yarn install
     yarn run yarn-deduplicate
+    cargo install jikyuu
   fi
 }
 
@@ -166,6 +168,7 @@ function help() {
   echo '   clean                  Run cleanup on temporary files.                                 '
   echo '   configure              Run configuration setup for a specific environment.             '
   echo '   install                Run NodeJS packages install with yarn.                          '
+  echo '                          Run Rust packages install with cargo.                           '
   echo '   build                  Run build pipeline to create distributable.                     '
   echo '   docs                   Run documentation generation.                                   '
   echo '   test                   Run tests.                                                      '

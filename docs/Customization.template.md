@@ -16,8 +16,8 @@ To change the relative size of the component you can update the container's `fon
 - `DiscordPresenceDefault.module.css`: Default styling.
 
 ```typescript
-import { DiscordPresence } from 'react-discord-presence';
-import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
+import { DiscordPresence, DiscordPresenceClassesDefault } from 'react-discord-presence';
+
 // ...
 <DiscordPresence
   classes={DiscordPresenceClassesDefault}
@@ -28,12 +28,10 @@ import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/displ
 - `DiscordPresenceCode.module.css`:
 
 ```typescript
-import { DiscordPresence } from 'react-discord-presence';
-import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
-import DiscordPresenceClassesCode from 'react-discord-presence/dist/src/display/style/DiscordPresenceCode.module.css';
+import { DiscordPresence, DiscordPresenceClassesCode } from 'react-discord-presence';
 // ...
 <DiscordPresence
-  classes={Object.assign({}, DiscordPresenceClassesDefault, DiscordPresenceClassesCode}}
+  classes={DiscordPresenceClassesCode}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```
@@ -89,11 +87,10 @@ __`./index.tsx`__
 
 ```typescript
 import { DiscordPresence } from 'react-discord-presence';
-import DiscordPresenceClassesDefault from 'react-discord-presence/dist/src/display/style/DiscordPresenceDefault.module.css';
 import DiscordPresenceClassesCustom from './DiscordPresenceCustom.module.css';
 // ...
 <DiscordPresence
-  classes={Object.assign({}, DiscordPresenceClassesDefault, DiscordPresenceClassesCustom}}
+  classes={DiscordPresenceClassesCustom}
   args={{ developerId: "<your-developer-id>" }}
 />
 ```

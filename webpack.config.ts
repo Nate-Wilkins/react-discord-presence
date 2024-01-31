@@ -19,7 +19,11 @@ export default {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].js',
-    libraryTarget: 'commonjs',
+
+    // libraryTarget: 'commonjs',
+    libraryTarget: 'umd',
+    library: 'ReactDiscordPresence',
+    umdNamedDefine: true,
   },
 
   plugins: [
@@ -67,7 +71,11 @@ export default {
         ],
       },
       {
-        test: /\.(css|jpg|jpe?g|png|gif|mp3|svg|gltf|fbx|txt|pdf|md|xml|webp|ttf)$/i,
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(jpg|jpe?g|png|gif|mp3|svg|gltf|fbx|txt|pdf|md|xml|webp|ttf)$/i,
         use: [
           {
             loader: 'file-loader',
