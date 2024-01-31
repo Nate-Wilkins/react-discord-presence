@@ -98,6 +98,8 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ### Display
 
+- Update `webpack.config` to use `style-loader` and `css-loader` to inline css content in JS.
+  This worked for your other game engine project should work for this too unless bundling is different.
 - Update `memberSince` to use `(developerId / 4194304 + 1420070400000) / 1000`.
 - Modify Twemoji to use `ErrorImage` when the emoji image errors.
 - Modify loading images to use `ErrorImage` when the badge image errors.
@@ -119,4 +121,3 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 | Author  | Estimated Hours |
 | ------------- | ------------- |
 <%#authors%>| [![<%name%>](https://github.com/<%name%>.png?size=64)](https://github.com/<%name%>) | <p align="right"><%hours%> Hours</p> |<%/authors%>
-
