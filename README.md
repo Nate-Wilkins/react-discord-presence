@@ -58,7 +58,7 @@ pulled into the display components.
 ## Requirements
 
 This solution uses the [Lanyard API](https://github.com/Phineas/lanyard) which will require the Discord user your
-displaying presence for be in the [Lanyard API Discord](https://discord.gg/UrXF2cfJ7F). You will also have to have
+displaying presence for to be in the [Lanyard API Discord](https://discord.gg/UrXF2cfJ7F). You will also have to have
 "Developer Mode" on for the user.
 
 If they're not in the Discord server, you'll get a response error from their API.
@@ -129,4 +129,3 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 | Author  | Estimated Hours |
 | ------------- | ------------- |
 | [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">30.18 Hours</p> |
-
