@@ -104,6 +104,11 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 ## Roadmap
 
+- "iframe" embed
+  - https://github.com/nwtgck/gh-card
+  - https://legacy.reactjs.org/docs/react-dom-server.html
+  - https://razzlejs.org/getting-started
+
 ### Display
 
 - Update `memberSince` to use `(developerId / 4194304 + 1420070400000) / 1000`.
@@ -125,4 +130,5 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 | Author  | Estimated Hours |
 | ------------- | ------------- |
-| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">33.02 Hours</p> || [![dependabot[bot]](https://github.com/dependabot[bot].png?size=64)](https://github.com/dependabot[bot]) | <p align="right">0.52 Hours</p> |
+| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">33.52 Hours</p> |
+| [![dependabot[bot]](https://github.com/dependabot[bot].png?size=64)](https://github.com/dependabot[bot]) | <p align="right">0.52 Hours</p> |

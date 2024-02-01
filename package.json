@@ -106,5 +106,12 @@
     "webpack": "5.76.0",
     "webpack-cli": "4.6.0",
     "yarn-deduplicate": "6.0.1"
-  }
+  },
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ]
 }
