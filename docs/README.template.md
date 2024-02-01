@@ -4,6 +4,8 @@
 [![Open Issues](https://img.shields.io/github/issues-raw/Nate-Wilkins/react-discord-presence?style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/issues)
 [![License](https://img.shields.io/github/license/Nate-Wilkins/react-discord-presence?color=%2308F&style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/blob/main/LICENSE)
 
+`> (unofficial) <`
+
 > Display your Discord presence.
 
 ```
@@ -57,6 +59,9 @@ If they're not in the Discord server, you'll get a response error from their API
 You can use the self contained `DiscordPresence` component which will handle
 data retrieval, loading, error, and display states automatically for you.
 
+You can also use the [discord-presence](https://github.com/nate-wilkins/discord-presence)
+network widget/svg component instead.
+
 ### React
 
 ```typescript
@@ -64,6 +69,20 @@ import { DiscordPresence } from 'react-discord-presence';
 
 // ...
 <DiscordPresence args={{ developerId: "<your-developer-id>" }} />
+```
+
+### Widget
+
+```html
+<object data="https://discord-presence.netlify.app/render/<your-developer-id>">
+  <embed src="https://discord-presence.netlify.app/render/<your-developer-id>"></embed>
+</object>
+```
+
+### SVG
+
+```jsx
+<img src="https://discord-presence.netlify.app/render/svg/<your-developer-id>" />
 ```
 
 ### Custom

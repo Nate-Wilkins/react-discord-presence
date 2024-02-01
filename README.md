@@ -15,6 +15,8 @@
 [![Open Issues](https://img.shields.io/github/issues-raw/Nate-Wilkins/react-discord-presence?style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/issues)
 [![License](https://img.shields.io/github/license/Nate-Wilkins/react-discord-presence?color=%2308F&style=flat-square)](https://github.com/Nate-Wilkins/react-discord-presence/blob/main/LICENSE)
 
+`> (unofficial) <`
+
 > Display your Discord presence.
 
 ```
@@ -68,11 +70,8 @@ If they're not in the Discord server, you'll get a response error from their API
 You can use the self contained `DiscordPresence` component which will handle
 data retrieval, loading, error, and display states automatically for you.
 
-```
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-</style>
-```
+You can also use the [discord-presence](https://github.com/nate-wilkins/discord-presence)
+network widget/svg component instead.
 
 ### React
 
@@ -81,6 +80,20 @@ import { DiscordPresence } from 'react-discord-presence';
 
 // ...
 <DiscordPresence args={{ developerId: "<your-developer-id>" }} />
+```
+
+### Widget
+
+```html
+<object data="https://discord-presence.netlify.app/render/<your-developer-id>">
+  <embed src="https://discord-presence.netlify.app/render/<your-developer-id>"></embed>
+</object>
+```
+
+### SVG
+
+```jsx
+<img src="https://discord-presence.netlify.app/render/svg/<your-developer-id>" />
 ```
 
 ### Custom
@@ -127,5 +140,5 @@ Written in Typescript. Workflows are defined in `.envrc.sh`.
 
 | Author  | Estimated Hours |
 | ------------- | ------------- |
-| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">33.52 Hours</p> |
+| [![nate-wilkins](https://github.com/nate-wilkins.png?size=64)](https://github.com/nate-wilkins) | <p align="right">34.3 Hours</p> |
 | [![dependabot[bot]](https://github.com/dependabot[bot].png?size=64)](https://github.com/dependabot[bot]) | <p align="right">0.52 Hours</p> |
