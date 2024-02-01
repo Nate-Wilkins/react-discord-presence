@@ -57,19 +57,10 @@ If they're not in the Discord server, you'll get a response error from their API
 You can use the self contained `DiscordPresence` component which will handle
 data retrieval, loading, error, and display states automatically for you.
 
-Make sure to load up a supported font before rendering the component.
-`Inter` is used by default.
-
-```
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-</style>
-```
-
 ### React
 
 ```typescript
-import { DiscordPresence,  } from 'react-discord-presence';
+import { DiscordPresence } from 'react-discord-presence';
 
 // ...
 <DiscordPresence args={{ developerId: "<your-developer-id>" }} />
