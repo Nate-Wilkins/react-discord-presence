@@ -70,7 +70,9 @@ function install() {
   if [[ $? -eq 0 ]]; then
     yarn install
     yarn run yarn-deduplicate
+
     cargo install jikyuu
+    cargo install dust
   fi
 }
 
