@@ -77,6 +77,14 @@ function install() {
 }
 
 #
+# Run upgrade for dependencies.
+#
+function upgrade() {
+  jq '.dependencies    | keys | .[]' "./package.json" | xargs yarn add
+  jq '.devDependencies | keys | .[]' "./package.json" | xargs yarn add --dev
+}
+
+#
 # Run build pipeline to create distributable.
 #
 function build() {
@@ -171,6 +179,7 @@ function help() {
   echo '   configure              Run configuration setup for a specific environment.             '
   echo '   install                Run NodeJS packages install with yarn.                          '
   echo '                          Run Rust packages install with cargo.                           '
+  echo '   upgrade                Run upgrade for dependencies.                                   '
   echo '   build                  Run build pipeline to create distributable.                     '
   echo '   docs                   Run documentation generation.                                   '
   echo '   test                   Run tests.                                                      '
