@@ -25,5 +25,5 @@ export const DiscordPresenceActivityDuration: FunctionComponent<{
     };
   }, [start, end]);
 
-  return <p>{format(new Date(now), new Date(start))}</p>;
+  return <p>{format(new Date(start), new Date(now))}</p>;
 };

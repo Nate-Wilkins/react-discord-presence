@@ -75,13 +75,13 @@ export const createLanyardApiData = ({
       {
         type: 0,
         timestamps: {
-          start: 1675547220000,
+          start: 1676828887435,
         },
         state: 'Editing DiscordPresence.test.tsx',
         name: 'Neovim',
         id: 'adcc4377e4f48e4d',
         details: 'Working on react-discord-presence',
-        created_at: 1675547708661,
+        created_at: 1676827887435,
         assets: {
           small_text: 'React',
           small_image: '794715645786587137',
@@ -93,17 +93,17 @@ export const createLanyardApiData = ({
       {
         type: 0,
         timestamps: {
-          start: 1675651894032,
+          start: 1676827987435,
         },
         name: 'Overwatch 2',
         id: 'b5929b2fee89662a',
-        created_at: 1675651894051,
+        created_at: 1676827887435,
         application_id: '356875221078245376',
       },
       {
         type: 0,
         timestamps: {
-          start: 1676895782000,
+          start: 1676827987435,
         },
         name: 'YouTube',
         id: 'f7c5f368d72a4f8',

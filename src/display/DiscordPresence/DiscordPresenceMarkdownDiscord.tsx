@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react';
 import cn from 'classnames';
 import { ErrorImage } from '../image';
 import { MarkdownDiscord } from '../MarkdownDiscord';
-import { useTheme } from './ThemeDiscordPresence';
 import { DiscordPresenceClassesDefault } from '../style';
+import { useTheme } from './ThemeDiscordPresence';
 
 /*
  * Wrapper around `MarkdownDiscord` to make it easier to work with styling specifically
@@ -54,11 +54,17 @@ export const DiscordPresenceMarkdownDiscord: FunctionComponent<{
         color: theme.spoiler.color,
         background: theme.spoiler.backgroundColor,
       }}
-      timestampClassName={cn(DiscordPresenceClassesDefault.timestamp, classes?.timestamp)}
+      timestampClassName={cn(
+        DiscordPresenceClassesDefault.timestamp,
+        classes?.timestamp,
+      )}
       timestampStyle={{
         background: theme.timestamp.backgroundColor,
       }}
-      underlineClassName={cn(DiscordPresenceClassesDefault.underline, classes?.underline)}
+      underlineClassName={cn(
+        DiscordPresenceClassesDefault.underline,
+        classes?.underline,
+      )}
       renderEmojiError={() => (
         <ErrorImage
           className={cn(DiscordPresenceClassesDefault.emoji, classes?.emoji)}

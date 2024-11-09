@@ -1,0 +1,39 @@
+import { Meta, Description, Story } from '@storybook/addon-docs';
+import { DiscordPresenceActivityDuration } from './DiscordPresenceActivityDuration';
+import { addHours } from 'date-fns';
+
+<Meta title="Display/DiscordPresenceActivityDuration" component={DiscordPresenceActivityDuration} argTypes={{ }} />
+
+export const Box = ({ children }) => <div style={{ display: 'inline-block', border: '1px dotted black', padding: '1em' }}>{children}</div>;
+
+export const Template = (args) => (
+  <div style={{ fontSize: '16px' }}>
+    <Box>
+      <DiscordPresenceActivityDuration start={args.start} end={args.end} format={args.format} />
+    </Box>
+  </div>
+)
+
+# DiscordPresenceActivityDuration
+
+Display Discord presence activity duration.
+
+## Simple Format
+
+<Story name="Simple 1 Day" parameters={{ }} args={{ start: new Date("4/10/2022"), end: new Date("4/11/2022") }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Simple 1 Hour" parameters={{ }} args={{ start: new Date("4/10/2022"), end: addHours(new Date("4/10/2022"), 1) }}>
+  {Template.bind({})}
+</Story>
+
+## Complex Format
+
+<Story name="Complex 1 Day" parameters={{ }} args={{ format: (d1, d2) => `${d1} ${d2}`, start: new Date("4/10/2022"), end: new Date("4/11/2022") }}>
+  {Template.bind({})}
+</Story>
+
+<Story name="Complex 1 Hour" parameters={{ }} args={{ format: (d1, d2) => `${d1} ${d2}`, start: new Date("4/10/2022"), end: addHours(new Date("4/10/2022"), 1) }}>
+  {Template.bind({})}
+</Story>
