@@ -11,6 +11,7 @@ export const decorators = [
 ];
 
 export const parameters = {
+  mockingDate: new Date(1994, 4, 10),
   actions: { argTypesRegex: '^on[A-Z].*' },
   layout: 'fullscreen',
   screenshot: {
